@@ -1,0 +1,1334 @@
+@font-face {
+    font-family: 'Steppe';
+    src: url('../source/fonts/Steppe/Steppe-Black.eot');
+    src: local('Steppe Black'), local('Steppe-Black'),
+    url('../source/fonts/Steppe/Steppe-Black.eot?#iefix') format('embedded-opentype'),
+    url('../source/fonts/Steppe/Steppe-Black.woff2') format('woff2'),
+    url('../source/fonts/Steppe/Steppe-Black.woff') format('woff'),
+    url('../source/fonts/Steppe/Steppe-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Steppe';
+    src: url('../source/fonts/Steppe/Steppe-Book.eot');
+    src: local('Steppe Book'), local('Steppe-Book'),
+    url('../source/fonts/Steppe/Steppe-Book.eot?#iefix') format('embedded-opentype'),
+    url('../source/fonts/Steppe/Steppe-Book.woff2') format('woff2'),
+    url('../source/fonts/Steppe/Steppe-Book.woff') format('woff'),
+    url('../source/fonts/Steppe/Steppe-Book.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'RAYDIS';
+    src: url('../source/fonts/Raydis/RAYDIS-Bold.eot');
+    src: url('../source/fonts/Raydis/RAYDIS-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../source/fonts/Raydis/RAYDIS-Bold.woff2') format('woff2'),
+    url('../source/fonts/Raydis/RAYDIS-Bold.woff') format('woff'),
+    url('../source/fonts/Raydis/RAYDIS-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'Steppe';
+    src: url('../source/fonts/Steppe/Steppe-Bold.eot');
+    src: local('Steppe Bold'), local('Steppe-Bold'),
+    url('../source/fonts/Steppe/Steppe-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../source/fonts/Steppe/Steppe-Bold.woff2') format('woff2'),
+    url('../source/fonts/Steppe/Steppe-Bold.woff') format('woff'),
+    url('../source/fonts/Steppe/Steppe-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Steppe';
+    src: url('../source/fonts/Steppe/Steppe-ExtraBold.eot');
+    src: local('Steppe Extra Bold'), local('Steppe-ExtraBold'),
+    url('../source/fonts/Steppe/Steppe-ExtraBold.eot?#iefix') format('embedded-opentype'),
+    url('../source/fonts/Steppe/Steppe-ExtraBold.woff2') format('woff2'),
+    url('../source/fonts/Steppe/Steppe-ExtraBold.woff') format('woff'),
+    url('../source/fonts/Steppe/Steppe-ExtraBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Steppe';
+    src: url('../source/fonts/Steppe/Steppe-SemiBold.eot');
+    src: local('Steppe Semi Bold'), local('Steppe-SemiBold'),
+    url('../source/fonts/Steppe/Steppe-SemiBold.eot?#iefix') format('embedded-opentype'),
+    url('../source/fonts/Steppe/Steppe-SemiBold.woff2') format('woff2'),
+    url('../source/fonts/Steppe/Steppe-SemiBold.woff') format('woff'),
+    url('../source/fonts/Steppe/Steppe-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Steppe';
+    src: url('../source/fonts/Steppe/Steppe-Medium.eot');
+    src: local('Steppe Medium'), local('Steppe-Medium'),
+    url('../source/fonts/Steppe/Steppe-Medium.eot?#iefix') format('embedded-opentype'),
+    url('../source/fonts/Steppe/Steppe-Medium.woff2') format('woff2'),
+    url('../source/fonts/Steppe/Steppe-Medium.woff') format('woff'),
+    url('../source/fonts/Steppe/Steppe-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Steppe';
+    src: url('../source/fonts/Steppe/Steppe-Thin.eot');
+    src: local('Steppe Thin'), local('Steppe-Thin'),
+    url('../source/fonts/Steppe/Steppe-Thin.eot?#iefix') format('embedded-opentype'),
+    url('../source/fonts/Steppe/Steppe-Thin.woff2') format('woff2'),
+    url('../source/fonts/Steppe/Steppe-Thin.woff') format('woff'),
+    url('../source/fonts/Steppe/Steppe-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Steppe';
+    src: url('../source/fonts/Steppe/Steppe-Regular.eot');
+    src: local('Steppe Regular'), local('Steppe-Regular'),
+    url('../source/fonts/Steppe/Steppe-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../source/fonts/Steppe/Steppe-Regular.woff2') format('woff2'),
+    url('../source/fonts/Steppe/Steppe-Regular.woff') format('woff'),
+    url('../source/fonts/Steppe/Steppe-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Steppe';
+    src: url('../source/fonts/Steppe/Steppe-Light.eot');
+    src: local('Steppe Light'), local('Steppe-Light'),
+    url('../source/fonts/Steppe/Steppe-Light.eot?#iefix') format('embedded-opentype'),
+    url('../source/fonts/Steppe/Steppe-Light.woff2') format('woff2'),
+    url('../source/fonts/Steppe/Steppe-Light.woff') format('woff'),
+    url('../source/fonts/Steppe/Steppe-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Unbounded';
+    src: url('../source/fonts/Unbounded/Unbounded-Black.eot');
+    src: url('../source/fonts/Unbounded/Unbounded-Black.eot?#iefix') format('embedded-opentype'),
+    url('../source/fonts/Unbounded/Unbounded-Black.woff2') format('woff2'),
+    url('../source/fonts/Unbounded/Unbounded-Black.woff') format('woff'),
+    url('../source/fonts/Unbounded/Unbounded-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Unbounded';
+    src: url('../source/fonts/Unbounded/Unbounded-ExtraBold.eot');
+    src: url('../source/fonts/Unbounded/Unbounded-ExtraBold.eot?#iefix') format('embedded-opentype'),
+    url('../source/fonts/Unbounded/Unbounded-ExtraBold.woff2') format('woff2'),
+    url('../source/fonts/Unbounded/Unbounded-ExtraBold.woff') format('woff'),
+    url('../source/fonts/Unbounded/Unbounded-ExtraBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Unbounded';
+    src: url('../source/fonts/Unbounded/Unbounded-Bold.eot');
+    src: url('../source/fonts/Unbounded/Unbounded-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../source/fonts/Unbounded/Unbounded-Bold.woff2') format('woff2'),
+    url('../source/fonts/Unbounded/Unbounded-Bold.woff') format('woff'),
+    url('../source/fonts/Unbounded/Unbounded-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Unbounded';
+    src: url('../source/fonts/Unbounded/Unbounded-Medium.eot');
+    src: url('../source/fonts/Unbounded/Unbounded-Medium.eot?#iefix') format('embedded-opentype'),
+    url('../source/fonts/Unbounded/Unbounded-Medium.woff2') format('woff2'),
+    url('../source/fonts/Unbounded/Unbounded-Medium.woff') format('woff'),
+    url('../source/fonts/Unbounded/Unbounded-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Unbounded';
+    src: url('../source/fonts/Unbounded/Unbounded-Light.eot');
+    src: url('../source/fonts/Unbounded/Unbounded-Light.eot?#iefix') format('embedded-opentype'),
+    url('../source/fonts/Unbounded/Unbounded-Light.woff2') format('woff2'),
+    url('../source/fonts/Unbounded/Unbounded-Light.woff') format('woff'),
+    url('../source/fonts/Unbounded/Unbounded-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Unbounded';
+    src: url('../source/fonts/Unbounded/Unbounded-ExtraLight.eot');
+    src: url('../source/fonts/Unbounded/Unbounded-ExtraLight.eot?#iefix') format('embedded-opentype'),
+    url('../source/fonts/Unbounded/Unbounded-ExtraLight.woff2') format('woff2'),
+    url('../source/fonts/Unbounded/Unbounded-ExtraLight.woff') format('woff'),
+    url('../source/fonts/Unbounded/Unbounded-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Unbounded';
+    src: url('../source/fonts/Unbounded/Unbounded-SemiBold.eot');
+    src: url('../source/fonts/Unbounded/Unbounded-SemiBold.eot?#iefix') format('embedded-opentype'),
+    url('../source/fonts/Unbounded/Unbounded-SemiBold.woff2') format('woff2'),
+    url('../source/fonts/Unbounded/Unbounded-SemiBold.woff') format('woff'),
+    url('../source/fonts/Unbounded/Unbounded-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Unbounded';
+    src: url('../source/fonts/Unbounded/Unbounded-Regular.eot');
+    src: url('../source/fonts/Unbounded/Unbounded-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../source/fonts/Unbounded/Unbounded-Regular.woff2') format('woff2'),
+    url('../source/fonts/Unbounded/Unbounded-Regular.woff') format('woff'),
+    url('../source/fonts/Unbounded/Unbounded-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Steppe, serif;
+    opacity: 1;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    list-style: none;
+}
+
+section{
+    width: 100%;
+}
+
+.container{
+    width: 1144px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    margin: 0 auto;
+}
+
+/*----------------------------------------Header----------------------------------------------------------*/
+
+.header{
+    padding-top: 25px;
+}
+
+.header-left{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.header-logo__img, .header-logo{
+    width: 154px;
+    height: 152px;
+    display: block;
+}
+
+.header-logo{
+    width: 154px;
+    height: 152px;
+    position: relative;
+    top: 8px;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 580px;
+}
+
+
+.navbar > a{
+    text-transform: uppercase;
+    display: block;
+    opacity: 1;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all .3s;
+}
+
+.navbar__link:hover{
+    opacity: 1.5;
+    border-bottom: 2px solid #fff;
+    transition: all .2s;
+}
+
+.navbar > a:first-child{
+    border-radius: 5px;
+    border: 1px solid #FFC815;
+    padding: 10px 10px 7px 10px;
+
+}
+
+.burger{
+    margin-right: 8px;
+    width: 16px;
+    height: 10px;
+}
+
+.header-right{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 335px;
+}
+
+.sign-in-btn{
+    color: #1E1D29;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    border-radius: 5px;
+    border: 1px solid #FFC815;
+    background: #FFC815;
+    padding: 4px 10px;
+    width: 75px;
+    height: 24px;
+    display: block;
+}
+
+.sign-up-btn{
+    border-radius: 5px;
+    border: 1px solid #FFC815;
+    width: 140px;
+    height: 24px;
+    font-size: 13px;
+    display: block;
+    padding: 5px 15px;
+    text-transform: uppercase;
+}
+
+
+
+/*-------------------------------Main-------------------------------------------------------------------------*/
+
+.main{
+    width: 100%;
+    overflow: hidden;
+    padding-left: 45px;
+    padding-bottom: 295px;
+    min-height: 81vh;
+    max-height: 100vh;
+}
+
+
+.main:after{
+    background: url(../source/img/mainBlockImg.png) no-repeat;
+    background-size: cover;
+    width: 100%;
+    position: absolute;
+    content: '';
+    min-height: 81%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -5;
+}
+
+.main__title{
+    margin-top: 97px;
+}
+
+body{
+    background-color: #DADBDD;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.type-one{
+    font-size: 38px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 5;
+}
+
+.type-two{
+    color: #ECB400;
+    font-family: Unbounded, serif;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.type-three{
+    font-family: Unbounded, serif;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+/*-------------------------------------Food---------------------------------------------------------------*/
+
+.food{
+    background-color: #DADBDD;
+    padding: 8px 0 41px 0;
+}
+
+.container-small{
+    width: 955px;
+}
+
+.food-top{
+    margin-top: 8px;
+    border-radius: 10px;
+    /*opacity: 0.5;*/
+    background: #fff;
+    display: flex;
+    /*padding: 6px;*/
+    width: 100%;
+}
+
+.food-start{
+
+    position: relative;
+    z-index: 999;
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+
+
+.food-var{
+    background-color: #201c2c !important;
+    border: 1px dashed #ECB400;
+    width: 173px;
+    min-height: 126px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+}
+
+.food-var__img{
+    width: 87px;
+    height: 55px;
+}
+
+.food-var__text{
+    color: #E5E4E4;
+    text-align: center;
+    font-family: RAYDIS, serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    margin-top: -2px;
+}
+
+
+.food-var-item{
+    position: relative;
+    /*width: 147px;*/
+    height: 145px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-right: 3px;
+    cursor: pointer;
+}
+
+.slider-container{
+    max-width: 754px !important;
+    padding: 0 6px 0 0;
+
+}
+
+
+
+.slick-slide{
+    height: 140px !important;
+}
+
+/*.slick-initialized .slick-slide{*/
+/*    width: 147px !important;*/
+/*    display: flex !important;*/
+/*}*/
+
+.slick-track{
+    padding: 0;
+}
+
+.food-var-item:before{
+    background: rgba(30, 29, 41, 0.65);
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    content: '';
+
+}
+
+.food-var-item__text{
+    text-align: center;
+    font-family: RAYDIS, serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+
+}
+
+.food-var-item__img{
+    position: absolute;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -999;
+}
+
+
+.custom-arrows {
+    position: absolute;
+    width: 949px;
+    transform: scaleX(1.09);
+    top: 4%;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+}
+
+.custom-arrows button {
+    background: transparent;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    font-size: 18px;
+}
+
+
+.prev, .next, .custom-arrows button{
+    outline: none;
+}
+
+.arrow-prev{
+    transform: rotate(180deg);
+}
+
+.back{
+    margin: 6px;
+    margin-right: 0;
+    padding: 7px;
+    background-color: #201c2c !important;
+}
+
+.container-small-wrap{
+    flex-wrap: wrap;
+}
+
+/*---------------------------------------------------------------Food------------------------------------*/
+
+.food-bot{
+    border-radius: 10px;
+    margin-top: 50px;
+    background-color: #fff;
+    width: 100%;
+}
+
+.food-bot > .up{
+    padding: 16px 25px 10px 27px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #B0B0B0;
+}
+
+
+.up-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.up-item__recommended{
+    color: #FFF;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+    border-radius: 5px;
+    background: #ECB400;
+    padding: 11px 15px 8px 15px;
+}
+
+.up-item:nth-child(2){
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+.up-item{
+    border-left: 3px solid #FFC815;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 34px;
+}
+
+.up-item:first-child, .up-item:nth-child(2){
+    border: none;
+    padding: 0;
+}
+
+.up-item__text{
+    color: #434343;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.primary-text{
+    color: #ECB400;
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    margin-left: 8px;
+    margin-top: 4px;
+}
+
+.cart{
+    cursor: pointer;
+    border-radius: 5px;
+    background: #606060;
+    border: none;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bot{
+    padding: 15px 10px 27px 27px;
+}
+
+.food-list{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.food-item{
+    width: 270px;
+    margin-right: 30px;
+}
+
+.food-item{
+    margin-top: 29px;
+}
+
+.food-item:first-child, .food-item:nth-child(2), .food-item:nth-child(3){
+    margin-top: 0;
+}
+
+.food-item__img{
+    width: 170px;
+    height: 170px;
+    margin-bottom: 11px;
+}
+
+.food-item__name{
+    color: #ECAA01;
+    font-family: RAYDIS, serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.food-item__description{
+    color: #000;
+    text-align: center;
+    font-size: 8px;
+    font-style: normal;
+    font-weight: 350;
+    line-height: normal;
+    text-transform: lowercase;
+    margin-bottom: 10px;
+}
+
+.food-item__price{
+    color: #1E1D29;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+}
+
+.food-item-inner{
+    padding: 16px 50px 0 50px;
+    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #ACA9A9;
+    border-bottom: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+
+.food-item__take{
+    padding: 17px 0 13px 0;
+    width: 100%;
+    border: none;
+    background-color: #ECB400;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.to-cart{
+    display: block;
+    border-radius: 5px;
+    border: 1px solid #ECB400;
+    background: #ECB400;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    text-transform: uppercase;
+    width: 430px;
+    margin: 44px auto 23px auto;
+    padding: 15px 0 10px 0;
+}
+
+/*-----------------------------------------News--------------------------------------------*/
+
+.news{
+    background-image: url("../source/img/backBlack.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 51px;
+    padding-bottom: 8px;
+}
+
+.news-top{
+    background-color: transparent;
+    width: 100%;
+}
+
+
+.slider-second-slide{
+    width: 995px;
+}
+
+.news-two{
+    width: 637px;
+    height: 360px;
+}
+
+.news-three{
+    width: 100%;
+    height: 338px;
+}
+
+.slider-container-second {
+    width: 100%;
+    margin: auto;
+}
+
+.slider-second-slide img {
+    width: 100%;
+    height: auto;
+}
+
+.slider-second .slick-list .slick-track .slider-second-slide{
+    width: 955px !important;
+    height: 400px !important;
+}
+
+.container-small-wrap{
+    position: relative;
+}
+
+.news-slider {
+    width: 100%;
+    height: auto;
+}
+
+.custom-arrows-second{
+    top: 23%;
+}
+
+.news-bottom{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.orderBtn{
+    text-align: center;
+    font-family: Unbounded, serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    text-transform: uppercase;
+    border-radius: 5px;
+    background: #ECB400;
+
+}
+
+/*-----------------------------------------About---------------------------------------------*/
+.about{
+    padding: 49px 0 26px 0;
+    background-color: #fff;
+}
+
+.about-title{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ECAA01;
+    text-align: center;
+    font-family: Unbounded, serif;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.container-wrap{
+    flex-wrap: wrap;
+}
+
+.about-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.about-item{
+    width: 365px;
+}
+
+.about-item__image{
+    width: 100%;
+    height: 288px;
+    margin-bottom: 33px;
+    border-radius: 5px;
+    box-shadow: 0 0 9px 2px rgba(0, 0, 0, 0.30);
+}
+
+.about-item__title{
+    color: #4B4A54;
+    text-align: center;
+    font-family: Steppe, serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.about-item-inner{
+    border-radius: 5px;
+    background: rgba(166, 165, 163, 0.10);
+    box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.25);
+    padding: 10px 10px 10px 20px;
+    min-height: 97px;
+    width: 100%;
+}
+
+.about-item__text{
+    color: #696969;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: none;
+}
+
+
+/*------------------------------------------------Contact--------------------------------------------*/
+
+.contact{
+    background-image: url("../source/img/backBlack.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 18px 0;
+}
+
+.contact-back{
+    background-image: none;
+}
+
+.contact-title{
+    color: #DADBDD;
+    text-align: center;
+    font-family: Unbounded, serif;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.contact-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.tel-block{
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.tel-item{
+    width: 184px;
+    display: flex;
+    align-items: center;
+}
+
+.social-block{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.social-block__link{
+    width: 61px;
+    height: 61px;
+    display: block;
+}
+
+.social-block__link > img{
+    width: 100%;
+    height: 100%;
+}
+
+.social-block__link:nth-child(2){
+    margin-top: -1px;
+    transform: scale(1.1);
+}
+
+/*---------------------------------------------Cart----------------------------------------*/
+
+
+.cart-body{
+    background-image: url("../source/img/backBlack.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+}
+
+.cart-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 auto;
+}
+
+.cart__title{
+    font-family: Unbounded, serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    text-transform: uppercase;
+    text-align: left;
+    margin: 0;
+}
+
+.cart-item{
+    border-radius: 5px;
+    width: 100%;
+    border: 3px solid #ACA9A9;
+    background: #FFF;
+    display: flex;
+    align-items: center;
+    padding: 22px 45px;
+    margin-top: 26px;
+}
+
+.cart-list > .cart-item:nth-child(2){
+    margin-top: 0;
+}
+
+.cart-item__img{
+    height: 84px;
+    width: 84px;
+}
+
+.cart-item-col-1{
+    margin-right: 43px;
+}
+
+.cart-item-col-2{
+    flex-direction: column;
+    width: 401px;
+    margin-right: 34px;
+}
+
+.cart-item-col-2, .cart-item-col-1, .cart-item-col-3, .cart-item-col-4{
+    display: flex;
+}
+
+.cart-item__title{
+    color: #ECAA01;
+    font-family: RAYDIS, serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.cart-item__subtitle{
+    color: #1E1D29;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 350;
+    line-height: normal;
+    text-transform: lowercase;
+}
+
+.cart-item-col-3{
+    color: #1E1D29;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 74px;
+}
+
+.number{
+    color: #1E1D29;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.quantity{
+    color: #1E1D29;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    width: 100px;
+}
+
+.cart-item__btn{
+    color: #1E1D29;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.cart-item-col-4{
+    color: #1E1D29;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    margin-right: 61px;
+}
+
+
+.delete{
+    color: #FFF;
+    text-align: center;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    border-radius: 5px;
+    border: 1px solid #ECB400;
+    background: #ECB400;
+    width: 166px;
+    height: 39px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.columns{
+    display: flex;
+    width: 200px;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 635px;
+}
+
+.col{
+    margin-top: 26px;
+    color: #B0B0B0;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: lowercase;
+}
+
+.cart-bot{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+
+.cartBtn{
+    text-align: center;
+    font-family: Unbounded, serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    text-transform: uppercase;
+    border-radius: 5px;
+    border: 1px solid #FFC815;
+    background: #ECB400;
+    width: 279px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.total{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Steppe, serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    margin-top: 17px;
+}
+
+.backPage{
+    border-radius: 5px;
+    padding-top: 5px;
+    border: 1px solid #ECB400;
+    width: 130px;
+    min-height: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+/*---------------------------------------------------Food page----------------------------------------------------*/
+
+.up-cat{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.up-item__recommended-updated, .up-item__text-updated{
+    color: #fff;
+}
+
+.foods-title{
+    color: #FFF;
+    font-family: Unbounded, serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.foods-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 53px;
+}
+
+.foods-top > a{
+    color: #FFF;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    border-radius: 5px;
+    border: 1px solid #ECB400;
+    background: #ECB400;
+    width: 218px;
+    height: 37px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-food{
+    margin-top: 47px;
+    display: flex;
+
+}
+
+.slider-container-food{
+    width: 100%;
+    height: 400px;
+}
+.slider-food-slide{
+    width: 287px !important;
+    min-height: 300px !important;
+}
+
+.food-item-u{
+    margin: 0;
+    padding: 0;
+}
+
+.slider-food-slide{}
+
+.custom-arrows-food{
+    width: 89%;
+    top: 50%;
+}
+.primary-text-rec{
+    color: #FFF;
+    font-family: Steppe, serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+
+
+}
+
+.up-item-category{
+    border-radius: 5px;
+    border: 1px solid #FFC815;
+}
