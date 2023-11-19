@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" th:href="@{/styles/index.css}">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -19,10 +19,10 @@
     <div class="container">
         <div class="header-left">
             <a href="index.html" class="header-logo">
-                <img src="../source/img/logo.png" alt="Dish Dash Logo" class="header-logo__img">
+                <img th:src="@{/img/logo.png}" alt="Dish Dash Logo" class="header-logo__img">
             </a>
             <nav class="navbar">
-                <a href="" class="navbar__link"><img src="../source/img/бургер.png" class="burger"><span>категории</span></a>
+                <a href="" class="navbar__link"><img th:src="@{/img/бургер.png}" class="burger"><span>категории</span></a>
                 <a href="" class="navbar__link">акции</a>
                 <a href="" class="navbar__link">почему мы</a>
                 <a href="" class="navbar__link">контакты</a>
@@ -31,8 +31,8 @@
         <div class="header-right">
             <a href="" class="sign-in-btn">войти</a>
             <a href="" class="sign-up-btn">регистрация</a>
-            <a href="" class="profile"><img src="../source/img/profile.svg" alt="profile image" ></a>
-            <a href="cart.html" class="cart"><img src="../source/img/cart.svg" alt="cart image"></a>
+            <a href="" class="profile"><img class="user" th:src="@{/img/profile.svg}" alt="profile image" ></a>
+            <a href="cart.html" class="cart cart-active"><img th:src="@{/img/cart.svg}" alt="cart image"></a>
         </div>
     </div>
 </section>
@@ -48,7 +48,7 @@
             </div>
             <div class="cart-item" data-index="1">
                 <div class="cart-item-col-1">
-                    <img class="cart-item__img" src="../source/img/randomFood.png" alt="Food">
+                    <img class="cart-item__img" th:src="@{/img/randomFood.png}" alt="Food">
                 </div>
                 <div class="cart-item-col-2">
                     <p class="cart-item__title">шин рамЁн</p>
@@ -64,7 +64,7 @@
             </div>
             <div class="cart-item" data-index="1">
                 <div class="cart-item-col-1">
-                    <img class="cart-item__img" src="../source/img/randomFood.png" alt="Food">
+                    <img class="cart-item__img" th:src="@{/img/randomFood.png}" alt="Food">
                 </div>
                 <div class="cart-item-col-2">
                     <p class="cart-item__title">шин рамЁн</p>
@@ -81,7 +81,7 @@
         </div>
         <div class="cart-bot">
             <a href="food.html" class="backPage">назад</a>
-            <button class="orderBtn cartBtn">оформить</button>
+            <a href="createOrderPage.html" class="orderBtn cartBtn">оформить</a>
             <p class="total">итог : <span id="totalAmount">0</span> тг</p>
             <p class="empty-message" style="display: none;">Корзина пуста</p>
         </div>
@@ -91,31 +91,32 @@
 
 <!--Contact section-->
 <section class="contact contact-back">
-    <div class="container contact-container">
-        <h5 class="contact-title">связаться с нами</h5>
+    <div class="container contact-container contact-container-line">
+        <h5 class="contact-title contact-title-u">связаться с нами</h5>
         <div class="tel-block">
             <div class="tel-item">
-                <img class="tel-item__img" src="../source/img/phone.svg" alt="Phone">
+                <img class="tel-item__img" th:src="@{/img/phone.svg}" alt="Phone">
                 <a href="tel:+ 901 205 16  26" class="tel-item__number">+ 901 205 16  26</a>
             </div>
             <div class="tel-item">
-                <img class="tel-item__img" src="../source/img/phone.svg" alt="Phone">
+                <img class="tel-item__img" th:src="@{/img/phone.svg}" alt="Phone">
                 <a href="tel:+ 901 205 16  26" class="tel-item__number">+ 901 205 16  26</a>
             </div>
         </div>
         <div class="social-block">
             <a href="#" class="social-block__link">
-                <img src="../source/img/facebook.svg" alt="Facebook logo">
+                <img th:src="@{/img/facebook.svg}" alt="Facebook logo">
             </a>
             <a href="#" class="social-block__link">
-                <img class="inst" src="../source/img/inst.svg" alt="Instagram logo">
+                <img class="inst" th:src="@{/img/inst.svg}" alt="Instagram logo">
             </a>
             <a href="#" class="social-block__link">
-                <img src="../source/img/tiktok.svg" alt="Tiktok logo">
+                <img th:src="@{/img/tiktok.svg}" alt="Tiktok logo">
             </a>
         </div>
     </div>
 </section>
-<script src="../scripts/cart.js"></script>
+<script th:src="@{/scripts/cart.js}"></script>
+<script th:src="@{/scripts/order.js.js}"></script>
 </body>
 </html>

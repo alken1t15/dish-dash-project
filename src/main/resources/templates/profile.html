@@ -1,0 +1,118 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" th:href="@{/styles/index.css}">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <title>Dish Dash</title>
+</head>
+<body class="cart-body profile-body">
+
+<!-- header section-->
+<div class="up up-cat">
+
+  <div class="container">
+
+    <div class="up-item up-item-category">
+      <svg class="up-item__img" xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="fff">
+        <rect width="17" height="2" fill="#fff"/>
+        <rect y="5" width="17" height="2" fill="#fff"/>
+        <rect y="10" width="17" height="2" fill="#fff"/>
+      </svg>
+
+      <span class="up-item__text primary-text primary-text-rec">категория</span>
+    </div>
+    <div class="up-item">
+      <p class="up-item__text up-item__text-updated">рекомендации</p>
+    </div>
+    <div class="up-item">
+      <p class="up-item__text up-item__text-updated">блюда</p>
+    </div>
+    <div class="up-item">
+      <p class="up-item__text up-item__text-updated">салаты</p>
+    </div>
+    <div class="up-item">
+      <p class="up-item__text up-item__text-updated">десерты</p>
+    </div>
+    <div class="up-item">
+      <p class="up-item__text up-item__text-updated">напитки</p>
+    </div>
+
+    <div class="userInfo">
+      <a href="profile.html" class="profile profile-active"><img th:src="@{/img/profile.svg}" alt="profile image" ></a>
+      <div class="up-item cart-itm">
+        <a href="cart.html" class="cart"><img th:src="@{/img/cart.svg}" alt="cart image"></a>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+<!--Food section-->
+<section class="cart-section">
+  <div class="container profile-container">
+    <div class="profile-block">
+      <p class="profile-block-text">Имя Фамилия</p>
+      <input class="address-item__field" type="text" name="contact" placeholder="Замена данных" style="width: 500px"/>
+    </div>
+    <div class="profile-block">
+      <p class="profile-block-text">Номер тел.</p>
+      <input class="address-item__field" type="text" name="number" placeholder="Замена данных" style="width: 500px"/>
+    </div>
+    <div class="profile-block">
+      <p class="profile-block-text">Эл. почта</p>
+      <input class="address-item__field" type="email" name="email" placeholder="Замена данных" style="width: 500px"/>
+    </div>
+    <div class="profile-block">
+      <p class="profile-block-text">Старый пароль </p>
+      <input class="address-item__field" type="password" name="curpass" placeholder="Замена данных" style="width: 500px"/>
+    </div>
+    <div class="profile-block">
+      <p class="profile-block-text">Новый пароль</p>
+      <input class="address-item__field" type="password" name="newpass" placeholder="Замена данных" style="width: 500px"/>
+    </div>
+    <button class="to-cart orderBtn profileBtn">Изменить</button>
+  </div>
+</section>
+
+
+<!--Contact section-->
+<section class="contact contact-back">
+  <div class="container contact-container contact-container-line">
+    <h5 class="contact-title contact-title-u" style="color: transparent">связаться с нами</h5>
+    <div class="tel-block">
+      <div class="tel-item">
+        <img class="tel-item__img" th:src="@{/img/phone.svg}" alt="Phone">
+        <a href="tel:+ 901 205 16  26" class="tel-item__number">+ 901 205 16  26</a>
+      </div>
+      <div class="tel-item">
+        <img class="tel-item__img" th:src="@{/img/phone.svg}" alt="Phone">
+        <a href="tel:+ 901 205 16  26" class="tel-item__number">+ 901 205 16  26</a>
+      </div>
+    </div>
+    <div class="social-block">
+      <a href="#" class="social-block__link">
+        <img th:src="@{/img/facebook.svg}" alt="Facebook logo">
+      </a>
+      <a href="#" class="social-block__link">
+        <img class="inst" th:src="@{/img/inst.svg}" alt="Instagram logo">
+      </a>
+      <a href="#" class="social-block__link">
+        <img th:src="@{/img/tiktok.svg}" alt="Tiktok logo">
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+<script th:src="@{/scripts/food.js}"></script>
+</body>
+</html>

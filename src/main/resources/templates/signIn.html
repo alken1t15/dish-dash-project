@@ -1,0 +1,120 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{/styles/index.css}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <title>Dish Dash</title>
+</head>
+<body class="cart-body">
+
+<!-- header section-->
+<!--<div class="up up-cat">-->
+
+<!--    <div class="container">-->
+
+<!--        <div class="up-item up-item-category">-->
+<!--            <svg class="up-item__img" xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="fff">-->
+<!--                <rect width="17" height="2" fill="#fff"/>-->
+<!--                <rect y="5" width="17" height="2" fill="#fff"/>-->
+<!--                <rect y="10" width="17" height="2" fill="#fff"/>-->
+<!--            </svg>-->
+
+<!--            <span class="up-item__text primary-text primary-text-rec">категория</span>-->
+<!--        </div>-->
+<!--        <div class="up-item">-->
+<!--            <p class="up-item__text up-item__text-updated">рекомендации</p>-->
+<!--        </div>-->
+<!--        <div class="up-item">-->
+<!--            <p class="up-item__text up-item__text-updated">блюда</p>-->
+<!--        </div>-->
+<!--        <div class="up-item">-->
+<!--            <p class="up-item__text up-item__text-updated">салаты</p>-->
+<!--        </div>-->
+<!--        <div class="up-item">-->
+<!--            <p class="up-item__text up-item__text-updated">десерты</p>-->
+<!--        </div>-->
+<!--        <div class="up-item">-->
+<!--            <p class="up-item__text up-item__text-updated">напитки</p>-->
+<!--        </div>-->
+<!--        <div class="up-item">-->
+<!--            <a href="profile.html" class="profile profile-active"><img src="../source/img/profile.svg" alt="profile image" ></a>-->
+<!--        </div>-->
+<!--        <div class="up-item">-->
+<!--            <a href="cart.html" class="cart cart-update"><img src="../source/img/cart.svg" alt="cart image"></a>-->
+<!--        </div>-->
+
+
+<!--    </div>-->
+<!--</div>-->
+
+<!--Food section-->
+<section class="cart-section sinin-section">
+    <form  method="post" action="/process_login" class="signin-left">
+        <div class="container profile-container signin-container">
+            <p class="sign-in__title">Войти</p>
+            <div class="sign-in-block">
+                <p class="sing-in__text">Имя Фамилия</p>
+                <input class="address-item__field address-item__field-u" type="text" name="contact" placeholder="Пожалуйста введите свои данные "/>
+            </div>
+            <div class="sign-in-block">
+                <p class="sing-in__text">Номер тел.</p>
+                <input class="address-item__field address-item__field-u" type="text" name="phone" placeholder="Пожалуйста введите свои данные "/>
+            </div>
+            <div class="sign-in-block">
+                <p class="sing-in__text">Эл. почта</p>
+                <input class="address-item__field address-item__field-u" type="email" id="username" name="username" placeholder="Пожалуйста введите свои данные "/>
+            </div>
+            <div class="sign-in-block">
+                <p class="sing-in__text">Пароль</p>
+                <input class="address-item__field address-item__field-u" type="password" id="password" name="password" placeholder="Пожалуйста введите свои данные "/>
+            </div>
+            <button class="to-cart orderBtn profileBtn signBtn">Войти в аккаунт</button>
+        </div>
+    </form>
+    <div class="signin-right">
+        <img class="signin__img" th:src="@{/img/BIGLOGO.png}" alt="DISH DASH LOGO">
+    </div>
+
+
+</section>
+
+
+<!--Contact section-->
+<!--<section class="contact contact-back">-->
+<!--    <div class="container contact-container contact-container-line">-->
+<!--        <h5 class="contact-title contact-title-u" style="color: transparent">связаться с нами</h5>-->
+<!--        <div class="tel-block">-->
+<!--            <div class="tel-item">-->
+<!--                <img class="tel-item__img" src="../source/img/phone.svg" alt="Phone">-->
+<!--                <a href="tel:+ 901 205 16  26" class="tel-item__number">+ 901 205 16  26</a>-->
+<!--            </div>-->
+<!--            <div class="tel-item">-->
+<!--                <img class="tel-item__img" src="../source/img/phone.svg" alt="Phone">-->
+<!--                <a href="tel:+ 901 205 16  26" class="tel-item__number">+ 901 205 16  26</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="social-block">-->
+<!--            <a href="#" class="social-block__link">-->
+<!--                <img src="../source/img/facebook.svg" alt="Facebook logo">-->
+<!--            </a>-->
+<!--            <a href="#" class="social-block__link">-->
+<!--                <img class="inst" src="../source/img/inst.svg" alt="Instagram logo">-->
+<!--            </a>-->
+<!--            <a href="#" class="social-block__link">-->
+<!--                <img src="../source/img/tiktok.svg" alt="Tiktok logo">-->
+<!--            </a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+
+<script th:src="@{/scripts/food.js}"></script>
+</body>
+</html>

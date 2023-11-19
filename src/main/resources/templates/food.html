@@ -1,0 +1,199 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{/styles/index.css}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <title>Dish Dash</title>
+</head>
+<body class="cart-body">
+
+<!-- header section-->
+<div class="up up-cat">
+
+   <div class="container">
+
+       <div class="up-item up-item-category">
+           <svg class="up-item__img" xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="fff">
+               <rect width="17" height="2" fill="#fff"/>
+               <rect y="5" width="17" height="2" fill="#fff"/>
+               <rect y="10" width="17" height="2" fill="#fff"/>
+           </svg>
+           <span class="up-item__text primary-text primary-text-rec">категория</span>
+           <form th:method="GET" th:action="@{/food/}">
+               <ul class="kitchen-list" id="kitchenList">
+                   <!-- Здесь добавьте элементы вашего списка кухонь -->
+                   <li class="kitchenList__item"><a th:href="@{/food/(name_kitchen=${kitchen.name})}" class="kitchenList__link" th:each="kitchen : ${kitchens}" th:text="${kitchen.name}" th:value="${kitchen.name}">корейская</a></li>
+               </ul>
+           </form>
+       </div>
+<!--       Тут гг-->
+       <form th:method="GET" th:action="@{/food/}">
+           <div class="up-item">
+               <input th:if="${nameKitchen!=null && !nameKitchen.isEmpty()}" type="hidden" name="name_kitchen" th:value="${nameKitchen}">
+               <input type="hidden" name="name_category" value="Рекомендации">
+               <button class="up-item__text up-item__text-updated">рекомендации</button>
+           </div>
+       </form>
+       <form th:method="GET" th:action="@{/food/}">
+           <div class="up-item">
+               <input th:if="${nameKitchen!=null && !nameKitchen.isEmpty()}" type="hidden" name="name_kitchen" th:value="${nameKitchen}">
+               <input type="hidden" name="name_category" value="Блюда">
+               <button class="up-item__text up-item__recommended up-item__recommended-updated">блюда</button>
+           </div>
+           </form>
+       <form th:method="GET" th:action="@{/food/}">
+           <div class="up-item">
+               <input th:if="${nameKitchen!=null && !nameKitchen.isEmpty()}" type="hidden" name="name_kitchen" th:value="${nameKitchen}">
+               <input type="hidden" name="name_category" value="Салаты">
+               <button class="up-item__text up-item__text-updated">салаты</button>
+           </div>
+       </form>
+       <form th:method="GET" th:action="@{/food/}">
+           <div class="up-item">
+               <input th:if="${nameKitchen!=null && !nameKitchen.isEmpty()}" type="hidden" name="name_kitchen" th:value="${nameKitchen}">
+               <input type="hidden" name="name_category" value="Десерты">
+               <button class="up-item__text up-item__text-updated">десерты</button>
+           </div>
+       </form>
+       <form th:method="GET" th:action="@{/food/}">
+           <div class="up-item">
+               <input th:if="${nameKitchen!=null && !nameKitchen.isEmpty()}" type="hidden" name="name_kitchen" th:value="${nameKitchen}">
+               <input type="hidden" name="name_category" value="Напитки">
+               <button class="up-item__text up-item__text-updated">напитки</button>
+           </div>
+       </form>
+     <div class="userInfo">
+         <a href="" class="profile profile-user"><img class="user" th:src="@{/img/profile.svg}" alt="profile image" ></a>
+         <div class="up-item cart-itm">
+             <a href="cart.html" class="cart"><img th:src="@{/img/cart.svg}" alt="cart image"></a>
+         </div>
+     </div>
+
+
+   </div>
+</div>
+
+<!--Food section-->
+<section class="cart-section">
+    <div class="container cart-container">
+        <div class="foods-top">
+            <p class="foods-title">блюда</p>
+            <a href="cart.html">переийти в корзину</a>
+        </div>
+        <div class="slider-container-food">
+            <div class="slider-food">
+                <div class="slider-food-slide" th:each="food : ${foods}">
+                    <div class="food-item food-item-u">
+                        <div class="food-item-inner">
+                            <img th:src="@{/img/__${food.img}__.png}" alt="Food" class="food-item__img">
+                            <p class="food-item__name" th:text="${food.name}">Шин рамен</p>
+                            <p class="food-item__description"  th:text="${food.information}">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
+                            <p class="food-item__price"> <span class="food-item__price"  th:text="${food.price}"></span> <span class="food-item__price">тг</span></p>
+                        </div>
+                        <button class="food-item__take">выбрать</button>
+                    </div>
+                </div>
+<!--                <div class="slider-food-slide">-->
+<!--                    <div class="food-item">-->
+<!--                        <div class="food-item-inner">-->
+<!--                            <img th:src="@{/img/randomFood.png}" alt="Food" class="food-item__img">-->
+<!--                            <p class="food-item__name">Шин рамен</p>-->
+<!--                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>-->
+<!--                            <p class="food-item__price">900 тг</p>-->
+<!--                        </div>-->
+<!--                        <button class="food-item__take">выбрать</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="slider-food-slide">-->
+<!--                    <div class="food-item food-item-u">-->
+<!--                        <div class="food-item-inner">-->
+<!--                            <img th:src="@{/img/randomFood.png}" alt="Food" class="food-item__img">-->
+<!--                            <p class="food-item__name">Шин рамен</p>-->
+<!--                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>-->
+<!--                            <p class="food-item__price">900 тг</p>-->
+<!--                        </div>-->
+<!--                        <button class="food-item__take">выбрать</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="slider-food-slide">-->
+<!--                    <div class="food-item food-item-u">-->
+<!--                        <div class="food-item-inner">-->
+<!--                            <img th:src="@{/img/randomFood.png}" alt="Food" class="food-item__img">-->
+<!--                            <p class="food-item__name">Шин рамен</p>-->
+<!--                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>-->
+<!--                            <p class="food-item__price">900 тг</p>-->
+<!--                        </div>-->
+<!--                        <button class="food-item__take">выбрать</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="slider-food-slide">-->
+<!--                    <div class="food-item food-item-u">-->
+<!--                        <div class="food-item-inner">-->
+<!--                            <img th:src="@{/img/randomFood.png}" alt="Food" class="food-item__img">-->
+<!--                            <p class="food-item__name">Шин рамен</p>-->
+<!--                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>-->
+<!--                            <p class="food-item__price">900 тг</p>-->
+<!--                        </div>-->
+<!--                        <button class="food-item__take">выбрать</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="slider-food-slide">-->
+<!--                    <div class="food-item food-item-u">-->
+<!--                        <div class="food-item-inner">-->
+<!--                            <img th:src="@{/img/randomFood.png}" alt="Food" class="food-item__img">-->
+<!--                            <p class="food-item__name">Шин рамен</p>-->
+<!--                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>-->
+<!--                            <p class="food-item__price">900 тг</p>-->
+<!--                        </div>-->
+<!--                        <button class="food-item__take">выбрать</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+        </div>
+        <div class="custom-arrows custom-arrows-food custom-arrows-food-add">
+            <button class="prev-sec"><img th:src="@{/img/arrow.png}" alt="arrow" class="arrow arrow-prev"></button>
+            <button class="next-sec"><img th:src="@{/img/arrow.png}" alt="arrow" class="arrow arrow-next"></button>
+        </div>
+    </div>
+</section>
+
+
+<!--Contact section-->
+<section class="contact contact-back">
+    <div class="container contact-container">
+        <h5 class="contact-title">связаться с нами</h5>
+        <div class="tel-block">
+            <div class="tel-item">
+                <img class="tel-item__img" th:src="@{/img/phone.svg}" alt="Phone">
+                <a href="tel:+ 901 205 16  26" class="tel-item__number">+ 901 205 16  26</a>
+            </div>
+            <div class="tel-item">
+                <img class="tel-item__img" th:src="@{/img/phone.svg}" alt="Phone">
+                <a href="tel:+ 901 205 16  26" class="tel-item__number">+ 901 205 16  26</a>
+            </div>
+        </div>
+        <div class="social-block">
+            <a href="#" class="social-block__link">
+                <img th:src="@{/img/facebook.svg}" alt="Facebook logo">
+            </a>
+            <a href="#" class="social-block__link">
+                <img class="inst" th:src="@{/img/inst.svg}" alt="Instagram logo">
+            </a>
+            <a href="#" class="social-block__link">
+                <img th:src="@{/img/tiktok.svg}" alt="Tiktok logo">
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<script th:src="@{/scripts/food.js}"></script>
+</body>
+</html>

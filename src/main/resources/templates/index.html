@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" th:href="@{/styles/index.css}">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -19,10 +19,10 @@
         <div class="container">
             <div class="header-left">
                 <a href="index.html" class="header-logo">
-                    <img src="../source/img/logo.png" alt="Dish Dash Logo" class="header-logo__img">
+                    <img th:src="@{img/logo.png}" alt="Dish Dash Logo" class="header-logo__img">
                 </a>
                 <nav class="navbar">
-                    <a href="" class="navbar__link"><img src="../source/img/бургер.png" class="burger"><span>категории</span></a>
+                    <a href="" class="navbar__link"><img th:src="@{img/бургер.png}" class="burger"><span>категории</span></a>
                     <a href="" class="navbar__link">акции</a>
                     <a href="" class="navbar__link">почему мы</a>
                     <a href="" class="navbar__link">контакты</a>
@@ -31,8 +31,8 @@
             <div class="header-right">
                 <a href="" class="sign-in-btn">войти</a>
                 <a href="" class="sign-up-btn">регистрация</a>
-                <a href="" class="profile"><img src="../source/img/profile.svg" alt="profile image" ></a>
-                <a href="cart.html" class="cart"><img src="../source/img/cart.svg" alt="cart image"></a>
+                <a href="" class="profile"><img th:src="@{img/profile.svg}" alt="profile image" ></a>
+                <a href="cart.html" class="cart"><img th:src="@{img/cart.svg}" alt="cart image"></a>
             </div>
         </div>
     </section>
@@ -55,52 +55,27 @@
             <div class="food-start">
                 <div class="back">
                     <div class="food-var">
-                        <img src="../source/img/kitchens.png" alt="kitchens" class="food-var__img">
+                        <img th:src="@{img/kitchens.png}" alt="kitchens" class="food-var__img">
                         <p class="food-var__text">кухни</p>
                     </div>
                 </div>
                 <div class="slider-container">
                     <div class="slider">
-                        <div class="food-var-item">
-                            <p class="food-var-item__text">korean</p>
-                            <img class="food-var-item__img" src="../source/img/randomFood1.png" alt="Variable of food">
+                        <div class="food-var-item" th:each="kitchen : ${kitchens}">
+                            <p class="food-var-item__text" th:text="${kitchen.name}">korean</p>
+                            <img class="food-var-item__img" th:src="@{img/__${kitchen.img}__.png}" alt="Variable of food">
                         </div>
                         <div class="food-var-item">
                             <p class="food-var-item__text">italian</p>
-                            <img class="food-var-item__img" src="../source/img/randomFood1.png" alt="Variable of food">
+                            <img class="food-var-item__img" th:src="@{img/randomFood1.png}" alt="Variable of food">
                         </div>
-                        <div class="food-var-item">
-                            <p class="food-var-item__text">japanese</p>
-                            <img class="food-var-item__img" src="../source/img/randomFood1.png" alt="Variable of food">
-                        </div>
-                        <div class="food-var-item">
-                            <p class="food-var-item__text">mexican</p>
-                            <img class="food-var-item__img" src="../source/img/randomFood1.png" alt="Variable of food">
-                        </div>
-                        <div class="food-var-item">
-                            <p class="food-var-item__text">indian</p>
-                            <img class="food-var-item__img" src="../source/img/randomFood1.png" alt="Variable of food">
-                        </div>
-                        <div class="food-var-item">
-                            <p class="food-var-item__text">indian</p>
-                            <img class="food-var-item__img" src="../source/img/randomFood1.png" alt="Variable of food">
-                        </div>
-                        <div class="food-var-item">
-                            <p class="food-var-item__text">indian</p>
-                            <img class="food-var-item__img" src="../source/img/randomFood1.png" alt="Variable of food">
-                        </div>
-
-
-
                     </div>
-
                 </div>
-
             </div>
         </div>
         <div class="custom-arrows">
-            <button class="prev"><img src="../source/img/arrow.png" alt="arrow" class="arrow arrow-prev"></button>
-            <button class="next"><img src="../source/img/arrow.png" alt="arrow" class="arrow arrow-next"></button>
+            <button class="prev"><img th:src="@{img/arrow.png}" alt="arrow" class="arrow arrow-prev"></button>
+            <button class="next"><img th:src="@{img/arrow.png}" alt="arrow" class="arrow arrow-next"></button>
         </div>
         <div class="food-bot">
             <div class="up">
@@ -129,14 +104,14 @@
                     <p class="up-item__text">напитки</p>
                 </div>
                 <button class="cart">
-                    <img src="../source/img/cart.svg" alt="cart" class="cart__img">
+                    <img th:src="@{img/cart.svg}" alt="cart" class="cart__img">
                 </button>
             </div>
             <div class="bot">
                 <div class="food-list">
                     <div class="food-item">
                         <div class="food-item-inner">
-                            <img src="../source/img/randomFood.png" alt="Food" class="food-item__img">
+                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">
                             <p class="food-item__name">Шин рамен</p>
                             <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
                             <p class="food-item__price">900 тг</p>
@@ -145,7 +120,7 @@
                     </div>
                     <div class="food-item">
                         <div class="food-item-inner">
-                            <img src="../source/img/randomFood.png" alt="Food" class="food-item__img">
+                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">
                             <p class="food-item__name">Шин рамен</p>
                             <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
                             <p class="food-item__price">900 тг</p>
@@ -154,7 +129,7 @@
                     </div>
                     <div class="food-item">
                         <div class="food-item-inner">
-                            <img src="../source/img/randomFood.png" alt="Food" class="food-item__img">
+                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">
                             <p class="food-item__name">Шин рамен</p>
                             <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
                             <p class="food-item__price">900 тг</p>
@@ -163,7 +138,7 @@
                     </div>
                     <div class="food-item">
                         <div class="food-item-inner">
-                            <img src="../source/img/randomFood.png" alt="Food" class="food-item__img">
+                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">
                             <p class="food-item__name">Шин рамен</p>
                             <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
                             <p class="food-item__price">900 тг</p>
@@ -172,7 +147,7 @@
                     </div>
                     <div class="food-item">
                         <div class="food-item-inner">
-                            <img src="../source/img/randomFood.png" alt="Food" class="food-item__img">
+                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">
                             <p class="food-item__name">Шин рамен</p>
                             <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
                             <p class="food-item__price">900 тг</p>
@@ -181,7 +156,7 @@
                     </div>
                     <div class="food-item">
                         <div class="food-item-inner">
-                            <img src="../source/img/randomFood.png" alt="Food" class="food-item__img">
+                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">
                             <p class="food-item__name">Шин рамен</p>
                             <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
                             <p class="food-item__price">900 тг</p>
@@ -190,7 +165,7 @@
                     </div>
                     <div class="food-item">
                         <div class="food-item-inner">
-                            <img src="../source/img/randomFood.png" alt="Food" class="food-item__img">
+                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">
                             <p class="food-item__name">Шин рамен</p>
                             <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
                             <p class="food-item__price">900 тг</p>
@@ -199,7 +174,7 @@
                     </div>
                     <div class="food-item">
                         <div class="food-item-inner">
-                            <img src="../source/img/randomFood.png" alt="Food" class="food-item__img">
+                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">
                             <p class="food-item__name">Шин рамен</p>
                             <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
                             <p class="food-item__price">900 тг</p>
@@ -208,7 +183,7 @@
                     </div>
                     <div class="food-item">
                         <div class="food-item-inner">
-                            <img src="../source/img/randomFood.png" alt="Food" class="food-item__img">
+                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">
                             <p class="food-item__name">Шин рамен</p>
                             <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
                             <p class="food-item__price">900 тг</p>
@@ -232,13 +207,13 @@
                 <div class="slider-container-second">
                     <div class="slider-second">
                         <div class="slider-second-slide">
-                            <img src="../source/img/newsFirstImg.png" alt="First news" class="news-slider">
+                            <img th:src="@{img/newsFirstImg.png}" alt="First news" class="news-slider">
                         </div>
                         <div class="slider-second-slide">
-                            <img src="../source/img/newsFirstImg.png" alt="Second news" class="news-slider">
+                            <img th:src="@{img/newsFirstImg.png}" alt="Second news" class="news-slider">
                         </div>
                         <div class="slider-second-slide">
-                            <img src="../source/img/newsFirstImg.png" alt="Third news" class="news-slider">
+                            <img th:src="@{img/newsFirstImg.png}" alt="Third news" class="news-slider">
                         </div>
                     </div>
                 </div>
@@ -246,13 +221,13 @@
             </div>
         </div>
         <div class="custom-arrows custom-arrows-second">
-            <button class="prev-sec"><img src="../source/img/arrow.png" alt="arrow" class="arrow arrow-prev"></button>
-            <button class="next-sec"><img src="../source/img/arrow.png" alt="arrow" class="arrow arrow-next"></button>
+            <button class="prev-sec"><img th:src="@{img/arrow.png}" alt="arrow" class="arrow arrow-prev"></button>
+            <button class="next-sec"><img th:src="@{img/arrow.png}" alt="arrow" class="arrow arrow-next"></button>
         </div>
 
        <div class="news-bottom">
-           <img src="../source/img/newsSecondImg.png" alt="Second news" class="news-two">
-           <img src="../source/img/newsThirdImg.png" alt="Third news" class="news-three">
+           <img th:src="@{img/newsSecondImg.png}" alt="Second news" class="news-two">
+           <img th:src="@{img/newsThirdImg.png}" alt="Third news" class="news-three">
        </div>
         <button class="to-cart orderBtn">Заказать</button>
     </div>
@@ -264,21 +239,21 @@
        <h5 class="about-title">почему мы???</h5>
        <div class="about-box">
            <div class="about-item">
-               <img src="../source/img/aboutFirstImg.png" alt="About Image" class="about-item__image" />
+               <img th:src="@{img/aboutFirstImg.png}" alt="About Image" class="about-item__image" />
                <span class="about-item__title">быстрая доставка</span>
                <div class="about-item-inner">
                    <p class="about-item__text">Это быстрый и надежный способ получить свои любимые блюда из разных стран, не тратя времени на долгое ожидание</p>
                </div>
            </div>
            <div class="about-item">
-               <img src="../source/img/aboutSecondImg.png" alt="About Image" class="about-item__image" />
+               <img th:src="@{img/aboutSecondImg.png}" alt="About Image" class="about-item__image" />
                <span class="about-item__title">статус заказа</span>
                <div class="about-item-inner">
                    <p class="about-item__text">Мы предоставляем информацию о том, когда ваш заказ готовится, когда он отправляется и когда он будет у вас. Никаких неожиданностей, только ясность и комфорт</p>
                </div>
            </div>
            <div class="about-item">
-               <img src="../source/img/aboutThirdImg.png" alt="About Image" class="about-item__image" />
+               <img th:src="@{img/aboutThirdImg.png}" alt="About Image" class="about-item__image" />
                <span class="about-item__title">большой ассортимент</span>
                <div class="about-item-inner">
                    <p class="about-item__text">Это множество разнообразных блюд из разных кухонь мира, чтобы удовлетворить даже самых изысканных вкусовых предпочтений</p>
@@ -295,29 +270,29 @@
         <h5 class="contact-title">связаться с нами</h5>
         <div class="tel-block">
             <div class="tel-item">
-                <img class="tel-item__img" src="../source/img/phone.svg" alt="Phone">
+                <img class="tel-item__img" th:src="@{img/phone.svg}" alt="Phone">
                 <a href="tel:+ 901 205 16  26" class="tel-item__number">+ 901 205 16  26</a>
             </div>
             <div class="tel-item">
-                <img class="tel-item__img" src="../source/img/phone.svg" alt="Phone">
+                <img class="tel-item__img" th:src="@{img/phone.svg}" alt="Phone">
                 <a href="tel:+ 901 205 16  26" class="tel-item__number">+ 901 205 16  26</a>
             </div>
         </div>
         <div class="social-block">
             <a href="#" class="social-block__link">
-                <img src="../source/img/facebook.svg" alt="Facebook logo">
+                <img th:src="@{img/facebook.svg}" alt="Facebook logo">
             </a>
             <a href="#" class="social-block__link">
-                <img class="inst" src="../source/img/inst.svg" alt="Instagram logo">
+                <img class="inst" th:src="@{img/inst.svg}" alt="Instagram logo">
             </a>
             <a href="#" class="social-block__link">
-                <img src="../source/img/tiktok.svg" alt="Tiktok logo">
+                <img th:src="@{img/tiktok.svg}" alt="Tiktok logo">
             </a>
         </div>
     </div>
 </section>
 
 
-<script src="../scripts/slider.js"></script>
+<script th:src="@{scripts/slider.js}"></script>
 </body>
 </html>
