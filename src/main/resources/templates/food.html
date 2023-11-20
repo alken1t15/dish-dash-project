@@ -33,7 +33,6 @@
                </ul>
            </form>
        </div>
-<!--       Тут гг-->
        <form th:method="GET" th:action="@{/food/}">
            <div class="up-item">
                <input th:if="${nameKitchen!=null && !nameKitchen.isEmpty()}" type="hidden" name="name_kitchen" th:value="${nameKitchen}">
@@ -70,9 +69,9 @@
            </div>
        </form>
      <div class="userInfo">
-         <a href="" class="profile profile-user"><img class="user" th:src="@{/img/profile.svg}" alt="profile image" ></a>
+         <a th:href="@{/login}" class="profile profile-user"><img class="user" th:src="@{/img/profile.svg}" alt="profile image" ></a>
          <div class="up-item cart-itm">
-             <a href="cart.html" class="cart"><img th:src="@{/img/cart.svg}" alt="cart image"></a>
+             <a th:href="@{/cart/}" class="cart"><img th:src="@{/img/cart.svg}" alt="cart image"></a>
          </div>
      </div>
 

@@ -15,6 +15,7 @@ public class SecurityConfig {
         http.csrf().disable();
         http.authorizeHttpRequests(authenticated ->{
             authenticated.requestMatchers("/cart/").authenticated();
+            authenticated.requestMatchers("/profile/").authenticated();
             authenticated.anyRequest().permitAll();
         });
         http.formLogin().loginPage("/login").loginProcessingUrl("/process_login").failureUrl("/login?error")

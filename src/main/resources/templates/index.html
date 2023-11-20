@@ -29,10 +29,10 @@
                 </nav>
             </div>
             <div class="header-right">
-                <a href="" class="sign-in-btn">войти</a>
-                <a href="" class="sign-up-btn">регистрация</a>
-                <a href="" class="profile"><img th:src="@{img/profile.svg}" alt="profile image" ></a>
-                <a href="cart.html" class="cart"><img th:src="@{img/cart.svg}" alt="cart image"></a>
+                <a th:href="@{/login}" class="sign-in-btn">войти</a>
+                <a th:href="@{/registration}" class="sign-up-btn">регистрация</a>
+                <a th:href="@{/profile/}" class="profile"><img th:src="@{img/profile.svg}" alt="profile image" ></a>
+                <a th:href="@{/cart/}" class="cart"><img th:src="@{img/cart.svg}" alt="cart image"></a>
             </div>
         </div>
     </section>
@@ -109,90 +109,93 @@
             </div>
             <div class="bot">
                 <div class="food-list">
-                    <div class="food-item">
+                    <div class="food-item" th:each="food : ${foods}">
                         <div class="food-item-inner">
-                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">
-                            <p class="food-item__name">Шин рамен</p>
-                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
-                            <p class="food-item__price">900 тг</p>
+                            <img th:src="@{img/__${food.img}__.png}" alt="Food" class="food-item__img">
+                            <p class="food-item__name" th:text="food.name">Шин рамен</p>
+                            <p class="food-item__description" th:text="${food.information}">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
+                            <p class="food-item__price"> <span class="food-item__price" th:text="${food.price}"></span>  <span class="food-item__price">тг</span></p>
                         </div>
-                        <button class="food-item__take">выбрать</button>
+                        <form th:method="POST" th:action="">
+                            <input type="hidden">
+                            <button type="submit" class="food-item__take">выбрать</button>
+                        </form>
                     </div>
-                    <div class="food-item">
-                        <div class="food-item-inner">
-                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">
-                            <p class="food-item__name">Шин рамен</p>
-                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
-                            <p class="food-item__price">900 тг</p>
-                        </div>
-                        <button class="food-item__take">выбрать</button>
-                    </div>
-                    <div class="food-item">
-                        <div class="food-item-inner">
-                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">
-                            <p class="food-item__name">Шин рамен</p>
-                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
-                            <p class="food-item__price">900 тг</p>
-                        </div>
-                        <button class="food-item__take">выбрать</button>
-                    </div>
-                    <div class="food-item">
-                        <div class="food-item-inner">
-                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">
-                            <p class="food-item__name">Шин рамен</p>
-                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
-                            <p class="food-item__price">900 тг</p>
-                        </div>
-                        <button class="food-item__take">выбрать</button>
-                    </div>
-                    <div class="food-item">
-                        <div class="food-item-inner">
-                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">
-                            <p class="food-item__name">Шин рамен</p>
-                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
-                            <p class="food-item__price">900 тг</p>
-                        </div>
-                        <button class="food-item__take">выбрать</button>
-                    </div>
-                    <div class="food-item">
-                        <div class="food-item-inner">
-                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">
-                            <p class="food-item__name">Шин рамен</p>
-                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
-                            <p class="food-item__price">900 тг</p>
-                        </div>
-                        <button class="food-item__take">выбрать</button>
-                    </div>
-                    <div class="food-item">
-                        <div class="food-item-inner">
-                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">
-                            <p class="food-item__name">Шин рамен</p>
-                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
-                            <p class="food-item__price">900 тг</p>
-                        </div>
-                        <button class="food-item__take">выбрать</button>
-                    </div>
-                    <div class="food-item">
-                        <div class="food-item-inner">
-                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">
-                            <p class="food-item__name">Шин рамен</p>
-                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
-                            <p class="food-item__price">900 тг</p>
-                        </div>
-                        <button class="food-item__take">выбрать</button>
-                    </div>
-                    <div class="food-item">
-                        <div class="food-item-inner">
-                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">
-                            <p class="food-item__name">Шин рамен</p>
-                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
-                            <p class="food-item__price">900 тг</p>
-                        </div>
-                        <button class="food-item__take">выбрать</button>
-                    </div>
+<!--                    <div class="food-item">-->
+<!--                        <div class="food-item-inner">-->
+<!--                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">-->
+<!--                            <p class="food-item__name">Шин рамен</p>-->
+<!--                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>-->
+<!--                            <p class="food-item__price">900 тг</p>-->
+<!--                        </div>-->
+<!--                        <button class="food-item__take">выбрать</button>-->
+<!--                    </div>-->
+<!--                    <div class="food-item">-->
+<!--                        <div class="food-item-inner">-->
+<!--                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">-->
+<!--                            <p class="food-item__name">Шин рамен</p>-->
+<!--                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>-->
+<!--                            <p class="food-item__price">900 тг</p>-->
+<!--                        </div>-->
+<!--                        <button class="food-item__take">выбрать</button>-->
+<!--                    </div>-->
+<!--                    <div class="food-item">-->
+<!--                        <div class="food-item-inner">-->
+<!--                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">-->
+<!--                            <p class="food-item__name">Шин рамен</p>-->
+<!--                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>-->
+<!--                            <p class="food-item__price">900 тг</p>-->
+<!--                        </div>-->
+<!--                        <button class="food-item__take">выбрать</button>-->
+<!--                    </div>-->
+<!--                    <div class="food-item">-->
+<!--                        <div class="food-item-inner">-->
+<!--                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">-->
+<!--                            <p class="food-item__name">Шин рамен</p>-->
+<!--                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>-->
+<!--                            <p class="food-item__price">900 тг</p>-->
+<!--                        </div>-->
+<!--                        <button class="food-item__take">выбрать</button>-->
+<!--                    </div>-->
+<!--                    <div class="food-item">-->
+<!--                        <div class="food-item-inner">-->
+<!--                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">-->
+<!--                            <p class="food-item__name">Шин рамен</p>-->
+<!--                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>-->
+<!--                            <p class="food-item__price">900 тг</p>-->
+<!--                        </div>-->
+<!--                        <button class="food-item__take">выбрать</button>-->
+<!--                    </div>-->
+<!--                    <div class="food-item">-->
+<!--                        <div class="food-item-inner">-->
+<!--                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">-->
+<!--                            <p class="food-item__name">Шин рамен</p>-->
+<!--                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>-->
+<!--                            <p class="food-item__price">900 тг</p>-->
+<!--                        </div>-->
+<!--                        <button class="food-item__take">выбрать</button>-->
+<!--                    </div>-->
+<!--                    <div class="food-item">-->
+<!--                        <div class="food-item-inner">-->
+<!--                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">-->
+<!--                            <p class="food-item__name">Шин рамен</p>-->
+<!--                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>-->
+<!--                            <p class="food-item__price">900 тг</p>-->
+<!--                        </div>-->
+<!--                        <button class="food-item__take">выбрать</button>-->
+<!--                    </div>-->
+<!--                    <div class="food-item">-->
+<!--                        <div class="food-item-inner">-->
+<!--                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">-->
+<!--                            <p class="food-item__name">Шин рамен</p>-->
+<!--                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>-->
+<!--                            <p class="food-item__price">900 тг</p>-->
+<!--                        </div>-->
+<!--                        <button class="food-item__take">выбрать</button>-->
+<!--                    </div>-->
                 </div>
 
-                <button class="to-cart">переийти в корзину</button>
+                <a th:href="@{/cart/}" class="to-cart">Перейти в корзину</a>
             </div>
         </div>
     </div>
