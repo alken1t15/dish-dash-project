@@ -16,6 +16,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests(authenticated ->{
             authenticated.requestMatchers("/cart/").authenticated();
             authenticated.requestMatchers("/profile/").authenticated();
+            authenticated.requestMatchers("/order/").authenticated();
             authenticated.anyRequest().permitAll();
         });
         http.formLogin().loginPage("/login").loginProcessingUrl("/process_login").failureUrl("/login?error")

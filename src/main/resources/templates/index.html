@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -29,10 +29,10 @@
                 </nav>
             </div>
             <div class="header-right">
-                <a th:href="@{/login}" class="sign-in-btn">войти</a>
-                <a th:href="@{/registration}" class="sign-up-btn">регистрация</a>
-                <a th:href="@{/profile/}" class="profile"><img th:src="@{img/profile.svg}" alt="profile image" ></a>
-                <a th:href="@{/cart/}" class="cart"><img th:src="@{img/cart.svg}" alt="cart image"></a>
+                <a sec:authorize="isAnonymous()" th:href="@{/login}" class="sign-in-btn">войти</a>
+                <a sec:authorize="isAnonymous()" th:href="@{/registration}" class="sign-up-btn">регистрация</a>
+                <a sec:authorize="isAuthenticated()" th:href="@{/profile/}" class="profile"><img th:src="@{img/profile.svg}" alt="profile image" ></a>
+                <a sec:authorize="isAuthenticated()" th:href="@{/cart/}" class="cart"><img th:src="@{img/cart.svg}" alt="cart image"></a>
             </div>
         </div>
     </section>
@@ -92,32 +92,32 @@
                     <p class="up-item__recommended">рекомендации</p>
                 </div>
                 <div class="up-item">
-                    <p class="up-item__text">блюда</p>
+                    <a th:href="@{/food/(name_category=Блюда)}" class="up-item__text">блюда</a>
                 </div>
                 <div class="up-item">
-                    <p class="up-item__text">салаты</p>
+                    <a th:href="@{/food/(name_category=Cалаты)}" class="up-item__text">салаты</a>
                 </div>
                 <div class="up-item">
-                    <p class="up-item__text">десерты</p>
+                    <a th:href="@{/food/(name_category=Десерты)}" class="up-item__text">десерты</a>
                 </div>
                 <div class="up-item">
-                    <p class="up-item__text">напитки</p>
+                    <a th:href="@{/food/(name_category=Напитки)}" class="up-item__text">напитки</a>
                 </div>
-                <button class="cart">
+                <a th:href="@{/cart/}" class="cart">
                     <img th:src="@{img/cart.svg}" alt="cart" class="cart__img">
-                </button>
+                </a>
             </div>
             <div class="bot">
                 <div class="food-list">
                     <div class="food-item" th:each="food : ${foods}">
                         <div class="food-item-inner">
                             <img th:src="@{img/__${food.img}__.png}" alt="Food" class="food-item__img">
-                            <p class="food-item__name" th:text="food.name">Шин рамен</p>
+                            <p class="food-item__name" th:text="${food.name}">Шин рамен</p>
                             <p class="food-item__description" th:text="${food.information}">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
                             <p class="food-item__price"> <span class="food-item__price" th:text="${food.price}"></span>  <span class="food-item__price">тг</span></p>
                         </div>
-                        <form th:method="POST" th:action="">
-                            <input type="hidden">
+                        <form sec:authorize="isAuthenticated()" th:method="POST" th:action="@{/cart/add}">
+                            <input type="hidden" th:name="id" th:value="${food.id}">
                             <button type="submit" class="food-item__take">выбрать</button>
                         </form>
                     </div>

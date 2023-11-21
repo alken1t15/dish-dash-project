@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "food")
 @Getter
@@ -20,7 +22,7 @@ public class Food {
 
     private String img;
 
-    private Integer price;
+    private Long price;
 
     @Column(name = "name_category")
     private String nameCategory;
@@ -30,4 +32,7 @@ public class Food {
     private Kitchen kitchen;
 
     private Integer popular;
+
+    @OneToMany(mappedBy = "food")
+    private List<Cart> carts;
 }

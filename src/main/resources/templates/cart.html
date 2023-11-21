@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -29,10 +29,10 @@
             </nav>
         </div>
         <div class="header-right">
-            <a href="" class="sign-in-btn">войти</a>
-            <a href="" class="sign-up-btn">регистрация</a>
-            <a href="" class="profile"><img class="user" th:src="@{/img/profile.svg}" alt="profile image" ></a>
-            <a href="cart.html" class="cart cart-active"><img th:src="@{/img/cart.svg}" alt="cart image"></a>
+            <a sec:authorize="isAnonymous()" th:href="@{/login}" class="sign-in-btn">войти</a>
+            <a sec:authorize="isAnonymous()" th:href="@{/registration}" class="sign-up-btn">регистрация</a>
+            <a sec:authorize="isAuthenticated()" th:href="@{/profile/}" class="profile"><img class="user" th:src="@{/img/profile.svg}" alt="profile image" ></a>
+            <a sec:authorize="isAuthenticated()" th:href="@{/cart/}" href="cart.html" class="cart cart-active"><img th:src="@{/img/cart.svg}" alt="cart image"></a>
         </div>
     </div>
 </section>
@@ -46,42 +46,42 @@
                 <span class="col">кол-во</span>
                 <span class="col">цена</span>
             </div>
-            <div class="cart-item" data-index="1">
+            <div th:each="cart : ${carts}" class="cart-item" data-index="1">
                 <div class="cart-item-col-1">
-                    <img class="cart-item__img" th:src="@{/img/randomFood.png}" alt="Food">
+                    <img class="cart-item__img" th:src="@{/img/__${cart.food.img}__.png}" alt="Food">
                 </div>
                 <div class="cart-item-col-2">
-                    <p class="cart-item__title">шин рамЁн</p>
-                    <p class="cart-item__subtitle">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
+                    <p class="cart-item__title" th:text="${cart.food.name}">шин рамЁн</p>
+                    <p class="cart-item__subtitle" th:text="${cart.food.information}">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
                 </div>
                 <div class="cart-item-col-3">
                     <button class="cart-item__btn" data-action="minus">-</button>
-                    <span class="quantity"><span class="number">2</span> шт</span>
+                    <span class="quantity"><span th:text="${cart.count}" class="number">2</span> шт</span>
                     <button class="cart-item__btn" data-action="plus">+</button></div>
-                <div class="cart-item-col-4">900 тг</div>
+                <div class="cart-item-col-4"><span class="cart-item-col-4" th:text="${cart.totalPrice}"></span> <span class="cart-item-col-4">тг</span></div>
                 <div class="cart-item-col-5">
                     <button class="delete">удалить</button></div>
             </div>
-            <div class="cart-item" data-index="1">
-                <div class="cart-item-col-1">
-                    <img class="cart-item__img" th:src="@{/img/randomFood.png}" alt="Food">
-                </div>
-                <div class="cart-item-col-2">
-                    <p class="cart-item__title">шин рамЁн</p>
-                    <p class="cart-item__subtitle">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
-                </div>
-                <div class="cart-item-col-3">
-                    <button class="cart-item__btn" data-action="minus">-</button>
-                    <span class="quantity"><span class="number">2</span> шт</span>
-                    <button class="cart-item__btn" data-action="plus">+</button></div>
-                <div class="cart-item-col-4">900 тг</div>
-                <div class="cart-item-col-5">
-                    <button class="delete">удалить</button></div>
-            </div>
+<!--            <div class="cart-item" data-index="1">-->
+<!--                <div class="cart-item-col-1">-->
+<!--                    <img class="cart-item__img" th:src="@{/img/randomFood.png}" alt="Food">-->
+<!--                </div>-->
+<!--                <div class="cart-item-col-2">-->
+<!--                    <p class="cart-item__title">шин рамЁн</p>-->
+<!--                    <p class="cart-item__subtitle">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>-->
+<!--                </div>-->
+<!--                <div class="cart-item-col-3">-->
+<!--                    <button class="cart-item__btn" data-action="minus">-</button>-->
+<!--                    <span class="quantity"><span class="number">2</span> шт</span>-->
+<!--                    <button class="cart-item__btn" data-action="plus">+</button></div>-->
+<!--                <div class="cart-item-col-4">900 тг</div>-->
+<!--                <div class="cart-item-col-5">-->
+<!--                    <button class="delete">удалить</button></div>-->
+<!--            </div>-->
         </div>
         <div class="cart-bot">
-            <a href="food.html" class="backPage">назад</a>
-            <a href="createOrderPage.html" class="orderBtn cartBtn">оформить</a>
+            <a th:href="@{/food/}" class="backPage">назад</a>
+            <a th:href="@{/order/}" class="orderBtn cartBtn">оформить</a>
             <p class="total">итог : <span id="totalAmount">0</span> тг</p>
             <p class="empty-message" style="display: none;">Корзина пуста</p>
         </div>

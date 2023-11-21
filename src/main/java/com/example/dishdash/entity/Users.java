@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 @Getter
@@ -23,4 +25,7 @@ public class Users {
     private String country;
     private String city;
     private String password;
+
+    @OneToMany(mappedBy = "user")
+    private List<Cart> carts;
 }

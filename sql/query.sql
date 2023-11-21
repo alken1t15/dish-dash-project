@@ -55,3 +55,11 @@ create table users (
   city varchar not null,
   password varchar not null
 );
+
+create table cart(
+    id serial primary key,
+    id_users int references users (id),
+    id_food int references food (id),
+    count int not null,
+    total_price int not null
+);

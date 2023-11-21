@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -20,8 +20,8 @@
     <div class="container cart-container">
         <div class="foods-top order-top">
             <p class="foods-title order-title">Оформление заказа</p>
-            <a href="profile.html" class="profile-image"><img src="../source/img/profile.svg" alt="Profile"></a>
-            <a href="cart.html"><img src="../source/img/cart.svg" alt="Cart"></a>
+            <a th:href="@{/login}" class="profile-image"><img th:src="@{/img/profile.svg}" alt="Profile"></a>
+            <a th:href="@{/cart/}"><img th:src="@{/img/cart.svg}" alt="Cart"></a>
         </div>
         <div class="order-inner">
             <div class="order-left">
@@ -70,45 +70,45 @@
                         <span class="col col-order col-order-2">кол-во</span>
                         <span class="col col-order col-order-3">цена</span>
                     </div>
-                    <div class="cart-item cart-item-updated">
+                    <div class="cart-item cart-item-updated" th:each="cart : ${carts}">
                         <div class="cart-item-col-1 cart-item-col-1-updated">
-                            <img class="cart-item__img cart-item__img-u" src="../source/img/randomFood.png" alt="Food">
+                            <img class="cart-item__img cart-item__img-u" th:src="@{/img/__${cart.food.img}__.png}" alt="Food">
                         </div>
                         <div class="cart-item-col-2 cart-item-col-2-updated">
-                            <p class="cart-item__title cart-item__title-u">шин рамЁн</p>
-                            <p class="cart-item__subtitle cart-item__subtitle-u">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
+                            <p class="cart-item__title cart-item__title-u" th:text="${cart.food.name}">шин рамЁн</p>
+                            <p class="cart-item__subtitle cart-item__subtitle-u" th:text="${cart.food.information}">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
                         </div>
                         <div class="cart-item-col-3 cart-item-col-3-u">
-                            <span class="quantity quantity-u"><span class="number">2</span> шт</span>
+                            <span class="quantity quantity-u"><span th:text="${cart.count}" class="number">2</span> шт</span>
                             <div class="cart-item-col-4 cart-item-col-4-u">900 тг</div>
                         </div>
                     </div>
-                    <div class="cart-item cart-item-updated">
-                        <div class="cart-item-col-1 cart-item-col-1-updated">
-                            <img class="cart-item__img cart-item__img-u" src="../source/img/randomFood.png" alt="Food">
-                        </div>
-                        <div class="cart-item-col-2 cart-item-col-2-updated">
-                            <p class="cart-item__title cart-item__title-u">шин рамЁн</p>
-                            <p class="cart-item__subtitle cart-item__subtitle-u">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
-                        </div>
-                        <div class="cart-item-col-3 cart-item-col-3-u">
-                            <span class="quantity quantity-u"><span class="number">2</span> шт</span>
-                            <div class="cart-item-col-4 cart-item-col-4-u">900 тг</div>
-                        </div>
-                    </div>
-                    <div class="cart-item cart-item-updated">
-                        <div class="cart-item-col-1 cart-item-col-1-updated">
-                            <img class="cart-item__img cart-item__img-u" src="../source/img/randomFood.png" alt="Food">
-                        </div>
-                        <div class="cart-item-col-2 cart-item-col-2-updated">
-                            <p class="cart-item__title cart-item__title-u">шин рамЁн</p>
-                            <p class="cart-item__subtitle cart-item__subtitle-u">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
-                        </div>
-                        <div class="cart-item-col-3 cart-item-col-3-u">
-                            <span class="quantity quantity-u"><span class="number">2</span> шт</span>
-                            <div class="cart-item-col-4 cart-item-col-4-u">900 тг</div>
-                        </div>
-                    </div>
+<!--                    <div class="cart-item cart-item-updated">-->
+<!--                        <div class="cart-item-col-1 cart-item-col-1-updated">-->
+<!--                            <img class="cart-item__img cart-item__img-u" th:src="@{/img/img/randomFood.png}" alt="Food">-->
+<!--                        </div>-->
+<!--                        <div class="cart-item-col-2 cart-item-col-2-updated">-->
+<!--                            <p class="cart-item__title cart-item__title-u">шин рамЁн</p>-->
+<!--                            <p class="cart-item__subtitle cart-item__subtitle-u">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>-->
+<!--                        </div>-->
+<!--                        <div class="cart-item-col-3 cart-item-col-3-u">-->
+<!--                            <span class="quantity quantity-u"><span class="number">2</span> шт</span>-->
+<!--                            <div class="cart-item-col-4 cart-item-col-4-u">900 тг</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="cart-item cart-item-updated">-->
+<!--                        <div class="cart-item-col-1 cart-item-col-1-updated">-->
+<!--                            <img class="cart-item__img cart-item__img-u" th:src="@{/img/randomFood.png}" alt="Food">-->
+<!--                        </div>-->
+<!--                        <div class="cart-item-col-2 cart-item-col-2-updated">-->
+<!--                            <p class="cart-item__title cart-item__title-u">шин рамЁн</p>-->
+<!--                            <p class="cart-item__subtitle cart-item__subtitle-u">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>-->
+<!--                        </div>-->
+<!--                        <div class="cart-item-col-3 cart-item-col-3-u">-->
+<!--                            <span class="quantity quantity-u"><span class="number">2</span> шт</span>-->
+<!--                            <div class="cart-item-col-4 cart-item-col-4-u">900 тг</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
                     <div class="cart-bot cart-bot-u">
                         <p class="total total-u">итог : <span id="totalAmount">0</span> тг</p>
                         <button class="orderBtn cartBtn ">подтвердить</button>
@@ -126,30 +126,30 @@
         <h5 class="contact-title contact-title-u">связаться с нами</h5>
         <div class="tel-block">
             <div class="tel-item">
-                <img class="tel-item__img" src="../source/img/phone.svg" alt="Phone">
+                <img class="tel-item__img" th:src="@{/img/phone.svg}" alt="Phone">
                 <a href="tel:+ 901 205 16  26" class="tel-item__number">+ 901 205 16  26</a>
             </div>
             <div class="tel-item">
-                <img class="tel-item__img" src="../source/img/phone.svg" alt="Phone">
+                <img class="tel-item__img" th:src="@{/img/phone.svg}" alt="Phone">
                 <a href="tel:+ 901 205 16  26" class="tel-item__number">+ 901 205 16  26</a>
             </div>
         </div>
         <div class="social-block">
             <a href="#" class="social-block__link">
-                <img src="../source/img/facebook.svg" alt="Facebook logo">
+                <img th:src="@{/img/facebook.svg}" alt="Facebook logo">
             </a>
             <a href="#" class="social-block__link">
-                <img class="inst" src="../source/img/inst.svg" alt="Instagram logo">
+                <img class="inst" th:src="@{/img/inst.svg}" alt="Instagram logo">
             </a>
             <a href="#" class="social-block__link">
-                <img src="../source/img/tiktok.svg" alt="Tiktok logo">
+                <img th:src="@{/img/tiktok.svg}" alt="Tiktok logo">
             </a>
         </div>
     </div>
 </section>
 
 
-<script src="../scripts/cart.js"></script>
-<script src="../scripts/order.js"></script>
+<script th:src="@{/scripts/cart.js}"></script>
+<script th:src="@{/scripts/order.js}"></script>
 </body>
 </html>

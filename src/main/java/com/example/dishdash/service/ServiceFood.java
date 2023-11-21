@@ -1,5 +1,6 @@
 package com.example.dishdash.service;
 
+import com.example.dishdash.entity.Cart;
 import com.example.dishdash.entity.Food;
 import com.example.dishdash.repository.RepositoryFood;
 import jakarta.persistence.EntityManager;
@@ -28,9 +29,14 @@ public class ServiceFood {
     public List<Food> findAllByNameCategory(String nameCategory) {
         if (nameCategory.equals("Рекомендации")){
             Query query = entityManager.createQuery("select f from Food f order by f.popular desc ");
-            query.setMaxResults(7);
+            query.setMaxResults(10);
             return query.getResultList();
         }
         return repositoryFood.findAllByNameCategory(nameCategory);
     }
+
+    public Food findById(Long id) {
+        return repositoryFood.findById(id).orElseThrow();
+    }
+
 }
