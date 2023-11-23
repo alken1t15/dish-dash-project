@@ -22,15 +22,17 @@
                     <img th:src="@{img/logo.png}" alt="Dish Dash Logo" class="header-logo__img">
                 </a>
                 <nav class="navbar">
-                    <a href="" class="navbar__link"><img th:src="@{img/бургер.png}" class="burger"><span>категории</span></a>
-                    <a href="" class="navbar__link">акции</a>
-                    <a href="" class="navbar__link">почему мы</a>
-                    <a href="" class="navbar__link">контакты</a>
+<!--                    <a href="" class="navbar__link"><img th:src="@{img/бургер.png}" class="burger"><span>категории</span></a>-->
+                    <a href="#category" class="navbar__link">категории</a>
+                    <a href="#news" class="navbar__link">акции</a>
+                    <a href="#about" class="navbar__link">почему мы</a>
+                    <a href="#contact" class="navbar__link">контакты</a>
                 </nav>
             </div>
             <div class="header-right">
                 <a sec:authorize="isAnonymous()" th:href="@{/login}" class="sign-in-btn">войти</a>
                 <a sec:authorize="isAnonymous()" th:href="@{/registration}" class="sign-up-btn">регистрация</a>
+                <a sec:authorize="isAuthenticated()" th:href="@{/profile}" class="sign-up-btn">выйти</a>
                 <a sec:authorize="isAuthenticated()" th:href="@{/profile/}" class="profile"><img th:src="@{img/profile.svg}" alt="profile image" ></a>
                 <a sec:authorize="isAuthenticated()" th:href="@{/cart/}" class="cart"><img th:src="@{img/cart.svg}" alt="cart image"></a>
             </div>
@@ -49,7 +51,7 @@
     </section>
 
 <!--Food section-->
-<section class="food">
+<section class="food" id="category">
     <div class="container container-small container-small-wrap">
         <div class="food-top">
             <div class="food-start">
@@ -80,13 +82,19 @@
         <div class="food-bot">
             <div class="up">
                 <div class="up-item">
-                    <svg class="up-item__img" xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
-                        <rect width="17" height="2" fill="#ECB400"/>
-                        <rect y="5" width="17" height="2" fill="#ECB400"/>
-                        <rect y="10" width="17" height="2" fill="#ECB400"/>
-                    </svg>
-
-                    <span class="up-item__text primary-text">категория</span>
+                    <div class="up-item up-item-category">
+                        <svg class="up-item__img" xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
+                            <rect width="17" height="2" fill="#ECB400"/>
+                            <rect y="5" width="17" height="2" fill="#ECB400"/>
+                            <rect y="10" width="17" height="2" fill="#ECB400"/>
+                        </svg>
+                        <span class="up-item__text primary-text cat">категория</span>
+                        <form th:method="GET" th:action="@{/food/}">
+                            <ul class="kitchen-list" id="kitchenList">
+                                <li class="kitchenList__item"><a th:href="@{/food/(name_kitchen=${kitchen.name})}" class="kitchenList__link" th:each="kitchen : ${kitchens}" th:text="${kitchen.name}" th:value="${kitchen.name}">корейская</a></li>
+                            </ul>
+                        </form>
+                    </div>
                 </div>
                 <div class="up-item">
                     <p class="up-item__recommended">рекомендации</p>
@@ -116,7 +124,7 @@
                             <p class="food-item__description" th:text="${food.information}">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
                             <p class="food-item__price"> <span class="food-item__price" th:text="${food.price}"></span>  <span class="food-item__price">тг</span></p>
                         </div>
-                        <form sec:authorize="isAuthenticated()" th:method="POST" th:action="@{/cart/add}">
+                        <form th:method="POST" th:action="@{/cart/add}">
                             <input type="hidden" th:name="id" th:value="${food.id}">
                             <button type="submit" class="food-item__take">выбрать</button>
                         </form>
@@ -130,69 +138,7 @@
 <!--                        </div>-->
 <!--                        <button class="food-item__take">выбрать</button>-->
 <!--                    </div>-->
-<!--                    <div class="food-item">-->
-<!--                        <div class="food-item-inner">-->
-<!--                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">-->
-<!--                            <p class="food-item__name">Шин рамен</p>-->
-<!--                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>-->
-<!--                            <p class="food-item__price">900 тг</p>-->
-<!--                        </div>-->
-<!--                        <button class="food-item__take">выбрать</button>-->
-<!--                    </div>-->
-<!--                    <div class="food-item">-->
-<!--                        <div class="food-item-inner">-->
-<!--                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">-->
-<!--                            <p class="food-item__name">Шин рамен</p>-->
-<!--                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>-->
-<!--                            <p class="food-item__price">900 тг</p>-->
-<!--                        </div>-->
-<!--                        <button class="food-item__take">выбрать</button>-->
-<!--                    </div>-->
-<!--                    <div class="food-item">-->
-<!--                        <div class="food-item-inner">-->
-<!--                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">-->
-<!--                            <p class="food-item__name">Шин рамен</p>-->
-<!--                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>-->
-<!--                            <p class="food-item__price">900 тг</p>-->
-<!--                        </div>-->
-<!--                        <button class="food-item__take">выбрать</button>-->
-<!--                    </div>-->
-<!--                    <div class="food-item">-->
-<!--                        <div class="food-item-inner">-->
-<!--                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">-->
-<!--                            <p class="food-item__name">Шин рамен</p>-->
-<!--                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>-->
-<!--                            <p class="food-item__price">900 тг</p>-->
-<!--                        </div>-->
-<!--                        <button class="food-item__take">выбрать</button>-->
-<!--                    </div>-->
-<!--                    <div class="food-item">-->
-<!--                        <div class="food-item-inner">-->
-<!--                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">-->
-<!--                            <p class="food-item__name">Шин рамен</p>-->
-<!--                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>-->
-<!--                            <p class="food-item__price">900 тг</p>-->
-<!--                        </div>-->
-<!--                        <button class="food-item__take">выбрать</button>-->
-<!--                    </div>-->
-<!--                    <div class="food-item">-->
-<!--                        <div class="food-item-inner">-->
-<!--                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">-->
-<!--                            <p class="food-item__name">Шин рамен</p>-->
-<!--                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>-->
-<!--                            <p class="food-item__price">900 тг</p>-->
-<!--                        </div>-->
-<!--                        <button class="food-item__take">выбрать</button>-->
-<!--                    </div>-->
-<!--                    <div class="food-item">-->
-<!--                        <div class="food-item-inner">-->
-<!--                            <img th:src="@{img/randomFood.png}" alt="Food" class="food-item__img">-->
-<!--                            <p class="food-item__name">Шин рамен</p>-->
-<!--                            <p class="food-item__description">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>-->
-<!--                            <p class="food-item__price">900 тг</p>-->
-<!--                        </div>-->
-<!--                        <button class="food-item__take">выбрать</button>-->
-<!--                    </div>-->
+<!--                    -->
                 </div>
 
                 <a th:href="@{/cart/}" class="to-cart">Перейти в корзину</a>
@@ -202,7 +148,7 @@
 </section>
 
 <!--News section-->
-<section class="news">
+<section class="news" id="news">
     <div class="container container-small container-small-wrap">
         <div class="news-top">
             <div class="news-start">
@@ -237,7 +183,7 @@
 </section>
 
 <!--About section-->
-<section class="about">
+<section class="about" id="about">
    <div class="container container-wrap">
        <h5 class="about-title">почему мы???</h5>
        <div class="about-box">
@@ -268,7 +214,7 @@
 </section>
 
 <!--Contact section-->
-<section class="contact">
+<section class="contact" id="contact">
     <div class="container contact-container">
         <h5 class="contact-title">связаться с нами</h5>
         <div class="tel-block">
