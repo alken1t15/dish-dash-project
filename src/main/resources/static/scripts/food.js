@@ -39,7 +39,16 @@ $(document).ready(function() {
         document.getElementById("kitchenList").style.display = "none";
     }
 
+    var swiper = new Swiper('.slider-container-food', {
+        slidesPerView: 4,
+        spaceBetween: 20,
+        navigation: {
+            nextEl: '.next-sec',
+            prevEl: '.prev-sec',
+        },
+        loop: true,
 
+    });
 
 
 });

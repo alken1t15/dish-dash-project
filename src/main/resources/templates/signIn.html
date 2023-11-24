@@ -14,59 +14,21 @@
 </head>
 <body class="cart-body">
 
-<!-- header section-->
-<!--<div class="up up-cat">-->
 
-<!--    <div class="container">-->
-
-<!--        <div class="up-item up-item-category">-->
-<!--            <svg class="up-item__img" xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="fff">-->
-<!--                <rect width="17" height="2" fill="#fff"/>-->
-<!--                <rect y="5" width="17" height="2" fill="#fff"/>-->
-<!--                <rect y="10" width="17" height="2" fill="#fff"/>-->
-<!--            </svg>-->
-
-<!--            <span class="up-item__text primary-text primary-text-rec">категория</span>-->
-<!--        </div>-->
-<!--        <div class="up-item">-->
-<!--            <p class="up-item__text up-item__text-updated">рекомендации</p>-->
-<!--        </div>-->
-<!--        <div class="up-item">-->
-<!--            <p class="up-item__text up-item__text-updated">блюда</p>-->
-<!--        </div>-->
-<!--        <div class="up-item">-->
-<!--            <p class="up-item__text up-item__text-updated">салаты</p>-->
-<!--        </div>-->
-<!--        <div class="up-item">-->
-<!--            <p class="up-item__text up-item__text-updated">десерты</p>-->
-<!--        </div>-->
-<!--        <div class="up-item">-->
-<!--            <p class="up-item__text up-item__text-updated">напитки</p>-->
-<!--        </div>-->
-<!--        <div class="up-item">-->
-<!--            <a href="profile.html" class="profile profile-active"><img src="../source/img/profile.svg" alt="profile image" ></a>-->
-<!--        </div>-->
-<!--        <div class="up-item">-->
-<!--            <a href="cart.html" class="cart cart-update"><img src="../source/img/cart.svg" alt="cart image"></a>-->
-<!--        </div>-->
-
-
-<!--    </div>-->
-<!--</div>-->
 
 <!--Food section-->
 <section class="cart-section sinin-section">
     <form  method="post" action="/process_login" class="signin-left">
         <div class="container profile-container signin-container">
             <p class="sign-in__title">Войти</p>
-            <div class="sign-in-block">
-                <p class="sing-in__text">Имя Фамилия</p>
-                <input class="address-item__field address-item__field-u" type="text" name="contact" placeholder="Пожалуйста введите свои данные "/>
-            </div>
-            <div class="sign-in-block">
-                <p class="sing-in__text">Номер тел.</p>
-                <input class="address-item__field address-item__field-u" type="text" name="phone" placeholder="Пожалуйста введите свои данные "/>
-            </div>
+<!--            <div class="sign-in-block">-->
+<!--                <p class="sing-in__text">Имя Фамилия</p>-->
+<!--                <input class="address-item__field address-item__field-u" type="text" name="contact" placeholder="Пожалуйста введите свои данные "/>-->
+<!--            </div>-->
+<!--            <div class="sign-in-block">-->
+<!--                <p class="sing-in__text">Номер тел.</p>-->
+<!--                <input class="address-item__field address-item__field-u" type="text" name="phone" placeholder="Пожалуйста введите свои данные "/>-->
+<!--            </div>-->
             <div class="sign-in-block">
                 <p class="sing-in__text">Эл. почта</p>
                 <input class="address-item__field address-item__field-u" type="email" id="username" name="username" placeholder="Пожалуйста введите свои данные "/>
@@ -76,6 +38,7 @@
                 <input class="address-item__field address-item__field-u" type="password" id="password" name="password" placeholder="Пожалуйста введите свои данные "/>
             </div>
             <button class="to-cart orderBtn profileBtn signBtn">Войти в аккаунт</button>
+            <a th:href="@{/registration}" class="dontHave">Нет аккаунта? Регистрация</a>
         </div>
     </form>
     <div class="signin-right">
@@ -84,6 +47,7 @@
 
 
 </section>
+
 
 
 <!--Contact section-->

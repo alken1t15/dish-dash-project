@@ -285,6 +285,7 @@ section{
     align-items: center;
     flex-wrap: nowrap;
     width: 612px;
+    margin-left: 50px;
 }
 
 
@@ -303,10 +304,7 @@ section{
     transition: all .2s;
 }
 
-.navbar > a:first-child{
-    padding: 10px 10px 7px 10px;
 
-}
 
 .burger{
     margin-right: 8px;
@@ -316,7 +314,7 @@ section{
 
 .header-right{
     display: flex;
-    /*align-items: center;*/
+    align-items: center;
     /*justify-content: space-between;*/
     /*width: 335px;*/
 }
@@ -353,6 +351,7 @@ section{
     display: block;
     padding: 5px 15px;
     text-transform: uppercase;
+    text-align: center;
 }
 
 
@@ -373,9 +372,10 @@ section{
     background: url(../img/mainBlockImg.png) no-repeat;
     background-size: cover;
     width: 100%;
+    height: 100%;
     position: absolute;
     content: '';
-    min-height: 81%;
+    min-height: 100%;
     top: 0;
     left: 0;
     right: 0;
@@ -755,7 +755,7 @@ body{
 }
 
 .food-item-inner{
-    padding: 16px 50px 0 50px;
+    padding: 16px 47px 0 47px;
     border-radius: 5px;
     background-color: #fff;
     border: 1px solid #ACA9A9;
@@ -1785,7 +1785,7 @@ body{
 .signin-container{
     display: flex;
     flex-direction: column;
-    padding: 150px 63px 0 63px;
+    padding: 250px 63px 0 63px;
     margin: 0;
     width: 100%;
 }
@@ -1872,8 +1872,8 @@ body{
 }
 
 .profile-user{
-    width: 45px;
-    height: 45px;
+    width: 30px;
+    height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1906,6 +1906,7 @@ body{
     overflow: hidden;
 }
 
+
 .prev-sec,
 .next-sec {
     background: none;
@@ -1916,14 +1917,96 @@ body{
 
 .prev-sec-u, .next-sec-u{
     position: absolute;
-    top: 53%;
+    top: 50%;
     z-index: 9999;
+    opacity: .5;
 }
 
 .next-sec-u{
-    right: 54px;
+    right: -4%;
 }
 
 .prev-sec-u{
-    left: 54px;
+    left: -4%;
+}
+
+.slider-main-container{
+    display: flex;
+    position: relative;
+    width: 100%;
+    margin-bottom: 32px;
+}
+.primary-yellow{
+    padding: 5px 16px;
+    border-radius: 5px;
+    background: #ECB400;
+}
+
+.up-item-u:before{
+    content: '';
+    position: relative;
+    width: 3px;
+    height:17px;
+    border-left: 3px solid #FFC815;
+    margin-right: 10px;
+}
+
+.navbar__link-cat{
+
+}
+
+.navbar__link-cat-u{
+    padding: 0;
+}
+
+.menu-list-u{
+    margin-left: 90px;
+}
+
+.btnToCart{
+    color: #FFF;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    padding: 11px 19px 9px 19px;
+    border-radius: 5px;
+    border: none;
+    background: #ECB400;
+    margin-left: auto;
+}
+
+.foods-top-u{
+    margin-bottom: 47px;
+}
+
+.dontHave{
+    margin-top: 17px;
+    color: #A7A7A7;
+    font-family: Steppe, serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    cursor: pointer;
+}
+
+input{
+    text-transform: none;
+}
+
+.profile > img{
+    width: 100%;
+    height: 100%;
+}
+
+.profile{
+    width: 30px;
+    height: 30px;
+}
+
+.price-text{
+    color: #000;
 }

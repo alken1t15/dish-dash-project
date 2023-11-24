@@ -27,6 +27,15 @@ function updateQuantity(container, change) {
     if (quantity + change >= 0 && quantity + change <= 20) {
         quantity += change;
         quantityElement.textContent = quantity;
+
+        // let response = await fetch('/article/fetch/post/user', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json;charset=utf-8'
+        //     },
+        //     body: JSON.stringify(user)
+        // });
+        // event.target.closest('.cart-item')
         calculateTotal();
     }
 
@@ -42,7 +51,7 @@ function calculateTotal() {
     const cartItems = document.querySelectorAll('.cart-item');
 
     cartItems.forEach(item => {
-        const priceElement = item.querySelector('.cart-item-col-4');
+        const priceElement = item.querySelector('.price-text-number');
         const quantityElement = item.querySelector('.quantity .number');
         const price = parseFloat(priceElement.textContent);
         const quantity = parseInt(quantityElement.textContent);

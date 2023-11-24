@@ -22,7 +22,7 @@
                 <img th:src="@{/img/logo.png}" alt="Dish Dash Logo" class="header-logo__img">
             </a>
             <nav class="navbar">
-                <a href="" class="navbar__link"><img th:src="@{/img/бургер.png}" class="burger"><span>категории</span></a>
+                <a href="" class="navbar__link"><span>категории</span></a>
                 <a href="" class="navbar__link">акции</a>
                 <a href="" class="navbar__link">почему мы</a>
                 <a href="" class="navbar__link">контакты</a>
@@ -46,7 +46,7 @@
                 <span class="col">кол-во</span>
                 <span class="col">цена</span>
             </div>
-            <div th:each="cart : ${carts}" class="cart-item" data-index="1">
+            <div th:each="cart : ${carts}" class="cart-item" th:data-index="${cart.getId()}">
                 <div class="cart-item-col-1">
                     <img class="cart-item__img" th:src="@{/img/__${cart.food.img}__.png}" alt="Food">
                 </div>
@@ -56,9 +56,10 @@
                 </div>
                 <div class="cart-item-col-3">
                     <button class="cart-item__btn" data-action="minus">-</button>
-                    <span class="quantity"><span th:text="${cart.count}" class="number">2</span> шт</span>
+                    <span class="quantity"><span th:text="${cart.count}" class="number">1</span> шт</span>
                     <button class="cart-item__btn" data-action="plus">+</button></div>
-                <div class="cart-item-col-4"><span class="cart-item-col-4" th:text="${cart.totalPrice}"></span> <span class="cart-item-col-4">тг</span></div>
+                <div class="cart-item-col-4">
+                    <span class="price-text price-text-number" th:text="${cart.totalPrice}"></span> <span class="price-text">тг</span></div>
                 <div class="cart-item-col-5">
                     <button class="delete">удалить</button></div>
             </div>
@@ -117,6 +118,6 @@
     </div>
 </section>
 <script th:src="@{/scripts/cart.js}"></script>
-<script th:src="@{/scripts/order.js.js}"></script>
+<script th:src="@{/scripts/order.js}"></script>
 </body>
 </html>

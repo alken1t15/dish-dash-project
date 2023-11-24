@@ -34,5 +34,27 @@ $(document).ready(function(){
         $('.slider-second').slick('slickNext');
     });
 
+    document.addEventListener('DOMContentLoaded', function () {
+        var kitchenList = document.getElementById('kitchenList');
+        var kitchenItems = kitchenList.getElementsByTagName('li');
+
+        for (var i = 0; i < kitchenItems.length; i++) {
+            kitchenItems[i].addEventListener('click', function () {
+                selectKitchen(this.innerText);
+            });
+        }
+    });
+
+    function selectKitchen(kitchen) {
+        hideKitchenList();
+    }
+
+    function showKitchenList() {
+        document.getElementById("kitchenList").style.display = "block";
+    }
+
+    function hideKitchenList() {
+        document.getElementById("kitchenList").style.display = "none";
+    }
 
 });
