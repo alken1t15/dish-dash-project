@@ -48,10 +48,10 @@
             <p class="foods-title">блюда</p>
             <div class="menu-list menu-list-u">
                 <form th:method="GET" th:action="@{/food/}">
-                    <div class="up-item up-item-u">
+                    <div class="up-item up-item-u up-item__text-updated-rec">
                         <input th:if="${nameKitchen!=null && !nameKitchen.isEmpty()}" type="hidden" name="name_kitchen" th:value="${nameKitchen}">
                         <input type="hidden" name="name_category" value="Рекомендации">
-                        <button class="up-item__text up-item__text-updated">рекомендации</button>
+                        <button class="up-item__text up-item__text-updated ">рекомендации</button>
                     </div>
                 </form>
                 <form th:method="GET" th:action="@{/food/}">

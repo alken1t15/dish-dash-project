@@ -49,4 +49,26 @@ $(document).ready(function() {
         $('.slider-food').slick('slickNext');
     });
 
+
+
+    function calculateTotal() {
+        let total = 0;
+        const cartItems = document.querySelectorAll('.cart-item');
+
+        cartItems.forEach(item => {
+            const priceElement = item.querySelector('.price-text-number');
+            const quantityElement = item.querySelector('.quantity .number');
+            const price = parseFloat(priceElement.textContent);
+            const quantity = parseInt(quantityElement.textContent);
+
+            total += price * quantity;
+        });
+
+        totalAmountElement.textContent = total;
+    }
+
+
+    calculateTotal();
+    checkEmptyCart();
+
 });

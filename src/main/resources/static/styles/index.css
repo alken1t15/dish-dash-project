@@ -1052,7 +1052,13 @@ body{
     background-image: url("../img/backBlack.png");
     background-repeat: no-repeat;
     background-size: cover;
+    z-index: -999;
     width: 100%;
+    position: relative;
+}
+
+.cart-body:before{
+
 }
 
 .cart-container{
@@ -1247,6 +1253,7 @@ body{
     height: 35px;
     display: flex;
     align-items: center;
+    cursor: pointer;
     justify-content: center;
 
 }
@@ -1475,6 +1482,8 @@ body{
 .profile-image{
     margin-left: auto;
     margin-right: 31px;
+    width: 30px;
+    height: 40px;
 }
 
 .order-left{
@@ -1747,6 +1756,7 @@ body{
     height: 680px;
     top: 60px;
     right: -100px;
+    z-index: -999;
     background-image: url("../img/profile2.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -1774,6 +1784,7 @@ body{
 .profileBtn{
     width: 399px;
     height: 73px;
+    cursor: pointer;
 }
 
 /*---------------------------------------------------SignIn-----------------------------------*/
@@ -1998,15 +2009,58 @@ input{
 }
 
 .profile > img{
-    width: 100%;
-    height: 100%;
-}
-
-.profile{
     width: 30px;
     height: 30px;
 }
 
+.profile{
+    width: 40px;
+    height: 40px;
+}
+
 .price-text{
     color: #000;
+}
+
+.profileBtn-e{
+    font-size: 18px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    padding: 18px 12px;
+}
+
+.profileBtn-e-pass{
+    margin-top: 0;
+}
+
+.logout{
+    margin-top: 27px;
+    color: #FFF;
+    font-family: Steppe, serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.up-item__text-updated-rec:before{
+    border: none;
+}
+
+.price-text-number{
+    color: #1E1D29;
+    text-align: center;
+    font-family: Steppe, serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
 }

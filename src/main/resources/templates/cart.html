@@ -22,17 +22,19 @@
                 <img th:src="@{/img/logo.png}" alt="Dish Dash Logo" class="header-logo__img">
             </a>
             <nav class="navbar">
-                <a href="" class="navbar__link"><span>категории</span></a>
-                <a href="" class="navbar__link">акции</a>
-                <a href="" class="navbar__link">почему мы</a>
-                <a href="" class="navbar__link">контакты</a>
+                <!--                    <a href="" class="navbar__link"><img th:src="@{img/бургер.png}" class="burger"><span>категории</span></a>-->
+                <a href="#category" class="navbar__link">меню</a>
+                <a href="#news" class="navbar__link">акции</a>
+                <a href="#about" class="navbar__link">почему мы</a>
+                <a href="#contact" class="navbar__link">контакты</a>
             </nav>
         </div>
         <div class="header-right">
             <a sec:authorize="isAnonymous()" th:href="@{/login}" class="sign-in-btn">войти</a>
             <a sec:authorize="isAnonymous()" th:href="@{/registration}" class="sign-up-btn">регистрация</a>
-            <a sec:authorize="isAuthenticated()" th:href="@{/profile/}" class="profile"><img class="user" th:src="@{/img/profile.svg}" alt="profile image" ></a>
-            <a sec:authorize="isAuthenticated()" th:href="@{/cart/}" href="cart.html" class="cart cart-active"><img th:src="@{/img/cart.svg}" alt="cart image"></a>
+            <a sec:authorize="isAuthenticated()" th:href="@{/profile}" class="sign-up-btn">выйти</a>
+            <a sec:authorize="isAuthenticated()" th:href="@{/profile/}" class="profile"><img th:src="@{/img/profile.svg}" alt="profile image" ></a>
+            <a sec:authorize="isAuthenticated()" th:href="@{/cart/}" class="cart"><img th:src="@{/img/cart.svg}" alt="cart image"></a>
         </div>
     </div>
 </section>

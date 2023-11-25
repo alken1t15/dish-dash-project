@@ -11,4 +11,14 @@ public class ProfilePage {
     public String getProfilePage(){
         return "profile";
     }
+
+    @GetMapping("/editContact")
+    public String getEditContactPage(){
+        return "editContactInfo";
+    }
+
+    @GetMapping("/editPassword")
+    public String getEditPasswordPage(){
+        return "editPassword";
+    }
 }
