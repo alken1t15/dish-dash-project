@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,15 +38,21 @@ public class CartPage {
     @PostMapping("/add")
     public String addInCart(@RequestParam("id") Long id){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        Users user = users.findByEmail(username);
+        String username = null;
+        if (!authentication.isAuthenticated()) {
+             username = authentication.getName();
+        }
+        else {
+            WebAuthenticationDetails webAuthenticationDetails = (WebAuthenticationDetails) authentication.getDetails();
+            username = webAuthenticationDetails.getRemoteAddress();
+        }
+            Users user = users.findByEmail(username);
         Food food = serviceFood.findById(id);
         Cart cart = serviceCart.findByUserAndFood(user.getId(),food.getId());
         if (cart!= null){
             cart.setCount(cart.getCount()+1);
             Long temp = cart.getFood().getPrice() * cart.getCount();
             cart.setTotalPrice(temp);
-
         }
         else {
             cart = new Cart(user,food,1, food.getPrice());

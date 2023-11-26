@@ -24,7 +24,6 @@ public class MainPage {
         List<Food> foods = serviceFood.findAllByNameCategory("Рекомендации");
         model.addAttribute("kitchens",kitchens);
         model.addAttribute("foods",foods);
-
         return "index";
     }
 }
