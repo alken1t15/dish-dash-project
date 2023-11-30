@@ -11,6 +11,10 @@ public class ServiceUsers {
 private final RepositoryUsers repositoryUsers;
 
     public Users findByEmail(String username) {
-        return repositoryUsers.findByEmail(username).orElseThrow();
+        return repositoryUsers.findByEmail(username).orElse(null);
+    }
+
+    public Users save(Users users) {
+      return repositoryUsers.save(users);
     }
 }

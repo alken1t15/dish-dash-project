@@ -28,4 +28,8 @@ public class Users {
 
     @OneToMany(mappedBy = "user")
     private List<Cart> carts;
+
+    public Users(String email) {
+        this.email = email;
+    }
 }

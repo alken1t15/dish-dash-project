@@ -28,7 +28,14 @@ public class CartPage {
     @GetMapping("/")
     public String getCartPage(Model model){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
+        String username = null;
+        if (!authentication.isAuthenticated()) {
+            username = authentication.getName();
+        }
+        else {
+            WebAuthenticationDetails webAuthenticationDetails = (WebAuthenticationDetails) authentication.getDetails();
+            username = webAuthenticationDetails.getRemoteAddress();
+        }
         Users user = users.findByEmail(username);
 
         model.addAttribute("carts",user.getCarts());
@@ -46,7 +53,10 @@ public class CartPage {
             WebAuthenticationDetails webAuthenticationDetails = (WebAuthenticationDetails) authentication.getDetails();
             username = webAuthenticationDetails.getRemoteAddress();
         }
-            Users user = users.findByEmail(username);
+        Users user = users.findByEmail(username);
+        if (user == null){
+            users.save(new Users(username));
+        }
         Food food = serviceFood.findById(id);
         Cart cart = serviceCart.findByUserAndFood(user.getId(),food.getId());
         if (cart!= null){

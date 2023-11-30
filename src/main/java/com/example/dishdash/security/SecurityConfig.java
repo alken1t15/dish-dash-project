@@ -14,9 +14,9 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http.csrf().disable();
         http.authorizeHttpRequests(authenticated ->{
-            authenticated.requestMatchers("/cart/").authenticated();
+            authenticated.requestMatchers("").authenticated();
             authenticated.requestMatchers("/profile/").authenticated();
-            authenticated.requestMatchers("/order/").authenticated();
+            authenticated.requestMatchers("").authenticated();
             authenticated.anyRequest().permitAll();
         });
         http.formLogin().loginPage("/login").loginProcessingUrl("/process_login").failureUrl("/login?error")
