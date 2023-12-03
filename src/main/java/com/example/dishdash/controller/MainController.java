@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 @Controller
 @AllArgsConstructor
 public class MainController {
@@ -31,19 +35,26 @@ public class MainController {
     public String registrationAction(@RequestParam("contact") String contact, @RequestParam("phone") String phone, @RequestParam("email") String email,
                                      @RequestParam("country") String country, @RequestParam("city")  String city, @RequestParam("password") String password,
                                      @RequestParam("confirm") String confirm, Model model){
+        HashMap<String,String> errors = new HashMap<>();
         if (StringUtils.isBlank(contact)){
-            return "signUp";
+            errors.put("contact","Значение не может быть пустым");
         }else if(StringUtils.isBlank(contact)){
+            errors.put("phone","Значение не может быть пустым");
+            return "signUp";
+        }else if(StringUtils.isBlank(email)){
+            errors.put("email","Значение не может быть пустым");
             return "signUp";
         }
-        Users users = new Users();
-        users.setContact(contact);
-        users.setPhone(Long.parseLong(phone));
-        users.setEmail(email);
-        users.setCountry(country);
-         users.setCity(city);
-         users.setPassword(passwordEncoder.encode(password));
-         repositoryUsers.save(users);
+        else if(StringUtils.isBlank(country)){
+            errors.put("country","Значение не может быть пустым");
+            return "signUp";
+        }
+        else if(StringUtils.isBlank(city)){
+            errors.put("city","Значение не может быть пустым");
+            return "signUp";
+        }
+        Users users = new Users(contact,Long.parseLong(phone),email,country,city,passwordEncoder.encode(password));
+        repositoryUsers.save(users);
         return "redirect:/login";
     }
 }

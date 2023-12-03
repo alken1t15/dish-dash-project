@@ -32,4 +32,13 @@ public class Users {
     public Users(String email) {
         this.email = email;
     }
+
+    public Users(String contact, Long phone, String email, String country, String city, String password) {
+        this.contact = contact;
+        this.phone = phone;
+        this.email = email;
+        this.country = country;
+        this.city = city;
+        this.password = password;
+    }
 }
