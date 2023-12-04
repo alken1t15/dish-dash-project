@@ -37,6 +37,7 @@
                 <p class="sing-in__text">Пароль</p>
                 <input class="address-item__field address-item__field-u" type="password" id="password" name="password" placeholder="Пожалуйста введите свои данные "/>
             </div>
+            <p th:if="${param.error}" style="color: red">Неправильная почта или пароль</p>
             <button class="to-cart orderBtn profileBtn signBtn">Войти в аккаунт</button>
             <a th:href="@{/registration}" class="dontHave">Нет аккаунта? Регистрация</a>
         </div>

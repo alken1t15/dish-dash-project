@@ -27,7 +27,9 @@ public class MainController {
     }
 
     @GetMapping("/registration")
-    public String registrationPage(){
+    public String registrationPage(Model model){
+        HashMap<String,String> errors = new HashMap<>();
+        model.addAttribute("errors",errors);
         return "signUp";
     }
 
@@ -38,19 +40,36 @@ public class MainController {
         HashMap<String,String> errors = new HashMap<>();
         if (StringUtils.isBlank(contact)){
             errors.put("contact","Значение не может быть пустым");
-        }else if(StringUtils.isBlank(contact)){
-            errors.put("phone","Значение не может быть пустым");
-            return "signUp";
-        }else if(StringUtils.isBlank(email)){
+        }
+        if(StringUtils.isBlank(email)){
             errors.put("email","Значение не может быть пустым");
-            return "signUp";
         }
-        else if(StringUtils.isBlank(country)){
+        if(StringUtils.isBlank(country)){
             errors.put("country","Значение не может быть пустым");
-            return "signUp";
         }
-        else if(StringUtils.isBlank(city)){
+        if(StringUtils.isBlank(city)){
             errors.put("city","Значение не может быть пустым");
+        }
+
+        if(StringUtils.isBlank(phone)){
+            errors.put("phone","Значение не может быть пустым");
+        }else if(phone.length()!=11){
+            errors.put("phone","Номер был введен не правильно");
+        }
+
+        if (StringUtils.isBlank(password)){
+            errors.put("password","Значение не может быть пустым");
+        }
+        if (StringUtils.isBlank(confirm)){
+            errors.put("confirm","Значение не может быть пустым");
+        }
+        if (!password.equals(confirm)){
+            errors.put("confirm","Значение должны совпадать");
+        }
+
+
+        if (!errors.isEmpty()){
+            model.addAttribute("errors",errors);
             return "signUp";
         }
         Users users = new Users(contact,Long.parseLong(phone),email,country,city,passwordEncoder.encode(password));

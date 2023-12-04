@@ -29,7 +29,7 @@ public class CartPage {
     public String getCartPage(Model model){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = null;
-        if (!authentication.isAuthenticated()) {
+        if (authentication.isAuthenticated()) {
             username = authentication.getName();
         }
         else {
@@ -37,6 +37,9 @@ public class CartPage {
             username = webAuthenticationDetails.getRemoteAddress();
         }
         Users user = users.findByEmail(username);
+        if (user== null){
+            users.save(new Users(username));
+        }
 
         model.addAttribute("carts",user.getCarts());
         return "cart";
@@ -46,7 +49,7 @@ public class CartPage {
     public String addInCart(@RequestParam("id") Long id){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = null;
-        if (!authentication.isAuthenticated()) {
+        if (authentication.isAuthenticated()) {
              username = authentication.getName();
         }
         else {

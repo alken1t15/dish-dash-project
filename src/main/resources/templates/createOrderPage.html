@@ -32,19 +32,19 @@
                 <div class="address-block">
                     <div class="address-item address-item-other address-item-none">
                         <span class="address-item__text">Город</span>
-                        <input class="address-item__field" type="text" name="city" placeholder="Введите город"/>
+                        <input th:value="${user.getCity()}" class="address-item__field" type="text" name="city" placeholder="Введите город"/>
                     </div>
                     <div class="address-item address-item-other address-item-none">
                         <span class="address-item__text">Имя Фамилия</span>
-                        <input class="address-item__field" type="text" name="contact" placeholder="Пожалуйста введите свои данные "/>
+                        <input th:value="${user.getContact()}" class="address-item__field" type="text" name="contact" placeholder="Пожалуйста введите свои данные "/>
                     </div>
                     <div class="address-item address-item-other address-item-none">
                         <span class="address-item__text ">Номер тел.</span>
-                        <input class="address-item__field" type="tel" name="city" placeholder="Пожалуйста введите свои данные "/>
+                        <input th:value="${user.getPhone()}" class="address-item__field" type="tel" name="city" placeholder="Пожалуйста введите свои данные "/>
                     </div>
                     <div class="address-item">
                         <span class="address-item__text">Адрес</span>
-                        <input class="address-item__field" type="text" name="address" placeholder="Пожалуйста введите свой адрес"/>
+                        <input  class="address-item__field" type="text" name="address" placeholder="Пожалуйста введите свой адрес"/>
                     </div>
                     <div class="address-mini-block">
                         <div class="address-mini-item">
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="cart.html" class="backPage backPage-order">назад</a>
+                <a th:href="@{/cart/}" class="backPage backPage-order">назад</a>
             </div>
             <div class="order-right">
                 <div class="cart-list">

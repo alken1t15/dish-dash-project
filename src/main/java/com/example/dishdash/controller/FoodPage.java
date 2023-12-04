@@ -40,8 +40,12 @@ public class FoodPage {
             List<Food> foods = serviceFood.findAllByNameCategory("Рекомендации");
             model.addAttribute("foods",foods);
         }
+        if (nameCategory == null){
+            nameCategory="Рекомендации";
+        }
         model.addAttribute("kitchens",kitchens);
         model.addAttribute("nameKitchen",nameKitchen);
+        model.addAttribute("nameCategory",nameCategory);
         return "food";
     }
 }

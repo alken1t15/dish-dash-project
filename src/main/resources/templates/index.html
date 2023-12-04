@@ -32,7 +32,7 @@
             <div class="header-right">
                 <a sec:authorize="isAnonymous()" th:href="@{/login}" class="sign-in-btn">войти</a>
                 <a sec:authorize="isAnonymous()" th:href="@{/registration}" class="sign-up-btn">регистрация</a>
-                <a sec:authorize="isAuthenticated()" th:href="@{/profile}" class="sign-up-btn">выйти</a>
+                <a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="sign-up-btn">выйти</a>
                 <a sec:authorize="isAuthenticated()" th:href="@{/profile/}" class="profile"><img th:src="@{img/profile.svg}" alt="profile image" ></a>
                 <a sec:authorize="isAuthenticated()" th:href="@{/cart/}" class="cart"><img th:src="@{img/cart.svg}" alt="cart image"></a>
             </div>
@@ -91,7 +91,7 @@
                         <span class="up-item__text primary-text cat">категория</span>
                         <form th:method="GET" th:action="@{/food/}">
                             <ul class="kitchen-list" id="kitchenList">
-                                <li class="kitchenList__item"><a th:href="@{/food/(name_kitchen=${kitchen.name})}" class="kitchenList__link" th:each="kitchen : ${kitchens}" th:text="${kitchen.name}" th:value="${kitchen.name}">корейская</a></li>
+                                <li class="kitchenList__item"><a th:each="kitchen : ${kitchens}" th:href="@{'/food/?name_kitchen='+ ${kitchen.name}(name_category='Рекомендации')}" class="kitchenList__link"  th:text="${kitchen.nameRu}" th:value="${kitchen.name}">корейская</a></li>
                             </ul>
                         </form>
                     </div>

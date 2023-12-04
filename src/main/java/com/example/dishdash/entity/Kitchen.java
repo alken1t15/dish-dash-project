@@ -19,6 +19,9 @@ public class Kitchen {
 
     private String img;
 
+    @Column(name = "name_ru")
+    private String nameRu;
+
     @OneToMany(mappedBy = "kitchen")
     private List<Food> foods;
 }

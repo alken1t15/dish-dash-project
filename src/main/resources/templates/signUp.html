@@ -62,32 +62,39 @@
             <div class="sign-in-block">
                 <p class="sing-in__text">Имя Фамилия</p>
                 <input class="address-item__field address-item__field-u" type="text" name="contact" placeholder="Пожалуйста введите свои данные "/>
+                <p th:if="${errors.containsKey('contact')}" style="color: red" th:text="${errors.get('contact')}"></p>
             </div>
             <div class="sign-in-block">
                 <p class="sing-in__text">Номер тел.</p>
-                <input class="address-item__field address-item__field-u" type="text" name="phone" placeholder="Пожалуйста введите свои данные "/>
+                <input class="address-item__field address-item__field-u" type="number" name="phone" placeholder="Пожалуйста введите свои данные "/>
+                <p th:if="${errors.containsKey('phone')}" style="color: red" th:text="${errors.get('phone')}"></p>
             </div>
             <div class="sign-in-block">
                 <p class="sing-in__text">Эл. почта</p>
-                <input class="address-item__field address-item__field-u" type="text" name="email" placeholder="Пожалуйста введите свои данные "/>
+                <input class="address-item__field address-item__field-u" type="email" name="email" placeholder="Пожалуйста введите свои данные "/>
+                <p th:if="${errors.containsKey('email')}" style="color: red" th:text="${errors.get('email')}"></p>
             </div>
             <div class="address-blocks">
                 <div class="sign-in-block" style="width: 235px">
                     <p class="sing-in__text" style="width: 235px">Страну</p>
                     <input class="address-item__field address-item__field-u" type="text" name="country" placeholder="Введите страну" style="width: 235px"/>
+                    <p th:if="${errors.containsKey('country')}" style="color: red" th:text="${errors.get('country')}"></p>
                 </div>
                 <div class="sign-in-block" style="width: 235px">
                     <p class="sing-in__text" style="width: 235px">Город</p>
                     <input class="address-item__field address-item__field-u" type="text" name="city" placeholder="Введите город" style="width: 235px"/>
+                    <p th:if="${errors.containsKey('city')}" style="color: red" th:text="${errors.get('city')}"></p>
                 </div>
             </div>
             <div class="sign-in-block">
                 <p class="sing-in__text">Пароль</p>
                 <input class="address-item__field address-item__field-u" type="password" name="password" placeholder="Пожалуйста введите свои данные "/>
+                <p th:if="${errors.containsKey('password')}" style="color: red" th:text="${errors.get('password')}"></p>
             </div>
             <div class="sign-in-block">
                 <p class="sing-in__text">Подтвердите пароль</p>
                 <input class="address-item__field address-item__field-u" type="password" name="confirm" placeholder="Повторите выше написанный пароль "/>
+                <p th:if="${errors.containsKey('confirm')}" style="color: red" th:text="${errors.get('confirm')}"></p>
             </div>
             <button class="to-cart orderBtn profileBtn signBtn" style="width: 450px;" type="submit">Зарегестрироватся </button>
             <a th:href="@{/login}" class="dontHave">Есть аккаунт? Вход</a>

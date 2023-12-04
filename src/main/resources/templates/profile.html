@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
@@ -44,7 +44,7 @@
   <div class="container profile-container">
     <a th:href="@{/profile/editContact}" class="to-cart orderBtn profileBtn profileBtn-e">Изменить личные данные</a>
     <a th:href="@{/profile/editPassword}" class="to-cart orderBtn profileBtn profileBtn-e profileBtn-e-pass">Изменить пароль</a>
-    <button class="logout">выйти с аккаунта</button>
+    <button th:href="@{/logout}" class="logout">выйти с аккаунта</button>
   </div>
 </section>
 

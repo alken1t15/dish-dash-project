@@ -4,15 +4,16 @@ create table kitchen
 (
     id   serial primary key,
     name varchar not null,
+    name_ru varchar not null,
     img  varchar not null
 );
 
-insert into kitchen (name, img)
-VALUES ('korean', 'korean'),
-       ('kazakh', 'kazakh'),
-       ('uzbek', 'uzbek'),
-       ('usa', 'usa'),
-       ('ukraine', 'ukraine');
+insert into kitchen (name, img,name_ru)
+VALUES ('korean', 'korean','Корейская'),
+       ('kazakh', 'kazakh','Казахская'),
+       ('uzbek', 'uzbek','Узбекская'),
+       ('usa', 'usa','Американская'),
+       ('ukraine', 'ukraine','Украинская');
 
 -- create table category (
 --     id serial primary key,
@@ -66,7 +67,7 @@ create table users
 (
     id       serial primary key,
     contact  varchar,
-    phone    int,
+    phone    int8,
     email    varchar,
     country  varchar,
     city     varchar,
