@@ -68,7 +68,7 @@ create table users
     id       serial primary key,
     contact  varchar,
     phone    int8,
-    email    varchar,
+    email    varchar unique,
     country  varchar,
     city     varchar,
     password varchar

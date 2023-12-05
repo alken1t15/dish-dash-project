@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
@@ -41,21 +41,26 @@
 
 <!--Food section-->
 <section class="cart-section">
+  <form th:method="POST" th:action="@{/profile/edit}">
   <div class="container profile-container">
     <div class="profile-block">
       <p class="profile-block-text">Имя Фамилия</p>
-      <input class="address-item__field" type="text" name="contact" placeholder="Замена данных" style="width: 500px"/>
+      <input class="address-item__field" type="text" th:value="${user.getContact()}" name="contact" placeholder="Замена данных" style="width: 500px"/>
+      <p th:if="${errors.containsKey('contact')}" style="color: red" th:text="${errors.get('contact')}"></p>
     </div>
     <div class="profile-block">
       <p class="profile-block-text">Номер тел.</p>
-      <input class="address-item__field" type="text" name="number" placeholder="Замена данных" style="width: 500px"/>
+      <input class="address-item__field" type="text" th:value="${user.getPhone()}" name="phone" placeholder="Замена данных" style="width: 500px"/>
+      <p th:if="${errors.containsKey('phone')}" style="color: red" th:text="${errors.get('phone')}"></p>
     </div>
     <div class="profile-block">
       <p class="profile-block-text">Эл. почта</p>
-      <input class="address-item__field" type="email" name="email" placeholder="Замена данных" style="width: 500px"/>
+      <input class="address-item__field" type="email" th:value="${user.getEmail()}" name="email" placeholder="Замена данных" style="width: 500px"/>
+      <p th:if="${errors.containsKey('email')}" style="color: red" th:text="${errors.get('email')}"></p>
     </div>
-    <button class="to-cart orderBtn profileBtn">Изменить</button>
+    <button type="submit" class="to-cart orderBtn profileBtn">Изменить</button>
   </div>
+  </form>
 </section>
 
 
