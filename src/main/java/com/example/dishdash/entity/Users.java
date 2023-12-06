@@ -26,7 +26,7 @@ public class Users {
     private String city;
     private String password;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Cart> carts;
 
     public Users(String email) {

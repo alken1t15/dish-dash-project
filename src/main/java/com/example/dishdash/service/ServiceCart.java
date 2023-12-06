@@ -17,4 +17,8 @@ public class ServiceCart {
     public void save(Cart cart) {
         repositoryCart.save(cart);
     }
+
+    public void delete(Cart cart){
+        repositoryCart.delete(cart);
+    }
 }

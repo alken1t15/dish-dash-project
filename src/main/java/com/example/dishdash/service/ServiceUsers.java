@@ -5,6 +5,8 @@ import com.example.dishdash.repository.RepositoryUsers;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class ServiceUsers {
@@ -16,5 +18,13 @@ private final RepositoryUsers repositoryUsers;
 
     public Users save(Users users) {
       return repositoryUsers.save(users);
+    }
+
+    public List<Users> findAll() {
+        return repositoryUsers.findAll();
+    }
+
+    public void delete(Users user) {
+        repositoryUsers.delete(user);
     }
 }

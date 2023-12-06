@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/cart")
 @AllArgsConstructor
@@ -29,7 +31,7 @@ public class CartPage {
     public String getCartPage(Model model){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = null;
-        if (authentication.isAuthenticated()) {
+        if (!authentication.isAuthenticated()) {
             username = authentication.getName();
         }
         else {
@@ -38,7 +40,7 @@ public class CartPage {
         }
         Users user = users.findByEmail(username);
         if (user== null){
-            users.save(new Users(username));
+            user = users.save(new Users(username));
         }
 
         model.addAttribute("carts",user.getCarts());
@@ -49,7 +51,7 @@ public class CartPage {
     public String addInCart(@RequestParam("id") Long id){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = null;
-        if (authentication.isAuthenticated()) {
+        if (!authentication.isAuthenticated()) {
              username = authentication.getName();
         }
         else {
@@ -58,7 +60,7 @@ public class CartPage {
         }
         Users user = users.findByEmail(username);
         if (user == null){
-            users.save(new Users(username));
+          user =  users.save(new Users(username));
         }
         Food food = serviceFood.findById(id);
         Cart cart = serviceCart.findByUserAndFood(user.getId(),food.getId());
@@ -72,5 +74,39 @@ public class CartPage {
         }
         serviceCart.save(cart);
         return "redirect:/";
+    }
+
+    @PostMapping("/edit")
+    public void editCartPage(@RequestParam("id") Long id,@RequestParam("setting") String setting){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = null;
+        if (authentication.isAuthenticated()) {
+            username = authentication.getName();
+        }
+        else {
+            WebAuthenticationDetails webAuthenticationDetails = (WebAuthenticationDetails) authentication.getDetails();
+            username = webAuthenticationDetails.getRemoteAddress();
+        }
+        Users user = users.findByEmail(username);
+        List<Cart> carts = user.getCarts();
+        Cart cartUser = null;
+        for (Cart cart : carts){
+            if (cart.getId() == id){
+                cartUser = cart;
+            }
+        }
+        switch (setting){
+           case  "plus" -> {cartUser.setCount(cartUser.getCount()+1);
+               serviceCart.save(cartUser);}
+            case "minus" -> {
+                if (cartUser.getCount()==1){
+                    serviceCart.delete(cartUser);
+                }else {
+                    cartUser.setCount(cartUser.getCount() - 1);
+                    serviceCart.save(cartUser);
+                }
+            }
+            case "delete" -> serviceCart.delete(cartUser);
+        }
     }
 }

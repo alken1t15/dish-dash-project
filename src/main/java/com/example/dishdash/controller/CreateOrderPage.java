@@ -20,7 +20,7 @@ public class CreateOrderPage {
     public String getOrderPage(Model model){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = null;
-        if (authentication.isAuthenticated()) {
+        if (!authentication.isAuthenticated()) {
             username = authentication.getName();
         }
         else {
@@ -29,7 +29,7 @@ public class CreateOrderPage {
         }
         Users user = serviceUsers.findByEmail(username);
         if (user == null){
-            serviceUsers.save(new Users(username));
+         user =  serviceUsers.save(new Users(username));
         }
 
         model.addAttribute("carts",user.getCarts());
