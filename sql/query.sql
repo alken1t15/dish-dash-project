@@ -82,3 +82,16 @@ create table cart
     count       int not null,
     total_price int not null
 );
+
+create table order_user(
+    id  serial primary key,
+    phone int8 not null,
+    status varchar not null,
+    address varchar not null
+);
+
+create table users_telegram (
+    id serial primary key,
+    id_users int not null unique ,
+    status bool not null default false
+);

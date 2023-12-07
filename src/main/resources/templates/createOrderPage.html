@@ -16,6 +16,7 @@
 
 
 <!--Food section-->
+<form th:method="POST" th:action="@{/order/add}">
 <section class="cart-section">
     <div class="container cart-container">
         <div class="foods-top order-top">
@@ -26,38 +27,45 @@
         <div class="order-inner">
             <div class="order-left">
                 <div class="button-block">
-                    <button class="order-type type-one order-type-active" data-index="1" style="font-size: 20px">самовызов</button>
-                    <button class="order-type type-two" data-index="2">бесконтактная доставка</button>
+                    <button class="order-type type-one order-type-active" type="button" data-index="1" style="font-size: 20px">самовызов</button>
+                    <button class="order-type type-two" type="button" data-index="2">бесконтактная доставка</button>
                 </div>
                 <div class="address-block">
                     <div class="address-item address-item-other address-item-none">
                         <span class="address-item__text">Город</span>
                         <input th:value="${user.getCity()}" class="address-item__field" type="text" name="city" placeholder="Введите город"/>
+                        <p th:if="${errors.containsKey('city')}" style="color: red" th:text="${errors.get('city')}"></p>
                     </div>
                     <div class="address-item address-item-other address-item-none">
                         <span class="address-item__text">Имя Фамилия</span>
                         <input th:value="${user.getContact()}" class="address-item__field" type="text" name="contact" placeholder="Пожалуйста введите свои данные "/>
+                        <p th:if="${errors.containsKey('contact')}" style="color: red" th:text="${errors.get('contact')}"></p>
                     </div>
                     <div class="address-item address-item-other address-item-none">
                         <span class="address-item__text ">Номер тел.</span>
-                        <input th:value="${user.getPhone()}" class="address-item__field" type="tel" name="city" placeholder="Пожалуйста введите свои данные "/>
+                        <input th:value="${user.getPhone()}" class="address-item__field" type="tel" name="phone" placeholder="Пожалуйста введите свои данные "/>
+                        <p th:if="${errors.containsKey('phone')}" style="color: red" th:text="${errors.get('phone')}"></p>
                     </div>
                     <div class="address-item">
                         <span class="address-item__text">Адрес</span>
                         <input  class="address-item__field" type="text" name="address" placeholder="Пожалуйста введите свой адрес"/>
+                        <p th:if="${errors.containsKey('address')}" style="color: red" th:text="${errors.get('address')}"></p>
                     </div>
                     <div class="address-mini-block">
                         <div class="address-mini-item">
-                            <input type="text" name="home number" class="address-mini-item__field" />
+                            <input type="text" name="home" class="address-mini-item__field" />
                             <span class="address-mini-item__text">Дом</span>
+                            <p th:if="${errors.containsKey('home')}" style="color: red" th:text="${errors.get('home')}"></p>
                         </div>
                         <div class="address-mini-item">
-                            <input type="text" name="apartments" class="address-mini-item__field" />
+                            <input type="number" name="apartments" class="address-mini-item__field" />
                             <span class="address-mini-item__text">Квартира</span>
+                            <p th:if="${errors.containsKey('apartments')}" style="color: red" th:text="${errors.get('apartments')}"></p>
                         </div>
                         <div class="address-mini-item">
-                            <input type="text" name="driveway" class="address-mini-item__field" />
+                            <input type="number" name="driveway" class="address-mini-item__field" />
                             <span class="address-mini-item__text">подъезд</span>
+                            <p th:if="${errors.containsKey('driveway')}" style="color: red" th:text="${errors.get('driveway')}"></p>
                         </div>
                     </div>
                 </div>
@@ -85,13 +93,15 @@
                     </div>
                     <div class="cart-bot cart-bot-u">
                         <p class="total total-u">итог : <span id="totalAmount">0</span> тг</p>
-                        <button class="orderBtn cartBtn ">подтвердить</button>
+                        <button class="orderBtn cartBtn" type="submit" >подтвердить</button>
                         <p class="empty-message" style="display: none;">Корзина пуста</p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </section>
+</form>
 
 
 <!--Contact section-->

@@ -27,4 +27,8 @@ private final RepositoryUsers repositoryUsers;
     public void delete(Users user) {
         repositoryUsers.delete(user);
     }
+
+    public Users findByPhone(Long phone){
+        return repositoryUsers.findByPhone(phone).orElse(null);
+    }
 }

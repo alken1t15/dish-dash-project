@@ -15,22 +15,12 @@ import java.util.List;
 @AllArgsConstructor
 public class MyScheduledTask {
     private final ServiceUsers serviceUsers;
-    private final ServiceCart serviceCart;
-    @Scheduled(cron = "0 * * * * ?")
+    @Scheduled(cron = "0 */10 * * * ?")
     public void myTask() {
         List<Users> users = serviceUsers.findAll();
-        for (Users user : users){
-            if (user.getPassword() == null){
-           //     if (user.getCarts().isEmpty()){
-                    serviceUsers.delete(user);
-    //            }
-//                else {
-//                    List<Cart> carts = user.getCarts();
-//                    for (Cart cart : carts){
-//                        serviceCart.delete(cart);
-//                    }
-//                    serviceUsers.delete(user);
-//                }
+        for (Users user : users) {
+            if (user.getPassword() == null) {
+                serviceUsers.delete(user);
             }
         }
     }
