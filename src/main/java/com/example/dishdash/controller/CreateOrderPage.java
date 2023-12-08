@@ -7,6 +7,7 @@ import com.example.dishdash.service.ServiceCart;
 import com.example.dishdash.service.ServiceOrderUser;
 import com.example.dishdash.service.ServiceUsers;
 import io.micrometer.common.util.StringUtils;
+import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.data.jpa.repository.Modifying;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -33,12 +35,23 @@ public class CreateOrderPage {
     private final ServiceCart serviceCart;
 
     @GetMapping("/")
-    public String getOrderPage(Model model, Principal principal) {
+    public String getOrderPage(Model model, HttpSession httpSession, Principal principal) {
         HashMap<String, String> errors = new HashMap<>();
-        Users user = getAuthorized(principal);
+        if (principal == null) {
+            if (httpSession.getAttribute("store") == null) {
+                httpSession.setAttribute("store", new ArrayList<Cart>());
+            }
+            ArrayList<Cart> list = (ArrayList<Cart>) httpSession.getAttribute("store");
+            model.addAttribute("carts", list);
+            model.addAttribute("user", new Users());
 
-        model.addAttribute("carts", user.getCarts());
-        model.addAttribute("user", user);
+        } else {
+            String username = principal.getName();
+            Users user = serviceUsers.findByEmail(username);
+            model.addAttribute("user", user);
+            model.addAttribute("carts", user.getCarts());
+        }
+
         model.addAttribute("errors", errors);
         return "createOrderPage";
     }
@@ -48,8 +61,7 @@ public class CreateOrderPage {
     @Modifying
     public String createNewOrder(@RequestParam("city") String city, @RequestParam("contact") String contact, @RequestParam("phone") String phone,
                                  @RequestParam("address") String address, @RequestParam("home") String home, @RequestParam("apartments") String apartments,
-                                 @RequestParam("driveway") String driveway, Model model,Principal principal) {
-        Users user = getAuthorized(principal);
+                                 @RequestParam("driveway") String driveway, Model model, HttpSession httpSession, Principal principal) {
         HashMap<String, String> errors = new HashMap<>();
         if (StringUtils.isBlank(city)) {
             errors.put("city", "Значение не может быть пустым");
@@ -78,35 +90,36 @@ public class CreateOrderPage {
 
         if (!errors.isEmpty()) {
             model.addAttribute("errors", errors);
-            model.addAttribute("carts", user.getCarts());
-            model.addAttribute("user", user);
-            return "createOrderPage";
-        } else {
-            List<Cart> carts = user.getCarts();
-            user.setCarts(null);
-            serviceUsers.save(user);
-            for (Cart cart : carts) {
-                serviceCart.delete(cart);
+            if (principal == null) {
+                ArrayList<Cart> list = (ArrayList<Cart>) httpSession.getAttribute("store");
+                model.addAttribute("carts", list);
+                model.addAttribute("user", new Users());
+                return "createOrderPage";
+            } else {
+                String username = principal.getName();
+                Users user = serviceUsers.findByEmail(username);
+                model.addAttribute("carts", user.getCarts());
+                model.addAttribute("user", user);
+                return "createOrderPage";
             }
-            serviceOrderUser.save(new OrderUser(Long.parseLong(phone), "Заказ готовится", "Улица: " + address + " ,дом: " + home + " ,кв: " + apartments + " ,подъезд: " + driveway));
-            return "redirect:/";
-        }
-    }
-
-
-    private Users getAuthorized(Principal principal) {
-        String username;
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (principal != null) {
-            username = principal.getName();
         } else {
-            WebAuthenticationDetails webAuthenticationDetails = (WebAuthenticationDetails) authentication.getDetails();
-            username = webAuthenticationDetails.getRemoteAddress();
+            if (principal == null) {
+                ArrayList<Cart> list = (ArrayList<Cart>) httpSession.getAttribute("store");
+                list.clear();
+                serviceOrderUser.save(new OrderUser(Long.parseLong(phone), "Заказ готовится", "Улица: " + address + " ,дом: " + home + " ,кв: " + apartments + " ,подъезд: " + driveway));
+                return "redirect:/";
+            } else {
+                String username = principal.getName();
+                Users user = serviceUsers.findByEmail(username);
+                List<Cart> carts = user.getCarts();
+                user.setCarts(null);
+                serviceUsers.save(user);
+                for (Cart cart : carts) {
+                    serviceCart.delete(cart);
+                }
+                serviceOrderUser.save(new OrderUser(Long.parseLong(phone), "Заказ готовится", "Улица: " + address + " ,дом: " + home + " ,кв: " + apartments + " ,подъезд: " + driveway));
+                return "redirect:/";
+            }
         }
-        Users user = serviceUsers.findByEmail(username);
-        if (user == null) {
-            user = serviceUsers.save(new Users(username));
-        }
-        return user;
     }
 }

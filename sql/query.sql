@@ -2,18 +2,18 @@ create database dish_dash;
 
 create table kitchen
 (
-    id   serial primary key,
-    name varchar not null,
+    id      serial primary key,
+    name    varchar not null,
     name_ru varchar not null,
-    img  varchar not null
+    img     varchar not null
 );
 
-insert into kitchen (name, img,name_ru)
-VALUES ('korean', 'korean','Корейская'),
-       ('kazakh', 'kazakh','Казахская'),
-       ('uzbek', 'uzbek','Узбекская'),
-       ('usa', 'usa','Американская'),
-       ('ukraine', 'ukraine','Украинская');
+insert into kitchen (name, img, name_ru)
+VALUES ('korean', 'korean', 'Корейская'),
+       ('kazakh', 'kazakh', 'Казахская'),
+       ('uzbek', 'uzbek', 'Узбекская'),
+       ('usa', 'usa', 'Американская'),
+       ('ukraine', 'ukraine', 'Украинская');
 
 -- create table category (
 --     id serial primary key,
@@ -83,15 +83,17 @@ create table cart
     total_price int not null
 );
 
-create table order_user(
-    id  serial primary key,
-    phone int8 not null,
-    status varchar not null,
+create table order_user
+(
+    id      serial primary key,
+    phone   int8    not null,
+    status  varchar not null,
     address varchar not null
 );
 
-create table users_telegram (
-    id serial primary key,
-    id_users int not null unique ,
-    status bool not null default false
+create table users_telegram
+(
+    id       serial primary key,
+    id_users int  not null unique,
+    status   bool not null default false
 );

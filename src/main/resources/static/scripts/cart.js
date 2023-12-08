@@ -15,12 +15,22 @@ function handleMinusButtonClick(event) {
 
 function handleDeleteButtonClick(event) {
     const cartItem = event.target.closest('.cart-item');
+    axios.post('http://localhost:8080/cart/edit', {
+        "id": event.target.closest('.cart-item').getAttribute("data-index"),
+        "setting": 'delete'
+    })
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
     cartList.removeChild(cartItem);
     calculateTotal();
     checkEmptyCart();
 }
 
-function updateQuantity(container, change) {
+async function updateQuantity(container, change) {
     const quantityElement = container.querySelector('.quantity .number');
     let quantity = parseInt(quantityElement.innerHTML);
 
@@ -28,20 +38,49 @@ function updateQuantity(container, change) {
         quantity += change;
         quantityElement.textContent = quantity;
 
-        // let response = await fetch('/article/fetch/post/user', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json;charset=utf-8'
-        //     },
-        //     body: JSON.stringify(user)
-        // });
-        // event.target.closest('.cart-item')
+        console.log(change)
+
+        if(change == "-1"){
+            axios.post('http://localhost:8080/cart/edit', {
+                "id": event.target.closest('.cart-item').getAttribute("data-index"),
+                "setting": 'minus'
+            })
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+        else{
+            axios.post('http://localhost:8080/cart/edit', {
+                "id": event.target.closest('.cart-item').getAttribute("data-index"),
+                "setting": 'plus'
+            })
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+
         calculateTotal();
     }
 
     if (quantity === 0) {
         const cartItem = container.closest('.cart-item');
         cartList.removeChild(cartItem);
+        axios.post('http://localhost:8080/cart/edit', {
+            "id": event.target.closest('.cart-item').getAttribute("data-index"),
+            "setting": 'delete'
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         checkEmptyCart();
     }
 }

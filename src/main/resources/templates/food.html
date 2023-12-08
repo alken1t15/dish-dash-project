@@ -24,10 +24,10 @@
             </a>
             <nav class="navbar">
                 <!--                    <a href="" class="navbar__link"><img th:src="@{img/бургер.png}" class="burger"><span>категории</span></a>-->
-                <a href="#category" class="navbar__link">меню</a>
-                <a href="#news" class="navbar__link">акции</a>
-                <a href="#about" class="navbar__link">почему мы</a>
-                <a href="#contact" class="navbar__link">контакты</a>
+                <a th:href="@{redirect:/#category}" class="navbar__link">категории</a>
+                <a th:href="@{redirect:/#news}" class="navbar__link">акции</a>
+                <a th:href="@{redirect:/#about}" class="navbar__link">почему мы</a>
+                <a th:href="@{redirect:/#contact}" class="navbar__link">контакты</a>
             </nav>
         </div>
         <div class="header-right">
@@ -95,16 +95,22 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide" th:each="food : ${foods}">
                         <div class="food-item food-item-u">
-                            <div class="food-item-inner food-item-inner-u">
-                                <img th:src="@{/img/__${food.img}__.png}" alt="Food" class="food-item__img">
-                                <p class="food-item__name" th:text="${food.name}">Шин рамен</p>
-                                <p class="food-item__description" th:text="${food.information}">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
-                                <p class="food-item__price food-item__price-all"><span class="food-item__price" th:text="${food.price}"></span> <span class="food-item__price">тг</span></p>
+                            <div class="mainCard">
+                                <div class="food-item-inner food-item-inner-u">
+                                    <img th:src="@{/img/__${food.img}__.png}" alt="Food" class="food-item__img">
+                                    <p class="food-item__name" th:text="${food.name}">Шин рамен</p>
+                                    <p class="food-item__description" th:text="${food.information}">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
+                                    <p class="food-item__price food-item__price-all"><span class="food-item__price" th:text="${food.price}"></span> <span class="food-item__price">тг</span></p>
+                                </div>
+                                <form th:method="POST" th:action="@{/food/add}" class="cartForm">
+                                    <input type="hidden" th:name="id" th:value="${food.id}">
+                                    <input type="hidden" th:name="name_kitchen" th:value="${nameKitchen}">
+                                    <input type="hidden" th:name="id" th:name_category="${nameCategory}">
+                                    <button type="submit" class="food-item__take">выбрать</button>
+                                </form>
                             </div>
-                            <form th:method="POST" th:action="@{/cart/add}">
-                                <input type="hidden" th:name="id" th:value="${food.id}">
-                                <button type="submit" class="food-item__take">выбрать</button>
-                            </form>
+
+
                         </div>
                     </div>
                 </div>

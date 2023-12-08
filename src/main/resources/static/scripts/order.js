@@ -69,6 +69,5 @@ $(document).ready(function() {
 
 
     calculateTotal();
-    checkEmptyCart();
 
 });

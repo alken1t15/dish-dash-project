@@ -23,10 +23,10 @@
             </a>
             <nav class="navbar">
                 <!--                    <a href="" class="navbar__link"><img th:src="@{img/бургер.png}" class="burger"><span>категории</span></a>-->
-                <a href="#category" class="navbar__link">меню</a>
-                <a href="#news" class="navbar__link">акции</a>
-                <a href="#about" class="navbar__link">почему мы</a>
-                <a href="#contact" class="navbar__link">контакты</a>
+                <a th:href="@{redirect:/#category}" class="navbar__link">категории</a>
+                <a th:href="@{redirect:/#news}" class="navbar__link">акции</a>
+                <a th:href="@{redirect:/#about}" class="navbar__link">почему мы</a>
+                <a th:href="@{redirect:/#contact}" class="navbar__link">контакты</a>
             </nav>
         </div>
         <div class="header-right">
@@ -48,7 +48,7 @@
                 <span class="col">кол-во</span>
                 <span class="col">цена</span>
             </div>
-            <div th:each="cart : ${carts}" class="cart-item" th:data-index="${cart.getId()}">
+            <div th:each="cart : ${carts}" class="cart-item" th:data-index="${cart.getFood().getId()}">
                 <div class="cart-item-col-1">
                     <img class="cart-item__img" th:src="@{/img/__${cart.food.img}__.png}" alt="Food">
                 </div>
@@ -119,6 +119,7 @@
         </div>
     </div>
 </section>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script th:src="@{/scripts/cart.js}"></script>
 <script th:src="@{/scripts/order.js}"></script>
 </body>

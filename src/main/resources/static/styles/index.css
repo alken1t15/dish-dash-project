@@ -1357,7 +1357,7 @@ body{
 
 .slider-container-food{
     width: 100%;
-    height: 400px;
+    height: 428px;
 }
 .slider-food-slide{
     width: 287px !important;
@@ -1908,7 +1908,7 @@ body{
 
 
 .food-item-inner-u{
-    min-height: 100%;
+
 }
 
 
@@ -2063,4 +2063,21 @@ input{
     font-weight: 700;
     line-height: normal;
     text-transform: uppercase;
+}
+
+.cartForm{
+    margin-top: auto;
+    height: 54px;
+}
+.mainCard{
+    min-height: 400px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.errors{
+    font-size: 10px;
+    margin-top: 10px;
+    text-align: right;
 }

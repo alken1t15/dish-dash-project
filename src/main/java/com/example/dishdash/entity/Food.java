@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "food")
@@ -35,4 +36,17 @@ public class Food {
 
     @OneToMany(mappedBy = "food")
     private List<Cart> carts;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Food food = (Food) o;
+        return Objects.equals(name, food.name) && Objects.equals(information, food.information) && Objects.equals(price, food.price) && Objects.equals(nameCategory, food.nameCategory) && Objects.equals(popular, food.popular);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, information, price, nameCategory, popular);
+    }
 }

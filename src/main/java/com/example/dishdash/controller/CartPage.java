@@ -14,14 +14,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/cart")
@@ -33,29 +31,41 @@ public class CartPage {
 
     @GetMapping("/")
     public String getCartPage(Model model, HttpSession httpSession, Principal principal) {
-        Users user = getAuthorized(principal);
-        System.out.println(httpSession.getAttribute("store"));
-        System.out.println(httpSession);
-
-        model.addAttribute("carts", user.getCarts());
+        if (principal == null) {
+            if (httpSession.getAttribute("store") == null) {
+                httpSession.setAttribute("store", new ArrayList<Cart>());
+            }
+            ArrayList<Cart> list = (ArrayList<Cart>) httpSession.getAttribute("store");
+            model.addAttribute("carts", list);
+        } else {
+            String username = principal.getName();
+            Users user = serviceUsers.findByEmail(username);
+            model.addAttribute("carts", user.getCarts());
+        }
         return "cart";
     }
 
     @PostMapping("/add")
     public String addInCart(@RequestParam("id") Long id, HttpSession httpSession, Principal principal) {
-//        Users user = getAuthorized(principal);
-
+        Food food = serviceFood.findById(id);
         if (principal == null) {
             if (httpSession.getAttribute("store") == null) {
-                httpSession.setAttribute("store", new ArrayList<String>());
+                httpSession.setAttribute("store", new ArrayList<Cart>());
             }
-            ArrayList<String> list = (ArrayList<String>) httpSession.getAttribute("store");
-            list.add("fsdfsdf");
-            System.out.println(list);
-            return "redirect:/";
+            ArrayList<Cart> list = (ArrayList<Cart>) httpSession.getAttribute("store");
+            for (Cart cart : list) {
+                if (cart.getFood().equals(food)) {
+                    cart.setCount(cart.getCount() + 1);
+                    Long temp = cart.getFood().getPrice() * cart.getCount();
+                    cart.setTotalPrice(temp);
+                    return "redirect:/#category";
+                }
+            }
+            list.add(new Cart(null, food, 1, food.getPrice()));
+            return "redirect:/#category";
         } else {
-            Users user = serviceUsers.findByEmail(principal.getName());
-            Food food = serviceFood.findById(id);
+            String username = principal.getName();
+            Users user = serviceUsers.findByEmail(username);
             Cart cart = serviceCart.findByUserAndFood(user.getId(), food.getId());
             if (cart != null) {
                 cart.setCount(cart.getCount() + 1);
@@ -65,60 +75,65 @@ public class CartPage {
                 cart = new Cart(user, food, 1, food.getPrice());
             }
             serviceCart.save(cart);
-            return "redirect:/";
+            return "redirect:/#category";
         }
     }
-
 
 
     @PostMapping("/edit")
-    public void editCartPage(@RequestParam("id") Long id, @RequestParam("setting") String setting) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = null;
-        if (authentication.isAuthenticated()) {
-            username = authentication.getName();
-        } else {
-            WebAuthenticationDetails webAuthenticationDetails = (WebAuthenticationDetails) authentication.getDetails();
-            username = webAuthenticationDetails.getRemoteAddress();
-        }
-        Users user = serviceUsers.findByEmail(username);
-        List<Cart> carts = user.getCarts();
-        Cart cartUser = null;
-        for (Cart cart : carts) {
-            if (cart.getId() == id) {
-                cartUser = cart;
-            }
-        }
-        switch (setting) {
-            case "plus" -> {
-                cartUser.setCount(cartUser.getCount() + 1);
-                serviceCart.save(cartUser);
-            }
-            case "minus" -> {
-                if (cartUser.getCount() == 1) {
-                    serviceCart.delete(cartUser);
-                } else {
-                    cartUser.setCount(cartUser.getCount() - 1);
-                    serviceCart.save(cartUser);
+    public String editCartPage(@RequestBody Map<String, String> requestMap, HttpSession httpSession, Principal principal) {
+        String id = requestMap.get("id");
+        String setting = requestMap.get("setting");
+        if (principal == null) {
+            ArrayList<Cart> list = (ArrayList<Cart>) httpSession.getAttribute("store");
+            for (Cart cart : list) {
+                if (cart.getFood().getId() == Long.parseLong(id)) {
+                    switch (setting) {
+                        case "plus" -> cart.setCount(cart.getCount() + 1);
+                        case "minus" -> {
+                            if (cart.getCount() == 1) {
+                                list.remove(cart);
+                            } else {
+                                cart.setCount(cart.getCount() - 1);
+                            }
+                        }
+                        case "delete" -> {
+                            list.remove(cart);
+                        }
+
+                    }
                 }
             }
-            case "delete" -> serviceCart.delete(cartUser);
-        }
-    }
-
-    private Users getAuthorized(Principal principal) {
-        String username;
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (principal != null) {
-            username = principal.getName();
         } else {
-            WebAuthenticationDetails webAuthenticationDetails = (WebAuthenticationDetails) authentication.getDetails();
-            username = webAuthenticationDetails.getRemoteAddress();
+            String username = principal.getName();
+            Users user = serviceUsers.findByEmail(username);
+            List<Cart> carts = user.getCarts();
+            Cart cartUser = null;
+            for (Cart cart : carts) {
+                if (cart.getFood().getId() == Long.parseLong(id)) {
+                    cartUser = cart;
+                }
+            }
+            switch (setting) {
+                case "plus" -> {
+                    cartUser.setCount(cartUser.getCount() + 1);
+                    serviceCart.save(cartUser);
+                }
+                case "minus" -> {
+                    if (cartUser.getCount() == 1) {
+                        cartUser.setUser(null);
+                        serviceCart.delete(cartUser);
+                    } else {
+                        cartUser.setCount(cartUser.getCount() - 1);
+                        serviceCart.save(cartUser);
+                    }
+                }
+                case "delete" ->{
+                    cartUser.setUser(null);
+                    serviceCart.delete(cartUser);
+                }
+            }
         }
-        Users user = serviceUsers.findByEmail(username);
-        if (user == null) {
-            user = serviceUsers.save(new Users(username));
-        }
-        return user;
+        return "/cart";
     }
 }
