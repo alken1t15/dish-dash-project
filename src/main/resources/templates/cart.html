@@ -23,10 +23,10 @@
             </a>
             <nav class="navbar">
                 <!--                    <a href="" class="navbar__link"><img th:src="@{img/бургер.png}" class="burger"><span>категории</span></a>-->
-                <a th:href="@{redirect:/#category}" class="navbar__link">категории</a>
-                <a th:href="@{redirect:/#news}" class="navbar__link">акции</a>
-                <a th:href="@{redirect:/#about}" class="navbar__link">почему мы</a>
-                <a th:href="@{redirect:/#contact}" class="navbar__link">контакты</a>
+                <a th:href="@{/#category}" class="navbar__link">категории</a>
+                <a th:href="@{/#news}" class="navbar__link">акции</a>
+                <a th:href="@{/#about}" class="navbar__link">почему мы</a>
+                <a th:href="@{/#contact}" class="navbar__link">контакты</a>
             </nav>
         </div>
         <div class="header-right">
@@ -61,31 +61,16 @@
                     <span class="quantity"><span th:text="${cart.count}" class="number">1</span> шт</span>
                     <button class="cart-item__btn" data-action="plus">+</button></div>
                 <div class="cart-item-col-4">
-                    <span class="price-text price-text-number" th:text="${cart.totalPrice}"></span> <span class="price-text">тг</span></div>
+                    <span class="price-text price-text-number" th:text="${cart.totalPrice}"></span> <span class="price-text">&nbsp;тг</span></div>
                 <div class="cart-item-col-5">
                     <button class="delete">удалить</button></div>
             </div>
-<!--            <div class="cart-item" data-index="1">-->
-<!--                <div class="cart-item-col-1">-->
-<!--                    <img class="cart-item__img" th:src="@{/img/randomFood.png}" alt="Food">-->
-<!--                </div>-->
-<!--                <div class="cart-item-col-2">-->
-<!--                    <p class="cart-item__title">шин рамЁн</p>-->
-<!--                    <p class="cart-item__subtitle">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>-->
-<!--                </div>-->
-<!--                <div class="cart-item-col-3">-->
-<!--                    <button class="cart-item__btn" data-action="minus">-</button>-->
-<!--                    <span class="quantity"><span class="number">2</span> шт</span>-->
-<!--                    <button class="cart-item__btn" data-action="plus">+</button></div>-->
-<!--                <div class="cart-item-col-4">900 тг</div>-->
-<!--                <div class="cart-item-col-5">-->
-<!--                    <button class="delete">удалить</button></div>-->
-<!--            </div>-->
+
         </div>
         <div class="cart-bot">
             <a th:href="@{/food/(name_category=Рекомендации)}" class="backPage">назад</a>
             <a th:href="@{/order/}" class="orderBtn cartBtn">оформить</a>
-            <p class="total">итог : <span id="totalAmount">0</span> тг</p>
+            <p class="total">итог :&nbsp;<span id="totalAmount">0</span>&nbspтг</p>
             <p class="empty-message" style="display: none;">Корзина пуста</p>
         </div>
     </div>

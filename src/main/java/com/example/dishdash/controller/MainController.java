@@ -38,11 +38,15 @@ public class MainController {
                                      @RequestParam("country") String country, @RequestParam("city")  String city, @RequestParam("password") String password,
                                      @RequestParam("confirm") String confirm, Model model){
         HashMap<String,String> errors = new HashMap<>();
+        Users users = null;
         if (StringUtils.isBlank(contact)){
             errors.put("contact","Значение не может быть пустым");
         }
         if(StringUtils.isBlank(email)){
             errors.put("email","Значение не может быть пустым");
+        }
+        else {
+            users = repositoryUsers.findByEmail(email).orElse(null);
         }
         if(StringUtils.isBlank(country)){
             errors.put("country","Значение не может быть пустым");
@@ -66,13 +70,16 @@ public class MainController {
         if (!password.equals(confirm)){
             errors.put("confirm","Значение должны совпадать");
         }
+        if (users!= null){
+            errors.put("email","Такой пользователь уже есть");
+        }
 
 
         if (!errors.isEmpty()){
             model.addAttribute("errors",errors);
             return "signUp";
         }
-        Users users = new Users(contact,Long.parseLong(phone),email,country,city,passwordEncoder.encode(password));
+         users = new Users(contact,Long.parseLong(phone),email,country,city,passwordEncoder.encode(password));
         repositoryUsers.save(users);
         return "redirect:/login";
     }

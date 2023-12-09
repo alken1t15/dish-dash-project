@@ -1190,6 +1190,8 @@ body{
     line-height: normal;
     text-transform: uppercase;
     margin-right: 61px;
+    display: flex;
+    align-items: center;
 }
 
 
@@ -1677,7 +1679,7 @@ body{
 
 .cart-item-col-4-u{
     margin-right: 0;
-    margin-left: 34px;
+    margin-left: 40px;
     white-space: nowrap;
 }
 
@@ -1951,6 +1953,7 @@ body{
     padding: 5px 16px;
     border-radius: 5px;
     background: #ECB400;
+    color: #fff;
 }
 
 .up-item-u:before{
