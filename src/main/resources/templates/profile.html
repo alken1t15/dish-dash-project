@@ -42,21 +42,6 @@
 <!--Food section-->
 <section class="cart-section">
   <div class="container profile-container">
-<!--    <div class="profile-block">-->
-<!--      <p class="profile-block-text">Имя Фамилия</p>-->
-<!--      <input class="address-item__field" type="text" th:value="${user.getContact()}" name="contact" placeholder="Замена данных" style="width: 500px"/>-->
-<!--      <p class="errors" th:if="${errors.containsKey('contact')}" style="color: red" th:text="${errors.get('contact')}"></p>-->
-<!--    </div>-->
-<!--    <div class="profile-block">-->
-<!--      <p class="profile-block-text">Номер тел.</p>-->
-<!--      <input class="address-item__field" type="text" th:value="${user.getPhone()}" name="phone" placeholder="Замена данных" style="width: 500px"/>-->
-<!--      <p class="errors" th:if="${errors.containsKey('phone')}" style="color: red" th:text="${errors.get('phone')}"></p>-->
-<!--    </div>-->
-<!--    <div class="profile-block">-->
-<!--      <p class="profile-block-text">Эл. почта</p>-->
-<!--      <input class="address-item__field" type="email" th:value="${user.getEmail()}" name="email" placeholder="Замена данных" style="width: 500px"/>-->
-<!--      <p class="errors" th:if="${errors.containsKey('email')}" style="color: red" th:text="${errors.get('email')}"></p>-->
-<!--    </div>-->
     <a th:href="@{/profile/editContact}" class="to-cart orderBtn profileBtn profileBtn-e">Изменить личные данные</a>
     <a th:href="@{/profile/editPassword}" class="to-cart orderBtn profileBtn profileBtn-e profileBtn-e-pass">Изменить пароль</a>
     <a  th:href="@{/logout}" class="logout">выйти с аккаунта</a>
