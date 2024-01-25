@@ -548,6 +548,18 @@ body{
 
 }
 
+.empty-message{
+    color: var(--white, #FFF);
+    font-family: Unbounded;
+    font-size: 80px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    text-transform: uppercase;
+    width: 100%;
+    text-align: center;
+}
+
 .food-var-item__img{
     position: absolute;
     height: 100%;
@@ -563,7 +575,7 @@ body{
     position: absolute;
     width: 949px;
     transform: scaleX(1.09);
-    top: 4.5%;
+    top: 14.5%;
     z-index: 999;
     display: flex;
     justify-content: space-between;
@@ -590,6 +602,7 @@ body{
     margin: 6px 0 6px 6px;
     padding: 7px;
     background-color: #201c2c !important;
+    cursor: pointer;
 }
 
 .container-small-wrap{
@@ -682,8 +695,26 @@ body{
     width: 45px;
     height: 45px;
     display: flex;
+    position: relative;
     align-items: center;
     justify-content: center;
+}
+
+.count-of-orders{
+    position: absolute;
+    width: 26px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 26px;
+    bottom: -10px;
+    right: -10px;
+    font-size: 14px;
+    background: #F00;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    padding-top: 2px;
 }
 
 .bot{
@@ -1023,6 +1054,12 @@ body{
 .cart-jpg{
     width: 28px;
     height: 28px;
+}
+
+.profile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .profile-active{
@@ -2083,4 +2120,142 @@ input{
     font-size: 10px;
     margin-top: 10px;
     text-align: right;
+}
+
+.foods-top-u-kitchens{
+    flex-direction: column;
+
+}
+
+.foods-title-kitchens{
+    text-align: center;
+    font-family: Unbounded;
+    font-size: 92px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    text-transform: uppercase;
+    margin-bottom: 55px;
+}
+
+.kitchens-box{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.kitchens-card{
+    width: 243px;
+    height: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.foods-top-u-foods{
+    flex-direction: column;
+
+}
+
+.foods-title-uu{
+    text-align: center;
+    font-family: Unbounded;
+    font-size: 58px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.menu-list-u-u{
+}
+
+.up-item-u-u{
+    padding: 5px 55px;
+}
+
+.up-item-u-u:before{
+     content: '';
+     position: relative;
+     width: 3px;
+     height:17px;
+     border-left: 1px solid #fff;
+     margin-right: 10px;
+}
+
+.up-item-u-u-one{
+    border-left: 1px solid transparent;
+}
+
+.category-text{
+    color: #FFF;
+    font-family: Steppe;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    width: 100%;
+    padding-bottom: 11px;
+    border-bottom: 1px dotted #fff;
+    margin-bottom: 48px;
+}
+
+.category-line{
+    margin-bottom: 100px;
+}
+
+.category-block{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+.food-item-u-u-u-u{
+    margin-left: 71px;
+}
+
+.recom{
+    color: var(--dark-yellow, #ECB400);
+    font-family: Unbounded;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    text-transform: uppercase;
+    display: block;
+    width: 100%;
+    text-align: center;
+
+}
+
+.mmmmTitle{
+    margin-top: 60px;
+    color: #1B1B1B;
+    width: 100%;
+    text-align: center;
+    font-family: Unbounded;
+    font-size: 92px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.more-food{
+    width: 300px;
+    padding: 19px 25px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.btn-inner{
+    width: 870px;
 }

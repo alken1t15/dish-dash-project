@@ -33,7 +33,10 @@
                 <a sec:authorize="isAnonymous()" th:href="@{/registration}" class="sign-up-btn">регистрация</a>
                 <a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="sign-up-btn">выйти</a>
                 <a sec:authorize="isAuthenticated()" th:href="@{/profile/}" class="profile"><img th:src="@{img/profile.svg}" alt="profile image" ></a>
-                <a sec:authorize="isAuthenticated()" th:href="@{/cart/}" class="cart"><img th:src="@{img/cart.svg}" alt="cart image"></a>
+                <a sec:authorize="isAuthenticated()" th:href="@{/cart/}" class="cart">
+                    <img th:src="@{img/cart.svg}" alt="cart image">
+                    <div class="count-of-orders">3</div>
+                </a>
             </div>
         </div>
     </section>
@@ -52,14 +55,15 @@
 <!--Food section-->
 <section class="food" id="category">
     <div class="container container-small container-small-wrap">
+        <p class="mmmmTitle">кухни</p>
         <div class="food-top">
             <div class="food-start">
-                <div class="back">
+                <a href="kitchens.html" class="back">
                     <div class="food-var">
                         <img th:src="@{img/kitchens.png}" alt="kitchens" class="food-var__img">
                         <p class="food-var__text">кухни</p>
                     </div>
-                </div>
+                </a>
                 <div class="slider-container">
                     <div class="slider">
                         <div class="food-var-item" th:each="kitchen : ${kitchens}">
@@ -80,38 +84,25 @@
         </div>
         <div class="food-bot">
             <div class="up">
-                <div class="up-item">
-                    <div class="up-item up-item-category">
-                        <svg class="up-item__img" xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
-                            <rect width="17" height="2" fill="#ECB400"/>
-                            <rect y="5" width="17" height="2" fill="#ECB400"/>
-                            <rect y="10" width="17" height="2" fill="#ECB400"/>
-                        </svg>
-                        <span class="up-item__text primary-text cat">категория</span>
-                        <form th:method="GET" th:action="@{/food/}">
-                            <ul class="kitchen-list" id="kitchenList">
-                                <li class="kitchenList__item"><a th:each="kitchen : ${kitchens}" th:href="@{'/food/?name_kitchen='+ ${kitchen.name}(name_category='Рекомендации')}" class="kitchenList__link"  th:text="${kitchen.nameRu}" th:value="${kitchen.name}">корейская</a></li>
-                            </ul>
-                        </form>
-                    </div>
-                </div>
-                <div class="up-item">
-                    <p class="up-item__recommended">рекомендации</p>
-                </div>
-                <div class="up-item">
-                    <a th:href="@{/food/(name_category=Блюда)}" class="up-item__text">блюда</a>
-                </div>
-                <div class="up-item">
-                    <a th:href="@{/food/(name_category=Cалаты)}" class="up-item__text">салаты</a>
-                </div>
-                <div class="up-item">
-                    <a th:href="@{/food/(name_category=Десерты)}" class="up-item__text">десерты</a>
-                </div>
-                <div class="up-item">
-                    <a th:href="@{/food/(name_category=Напитки)}" class="up-item__text">напитки</a>
-                </div>
+<!--                <div class="up-item">-->
+<!--                    <div class="up-item up-item-category">-->
+<!--                        <svg class="up-item__img" xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">-->
+<!--                            <rect width="17" height="2" fill="#ECB400"/>-->
+<!--                            <rect y="5" width="17" height="2" fill="#ECB400"/>-->
+<!--                            <rect y="10" width="17" height="2" fill="#ECB400"/>-->
+<!--                        </svg>-->
+<!--                        <span class="up-item__text primary-text cat">категория</span>-->
+<!--                        <form th:method="GET" th:action="@{/food/}">-->
+<!--                            <ul class="kitchen-list" id="kitchenList">-->
+<!--                                <li class="kitchenList__item"><a th:each="kitchen : ${kitchens}" th:href="@{'/food/?name_kitchen='+ ${kitchen.name}(name_category='Рекомендации')}" class="kitchenList__link"  th:text="${kitchen.nameRu}" th:value="${kitchen.name}">корейская</a></li>-->
+<!--                            </ul>-->
+<!--                        </form>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <span class="recom">рекомендации</span>
                 <a th:href="@{/cart/}" class="cart">
                     <img th:src="@{img/cart.svg}" alt="cart" class="cart__img">
+                    <div class="count-of-orders" th:text="${count}">3</div>
                 </a>
             </div>
             <div class="bot">
@@ -130,7 +121,11 @@
                     </div>
                 </div>
 
-                <a th:href="@{/cart/}" class="to-cart">Перейти в корзину</a>
+                <div class="btn-inner">
+                    <a th:href="@{/cart/}" class="to-cart more-food">больше блюд</a>
+                </div>
+
+
             </div>
         </div>
     </div>

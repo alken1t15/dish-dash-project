@@ -35,6 +35,10 @@ create table food
     popular       int
 );
 
+create table category(
+
+);
+
 insert into food (id_kitchen, name_category, name, information, img, price, popular)
 VALUES (1, 'Блюда', 'Шин рамён', 'Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли',
         'kor1', 900, 35);

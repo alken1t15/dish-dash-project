@@ -106,11 +106,16 @@ function checkEmptyCart() {
     const take = document.querySelector('.cartBtn');
     const total = document.querySelector('.total');
     const col = document.querySelector('.columns');
+    const cartTitle = document.querySelector('.cart__title');
+    const btnBack = document.querySelector('.bb');
+
     if (cartItems.length === 0) {
         emptyMessageElement.style.display = 'block';
         take.style.display = 'none';
         total.style.display = 'none';
         col.style.display = 'none';
+        cartTitle.style.display = 'none';
+        btnBack.style.display = 'none';
 
     } else {
         emptyMessageElement.style.display = 'none';

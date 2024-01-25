@@ -33,17 +33,23 @@
             <a sec:authorize="isAnonymous()" th:href="@{/registration}" class="sign-up-btn">регистрация</a>
             <a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="sign-up-btn">выйти</a>
             <a sec:authorize="isAuthenticated()" th:href="@{/profile/}" class="profile"><img th:src="@{/img/profile.svg}" alt="profile image" ></a>
-            <a sec:authorize="isAuthenticated()" th:href="@{/cart/}" class="cart"><img th:src="@{/img/cart.svg}" alt="cart image"></a>
+            <a sec:authorize="isAuthenticated()" th:href="@{/cart/}" class="cart">
+                <img th:src="@{/img/cart.svg}" alt="cart image">
+                <div class="count-of-orders">3</div>
+            </a>
+
         </div>
+
     </div>
 </section>
 
 <!--Cart section-->
 <section class="cart-section">
     <div class="container cart-container">
+        <p class="empty-message" style="display: none;">корзина пустая :)</p>
         <p class="cart__title">КОРЗИНА</p>
         <div class="cart-list">
-            <div class="columns">
+            <div class="columns">н
                 <span class="col">кол-во</span>
                 <span class="col">цена</span>
             </div>
@@ -67,13 +73,15 @@
 
         </div>
         <div class="cart-bot">
-            <a th:href="@{/food/(name_category=Рекомендации)}" class="backPage">назад</a>
+            <a th:href="@{/food/(name_category=Рекомендации)}" class="backPage bb">назад</a>
             <a th:href="@{/order/}" class="orderBtn cartBtn">оформить</a>
             <p class="total">итог :&nbsp;<span id="totalAmount">0</span>&nbspтг</p>
-            <p class="empty-message" style="display: none;">Корзина пуста</p>
+
         </div>
     </div>
 </section>
+
+
 
 
 <!--Contact section-->
