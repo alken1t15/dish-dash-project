@@ -23,11 +23,21 @@ VALUES ('korean', 'korean', 'Корейская'),
 --
 -- insert into category (id_kitchen, name) VALUES (1,'Блюда'),(1,'Салаты'),(1,'Десерты'),(1,'Напитки');
 
+create table category(
+                         id serial primary key,
+                         name varchar not null
+);
+insert into category (name) values ('Горячие блюда');
+insert into category (name) values ('Салаты');
+insert into category (name) values ('Десерты');
+insert into category (name) values ('Напитки');
+
+
 create table food
 (
     id            serial primary key,
     id_kitchen    int references kitchen (id),
-    name_category varchar not null,
+    id_category varchar not null,
     name          varchar not null,
     information   varchar not null,
     img           varchar not null,
@@ -35,36 +45,32 @@ create table food
     popular       int
 );
 
-create table category(
-
-);
-
-insert into food (id_kitchen, name_category, name, information, img, price, popular)
-VALUES (1, 'Блюда', 'Шин рамён', 'Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли',
+insert into food (id_kitchen, id_category, name, information, img, price, popular)
+VALUES (1, (select c from category c where c.name = 'Горячие блюда') , 'Шин рамён', 'Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли',
         'kor1', 900, 35);
-insert into food (id_kitchen, name_category, name, information, img, price, popular)
-VALUES (1, 'Блюда', 'Мисо широ', 'с креветками, Классический бульон мисо, лосось, лапша удон, грибы',
+insert into food (id_kitchen, id_category, name, information, img, price, popular)
+VALUES (1, (select c from category c where c.name = 'Горячие блюда'), 'Мисо широ', 'с креветками, Классический бульон мисо, лосось, лапша удон, грибы',
         'kor2', 1200, 44);
-insert into food (id_kitchen, name_category, name, information, img, price, popular)
-VALUES (1, 'Салаты', 'Фунчоза', 'с телятиной, овощами и рисом, с курицей, овощами и рисом',
+insert into food (id_kitchen, id_category, name, information, img, price, popular)
+VALUES (1,(select c from category c where c.name = 'Салаты'), 'Фунчоза', 'с телятиной, овощами и рисом, с курицей, овощами и рисом',
         'kor3', 1530, 74);
-insert into food (id_kitchen, name_category, name, information, img, price, popular)
-VALUES (1, 'Блюда', 'Теплое хе', 'из телятины с рисом',
+insert into food (id_kitchen, id_category, name, information, img, price, popular)
+VALUES (1, (select c from category c where c.name = 'Горячие блюда'), 'Теплое хе', 'из телятины с рисом',
         'kor4', 1850, 135);
-insert into food (id_kitchen, name_category, name, information, img, price, popular)
-VALUES (1, 'Десерты', 'Пампушки', 'сделано из пшеница',
+insert into food (id_kitchen, id_category, name, information, img, price, popular)
+VALUES (1,(select c from category c where c.name = 'Десерты'), 'Пампушки', 'сделано из пшеница',
         'kor5', 330, 358);
-insert into food (id_kitchen, name_category, name, information, img, price, popular)
-VALUES (1, 'Салаты', 'Накчи топпаб', 'осьминог с овощами в остром соусе',
+insert into food (id_kitchen, id_category, name, information, img, price, popular)
+VALUES (1, (select c from category c where c.name = 'Салаты'), 'Накчи топпаб', 'осьминог с овощами в остром соусе',
         'kor6', 1990, 235);
-insert into food (id_kitchen, name_category, name, information, img, price, popular)
-VALUES (1, 'Блюда', 'Удон', 'с курицей, с телятиной, с морепродуктами',
+insert into food (id_kitchen, id_category, name, information, img, price, popular)
+VALUES (1, (select c from category c where c.name = 'Горячие блюда'), 'Удон', 'с курицей, с телятиной, с морепродуктами',
         'kor7', 1480, 359);
-insert into food (id_kitchen, name_category, name, information, img, price, popular)
-VALUES (1, 'Блюда', 'Ким чикен', 'курица во фринтюре',
+insert into food (id_kitchen, id_category, name, information, img, price, popular)
+VALUES (1, (select c from category c where c.name = 'Горячие блюда'), 'Ким чикен', 'курица во фринтюре',
         'kor8', 1180, 12);
-insert into food (id_kitchen, name_category, name, information, img, price, popular)
-VALUES (1, 'Салаты', 'Ттокпокки', 'морковка с корицей',
+insert into food (id_kitchen, id_category, name, information, img, price, popular)
+VALUES (1, (select c from category c where c.name = 'Салаты'), 'Ттокпокки', 'морковка с корицей',
         'kor9', 1590, 5);
 
 create table users

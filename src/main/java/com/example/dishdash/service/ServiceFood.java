@@ -39,4 +39,9 @@ public class ServiceFood {
         return repositoryFood.findById(id).orElseThrow();
     }
 
+    public List<Food> findAllByNameCategoryAndKitchenCustom(String nameCategory,String nameKitchen) {
+            Query query = entityManager.createQuery("select f from Food f where f.kitchen.name = ?1 order by f.popular desc ");
+            query.setParameter(1,nameKitchen);
+            return query.getResultList();
+    }
 }
