@@ -15,4 +15,8 @@ public class ServiceKitchen {
     public List<Kitchen> findAll() {
         return repositoryKitchen.findAll();
     }
+
+    public Kitchen findByName(String name){
+        return repositoryKitchen.findByName(name);
+    }
 }

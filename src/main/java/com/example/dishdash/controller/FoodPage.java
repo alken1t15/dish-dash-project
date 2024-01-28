@@ -32,10 +32,11 @@ public class FoodPage {
     private final ServiceCart serviceCart;
 
     @GetMapping(path = "/")
-    public String getFoodPage(@RequestParam(name = "name_kitchen") String nameKitchen, @RequestParam(required = false, name = "name_category") String nameCategory, Model model) {
-        List<Kitchen> kitchens = serviceKitchen.findAll();
-        List<Food> foods = serviceFood.findAllByNameCategoryAndKitchenCustom(nameCategory,nameKitchen);
-        model.addAttribute("foods", foods);
+    public String getFoodPage(@RequestParam(name = "name_kitchen") String nameKitchen, @RequestParam(required = false, name = "name_category") String nameCategory,Model model) {
+//        List<Kitchen> kitchens = serviceKitchen.findAll();
+        Kitchen kitchen = serviceKitchen.findByName(nameKitchen);
+ //       List<Food> foods = serviceFood.findAllByNameCategoryAndKitchenCustom(nameCategory,nameKitchen);
+//        model.addAttribute("foods", foods);
 //        System.out.println(nameKitchen);
 //        if (!StringUtils.isBlank(nameKitchen) && !StringUtils.isBlank(nameCategory)) {
 //            List<Food> foods = serviceFood.findAllByNameCategoryAndKitchen(nameKitchen, nameCategory);
@@ -51,37 +52,40 @@ public class FoodPage {
 //            List<Food> foods = serviceFood.findAllByNameCategory("Рекомендации");
 //            model.addAttribute("foods", foods);
 //        }
-        if (nameCategory == null) {
-            nameCategory = "Рекомендации";
-        }
-        model.addAttribute("kitchens", kitchens);
-        model.addAttribute("nameKitchen", nameKitchen);
-        model.addAttribute("nameCategory", nameCategory);
+//        if (nameCategory == null) {
+//            nameCategory = "Рекомендации";
+//        }
+//        model.addAttribute("nameKitchen", kitchen.getNameRu());
+     //   model.addAttribute("kitchens", kitchens);
+//        model.addAttribute("nameKitchen", nameKitchen);
+//        model.addAttribute("nameCategory", nameCategory);
+        model.addAttribute("kitchen",kitchen);
         return "food";
     }
 
     @PostMapping("/add")
-    public String addInCart(@RequestParam("id") Long id,@RequestParam(required = false, name = "name_kitchen") String nameKitchen, @RequestParam(required = false, name = "name_category") String nameCategory, HttpSession httpSession, Principal principal,Model model) {
-        List<Kitchen> kitchens = serviceKitchen.findAll();
-        if (!StringUtils.isBlank(nameKitchen) && !StringUtils.isBlank(nameCategory)) {
-            List<Food> foods = serviceFood.findAllByNameCategoryAndKitchen(nameKitchen, nameCategory);
-            model.addAttribute("foods", foods);
-        } else if (StringUtils.isBlank(nameKitchen) && !StringUtils.isBlank(nameCategory)) {
-            List<Food> foods = serviceFood.findAllByNameCategory(nameCategory);
-            model.addAttribute("foods", foods);
-        } else if (StringUtils.isBlank(nameKitchen) && StringUtils.isBlank(nameCategory)) {
-            List<Food> foods = serviceFood.findAllByNameCategory("Рекомендации");
-            model.addAttribute("foods", foods);
-        } else if (!StringUtils.isBlank(nameKitchen) && StringUtils.isBlank(nameCategory)) {
-            List<Food> foods = serviceFood.findAllByNameCategory("Рекомендации");
-            model.addAttribute("foods", foods);
-        }
-        if (nameCategory == null) {
-            nameCategory = "Рекомендации";
-        }
-        model.addAttribute("kitchens", kitchens);
-        model.addAttribute("nameKitchen", nameKitchen);
-        model.addAttribute("nameCategory", nameCategory);
+    public String addInCart(@RequestParam("id") Long id,@RequestParam(required = true, name = "name_kitchen") String nameKitchen, @RequestParam(required = false, name = "name_category") String nameCategory, HttpSession httpSession, Principal principal,Model model) {
+//        List<Kitchen> kitchens = serviceKitchen.findAll();
+//        if (!StringUtils.isBlank(nameKitchen) && !StringUtils.isBlank(nameCategory)) {
+////            List<Food> foods = serviceFood.findAllByNameCategoryAndKitchen(nameKitchen, nameCategory);
+////            model.addAttribute("foods", foods);
+//        } else if (StringUtils.isBlank(nameKitchen) && !StringUtils.isBlank(nameCategory)) {
+//            List<Food> foods = serviceFood.findAllByNameCategory(nameCategory);
+//            model.addAttribute("foods", foods);
+//        } else if (StringUtils.isBlank(nameKitchen) && StringUtils.isBlank(nameCategory)) {
+//            List<Food> foods = serviceFood.findAllByNameCategory("Рекомендации");
+//            model.addAttribute("foods", foods);
+//        } else if (!StringUtils.isBlank(nameKitchen) && StringUtils.isBlank(nameCategory)) {
+//            List<Food> foods = serviceFood.findAllByNameCategory("Рекомендации");
+//            model.addAttribute("foods", foods);
+//        }
+//        if (nameCategory == null) {
+//            nameCategory = "Рекомендации";
+//        }
+        Kitchen kitchen = serviceKitchen.findByName(nameKitchen);
+        model.addAttribute("kitchen", kitchen);
+//        model.addAttribute("nameKitchen", nameKitchen);
+//        model.addAttribute("nameCategory", nameCategory);
         Food food = serviceFood.findById(id);
         if (principal == null) {
             if (httpSession.getAttribute("store") == null) {

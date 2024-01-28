@@ -67,8 +67,8 @@
                 <div class="slider-container">
                     <div class="slider">
                         <div class="food-var-item" th:each="kitchen : ${kitchens}">
-                            <p class="food-var-item__text" th:text="${kitchen.name}">korean</p>
-                            <img class="food-var-item__img" th:src="@{img/__${kitchen.img}__.png}" alt="Variable of food">
+                            <p class="food-var-item__text" th:text="${kitchen.nameRu}">korean</p>
+                            <img class="food-var-item__img" th:href="@{/food/(name_kitchen=${kitchen.name})}" th:src="@{img/__${kitchen.img}__.png}" alt="Variable of food">
                         </div>
                         <div class="food-var-item">
                             <p class="food-var-item__text">italian</p>

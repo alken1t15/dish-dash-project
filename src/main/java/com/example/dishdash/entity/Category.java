@@ -1,5 +1,6 @@
 package com.example.dishdash.entity;
 
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -7,21 +8,20 @@ import lombok.Setter;
 import java.util.List;
 
 @Entity
-@Table(name = "kitchen")
+@Table(name = "category")
 @Getter
 @Setter
-public class Kitchen {
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    private String img;
+    @OneToMany(mappedBy = "category")
+    private List<Food> foods;
 
-    @Column(name = "name_ru")
-    private String nameRu;
-
-    @OneToMany(mappedBy = "kitchen")
-    private List<Category> categories;
+    @ManyToOne
+    @JoinColumn(name = "id_kitchen",referencedColumnName = "id")
+    private Kitchen kitchen;
 }
