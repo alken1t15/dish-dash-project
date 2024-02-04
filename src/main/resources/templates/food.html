@@ -36,7 +36,7 @@
             <a sec:authorize="isAuthenticated()" th:href="@{/profile/}" class="profile"><img th:src="@{/img/profile.svg}" alt="profile image" ></a>
             <a sec:authorize="isAuthenticated()" th:href="@{/cart/}" class="cart">
                 <img th:src="@{/img/cart.svg}" alt="cart image">
-                <div class="count-of-orders">3</div></a>
+                <div class="count-of-orders" th:text="${count}">3</div></a>
         </div>
     </div>
 </section>

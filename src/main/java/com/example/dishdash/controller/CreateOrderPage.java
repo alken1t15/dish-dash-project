@@ -44,12 +44,14 @@ public class CreateOrderPage {
             ArrayList<Cart> list = (ArrayList<Cart>) httpSession.getAttribute("store");
             model.addAttribute("carts", list);
             model.addAttribute("user", new Users());
+            model.addAttribute("count", list.size());
 
         } else {
             String username = principal.getName();
             Users user = serviceUsers.findByEmail(username);
             model.addAttribute("user", user);
             model.addAttribute("carts", user.getCarts());
+            model.addAttribute("count", user.getCarts().size());
         }
 
         model.addAttribute("errors", errors);

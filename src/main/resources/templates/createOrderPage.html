@@ -21,9 +21,11 @@
     <div class="container cart-container">
         <div class="foods-top order-top">
             <p class="foods-title order-title">Оформление заказа</p>
-            <a th:href="@{/login}" class="profile-image"><img th:src="@{/img/profile.svg}" alt="Profile"></a>
-            <a th:href="@{/cart/}"><img th:src="@{/img/cart.svg}" alt="Cart">
-                <div class="count-of-orders">3</div></a>
+            <a th:href="@{/profile/}" class="profile-image"><img th:src="@{/img/profile.svg}" alt="Profile"></a>
+            <a  th:href="@{/cart/}" class="cart">
+                <img th:src="@{/img/cart.svg}" alt="cart image">
+                <div class="count-of-orders" th:text="${count}">3</div>
+            </a>
         </div>
         <div class="order-inner">
             <div class="order-left">

@@ -37,10 +37,12 @@ public class CartPage {
             }
             ArrayList<Cart> list = (ArrayList<Cart>) httpSession.getAttribute("store");
             model.addAttribute("carts", list);
+            model.addAttribute("count", list.size());
         } else {
             String username = principal.getName();
             Users user = serviceUsers.findByEmail(username);
             model.addAttribute("carts", user.getCarts());
+            model.addAttribute("count", user.getCarts().size());
         }
         return "cart";
     }

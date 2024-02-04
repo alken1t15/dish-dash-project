@@ -32,7 +32,7 @@ public class FoodPage {
     private final ServiceCart serviceCart;
 
     @GetMapping(path = "/")
-    public String getFoodPage(@RequestParam(name = "name_kitchen") String nameKitchen, @RequestParam(required = false, name = "name_category") String nameCategory,Model model) {
+    public String getFoodPage(@RequestParam(name = "name_kitchen") String nameKitchen, @RequestParam(required = false, name = "name_category") String nameCategory,Model model, HttpSession httpSession, Principal principal) {
 //        List<Kitchen> kitchens = serviceKitchen.findAll();
         Kitchen kitchen = serviceKitchen.findByName(nameKitchen);
  //       List<Food> foods = serviceFood.findAllByNameCategoryAndKitchenCustom(nameCategory,nameKitchen);
@@ -59,6 +59,17 @@ public class FoodPage {
      //   model.addAttribute("kitchens", kitchens);
 //        model.addAttribute("nameKitchen", nameKitchen);
 //        model.addAttribute("nameCategory", nameCategory);
+        if (principal == null) {
+            if (httpSession.getAttribute("store") == null) {
+                httpSession.setAttribute("store", new ArrayList<Cart>());
+            }
+            ArrayList<Cart> list = (ArrayList<Cart>) httpSession.getAttribute("store");
+            model.addAttribute("count", list.size());
+        } else {
+            String username = principal.getName();
+            Users user = serviceUsers.findByEmail(username);
+            model.addAttribute("count", user.getCarts().size());
+        }
         model.addAttribute("kitchen",kitchen);
         return "food";
     }

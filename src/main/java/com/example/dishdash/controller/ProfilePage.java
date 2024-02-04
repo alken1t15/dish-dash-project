@@ -1,8 +1,10 @@
 package com.example.dishdash.controller;
 
+import com.example.dishdash.entity.Cart;
 import com.example.dishdash.entity.Users;
 import com.example.dishdash.service.ServiceUsers;
 import io.micrometer.common.util.StringUtils;
+import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -11,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 @Controller
@@ -20,7 +24,11 @@ public class ProfilePage {
     private final ServiceUsers serviceUsers;
     private final PasswordEncoder passwordEncoder;
     @GetMapping("/")
-    public String getProfilePage(){
+    public String getProfilePage(Model model,Principal principal){
+        String username = principal.getName();
+        Users user = serviceUsers.findByEmail(username);
+        model.addAttribute("carts", user.getCarts());
+        model.addAttribute("count", user.getCarts().size());
         return "profile";
     }
 
@@ -32,6 +40,7 @@ public class ProfilePage {
         HashMap<String,String> errors = new HashMap<>();
         model.addAttribute("errors",errors);
         model.addAttribute("user",user);
+        model.addAttribute("count", user.getCarts().size());
         return "editContactInfo";
     }
 
@@ -72,9 +81,12 @@ public class ProfilePage {
     }
 
     @GetMapping("/editPassword")
-    public String getEditPasswordPage(Model model){
+    public String getEditPasswordPage(Model model,Principal principal){
         HashMap<String,String> errors = new HashMap<>();
         model.addAttribute("errors",errors);
+        String username = principal.getName();
+        Users user = serviceUsers.findByEmail(username);
+        model.addAttribute("count", user.getCarts().size());
         return "editPassword";
     }
 
