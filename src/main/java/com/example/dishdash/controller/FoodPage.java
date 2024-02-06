@@ -112,7 +112,7 @@ public class FoodPage {
                 }
             }
             list.add(new Cart(null, food, 1, food.getPrice()));
-            return "/food";
+            return "redirect:/food/?name_kitchen="+nameKitchen;
         } else {
             String username = principal.getName();
             Users user = serviceUsers.findByEmail(username);
@@ -125,7 +125,7 @@ public class FoodPage {
                 cart = new Cart(user, food, 1, food.getPrice());
             }
             serviceCart.save(cart);
-            return "/food";
+            return "redirect:/food/?name_kitchen="+nameKitchen;
         }
     }
 }

@@ -28,7 +28,6 @@ public class ServiceFood {
 
     public List<Food> findAllByNameCategory(String nameCategory) {
         if (nameCategory.equals("Рекомендации")){
-            System.out.println("Условие");
             Query query = entityManager.createQuery("select f from Food f order by f.popular desc ");
             query.setMaxResults(10);
             System.out.println(query.getResultList());
@@ -40,6 +39,7 @@ public class ServiceFood {
     public Food findById(Long id) {
         return repositoryFood.findById(id).orElseThrow();
     }
+
 
 //    public List<Food> findAllByNameCategoryAndKitchenCustom(String nameCategory,String nameKitchen) {
 //            Query query = entityManager.createQuery("select f from Food f where f.kitchen.name = ?1 order by f.popular desc ");

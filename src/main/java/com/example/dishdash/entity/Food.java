@@ -36,6 +36,9 @@ public class Food {
     @OneToMany(mappedBy = "food")
     private List<Cart> carts;
 
+    @OneToMany(mappedBy = "food")
+    private List<History> histories;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

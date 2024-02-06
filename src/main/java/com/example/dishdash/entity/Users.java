@@ -29,6 +29,9 @@ public class Users {
     @OneToMany(mappedBy = "user",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Cart> carts;
 
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    private List<History> histories;
+
     public Users(String email) {
         this.email = email;
     }

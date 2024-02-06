@@ -93,6 +93,14 @@ create table cart
     total_price int not null
 );
 
+create table history
+(
+    id          serial primary key,
+    id_users    int references users (id),
+    id_food     int references food (id),
+    count       int not null
+);
+
 create table order_user
 (
     id      serial primary key,

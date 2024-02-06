@@ -1,12 +1,16 @@
 package com.example.dishdash.controller;
 
 import com.example.dishdash.entity.Cart;
+import com.example.dishdash.entity.History;
 import com.example.dishdash.entity.OrderUser;
 import com.example.dishdash.entity.Users;
 import com.example.dishdash.service.ServiceCart;
+import com.example.dishdash.service.ServiceHistory;
 import com.example.dishdash.service.ServiceOrderUser;
 import com.example.dishdash.service.ServiceUsers;
 import io.micrometer.common.util.StringUtils;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -33,6 +37,8 @@ public class CreateOrderPage {
     private final ServiceUsers serviceUsers;
     private final ServiceOrderUser serviceOrderUser;
     private final ServiceCart serviceCart;
+    private final ServiceHistory serviceHistory;
+    private final EntityManager entityManager;
 
     @GetMapping("/")
     public String getOrderPage(Model model, HttpSession httpSession, Principal principal) {
@@ -117,6 +123,17 @@ public class CreateOrderPage {
                 user.setCarts(null);
                 serviceUsers.save(user);
                 for (Cart cart : carts) {
+                    Query historyQuery = entityManager.createQuery("select h from History h where h.user.id = ?1 and h.food.id = ?2");
+                    historyQuery.setParameter("1",user.getId());
+                    historyQuery.setParameter("2",cart.getFood().getId());
+                    History history = (History) historyQuery.getSingleResult();
+                    if (history == null){
+                        serviceHistory.save(new History(user,cart.getFood(),cart.getCount()));
+                    }
+                    else {
+                        history.setCount(history.getCount()+cart.getCount());
+                        serviceHistory.save(history);
+                    }
                     serviceCart.delete(cart);
                 }
                 serviceOrderUser.save(new OrderUser(Long.parseLong(phone), "Заказ готовится", "Улица: " + address + " ,дом: " + home + " ,кв: " + apartments + " ,подъезд: " + driveway));
