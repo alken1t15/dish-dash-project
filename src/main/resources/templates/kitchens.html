@@ -35,8 +35,10 @@
             <a sec:authorize="isAnonymous()" th:href="@{/registration}" class="sign-up-btn">регистрация</a>
             <a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="sign-up-btn">выйти</a>
             <a sec:authorize="isAuthenticated()" th:href="@{/profile/}" class="profile"><img th:src="@{/img/profile.svg}" alt="profile image" ></a>
-            <a  th:href="@{/cart/}" class="cart"><img th:src="@{/img/cart.svg}" alt="cart image">
-                <div class="count-of-orders" th:text="${count}">3</div></a>
+            <a th:href="@{/cart/}" class="cart">
+                <img th:src="@{/img/cart.svg}" alt="cart" class="cart__img">
+                <div class="count-of-orders" th:text="${count}">3</div>
+            </a>
         </div>
     </div>
 </section>
@@ -49,13 +51,13 @@
             <p class="foods-title foods-title-kitchens">Кухни</p>
 
         </div>
-      <div class="kitchens-box">
-          <a th:href="@{/food/(name_kitchen=${kitchen.name})}" class="food-var-item kitchens-card" th:each="kitchen : ${kitchens}">
-              <p class="food-var-item__text" th:text="${kitchen.name}">korean</p>
-              <img class="food-var-item__img" th:src="@{/img/__${kitchen.img}__.png}" alt="Variable of food">
-          </a>
+        <div class="kitchens-box">
+            <a th:href="@{/food/(name_kitchen=${kitchen.name})}" class="food-var-item kitchens-card" th:each="kitchen : ${kitchens}">
+                <p class="food-var-item__text food-var-item__text-m" th:text="${kitchen.name}">korean</p>
+                <img class="food-var-item__img" th:src="@{/img/__${kitchen.img}__.png}" alt="Variable of food">
+            </a>
 
-      </div>
+        </div>
     </div>
 </section>
 

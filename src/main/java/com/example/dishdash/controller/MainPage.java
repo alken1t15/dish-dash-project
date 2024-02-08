@@ -42,8 +42,14 @@ public class MainPage {
         } else {
             String username = principal.getName();
             Users user = serviceUsers.findByEmail(username);
-            List<Food> foods = serviceHistory.findByPopularFoodUser();
-            model.addAttribute("foods",foods);
+            if (user.getHistories().isEmpty()){
+                List<Food> foods = serviceFood.findAllByNameCategory("Рекомендации");
+                model.addAttribute("foods",foods);
+            }
+            else {
+                List<Food> foods = serviceHistory.findByPopularFoodUser();
+                model.addAttribute("foods",foods);
+            }
             model.addAttribute("count", user.getCarts().size());
         }
         return "index";

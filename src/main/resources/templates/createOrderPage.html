@@ -17,93 +17,93 @@
 
 <!--Food section-->
 <form th:method="POST" th:action="@{/order/add}">
-<section class="cart-section">
-    <div class="container cart-container">
-        <div class="foods-top order-top">
-            <p class="foods-title order-title">Оформление заказа</p>
-            <a th:href="@{/profile/}" class="profile-image"><img th:src="@{/img/profile.svg}" alt="Profile"></a>
-            <a  th:href="@{/cart/}" class="cart">
-                <img th:src="@{/img/cart.svg}" alt="cart image">
-                <div class="count-of-orders" th:text="${count}">3</div>
-            </a>
-        </div>
-        <div class="order-inner">
-            <div class="order-left">
-                <div class="button-block">
-                    <button class="order-type type-one order-type-active" type="button" data-index="1" style="font-size: 20px">самовывоз</button>
-                    <button class="order-type type-two" type="button" data-index="2">бесконтактная доставка</button>
-                </div>
-                <div class="address-block">
-                    <div class="address-item address-item-other address-item-none">
-                        <span class="address-item__text">Город</span>
-                        <input th:value="${user.getCity()}" class="address-item__field" type="text" name="city" placeholder="Введите город"/>
-                        <p class="errors" th:if="${errors.containsKey('city')}" style="color: red" th:text="${errors.get('city')}"></p>
-                    </div>
-                    <div class="address-item address-item-other address-item-none">
-                        <span class="address-item__text">Имя Фамилия</span>
-                        <input th:value="${user.getContact()}" class="address-item__field" type="text" name="contact" placeholder="Пожалуйста введите свои данные "/>
-                        <p class="errors" th:if="${errors.containsKey('contact')}" style="color: red" th:text="${errors.get('contact')}"></p>
-                    </div>
-                    <div class="address-item address-item-other address-item-none">
-                        <span class="address-item__text ">Номер тел.</span>
-                        <input th:value="${user.getPhone()}" class="address-item__field" type="tel" name="phone" placeholder="Пожалуйста введите свои данные "/>
-                        <p class="errors" th:if="${errors.containsKey('phone')}" style="color: red" th:text="${errors.get('phone')}"></p>
-                    </div>
-                    <div class="address-item">
-                        <span class="address-item__text">Адрес</span>
-                        <input  class="address-item__field" type="text" name="address" placeholder="Пожалуйста введите свой адрес"/>
-                        <p class="errors" th:if="${errors.containsKey('address')}" style="color: red" th:text="${errors.get('address')}"></p>
-                    </div>
-                    <div class="address-mini-block">
-                        <div class="address-mini-item">
-                            <input type="text" name="home" class="address-mini-item__field" />
-                            <span class="address-mini-item__text">Дом</span>
-                            <p class="errors" th:if="${errors.containsKey('home')}" style="color: red" th:text="${errors.get('home')}"></p>
-                        </div>
-                        <div class="address-mini-item">
-                            <input type="number" name="apartments" class="address-mini-item__field" />
-                            <span class="address-mini-item__text">Квартира</span>
-                            <p class="errors" th:if="${errors.containsKey('apartments')}" style="color: red" th:text="${errors.get('apartments')}"></p>
-                        </div>
-                        <div class="address-mini-item">
-                            <input type="number" name="driveway" class="address-mini-item__field" />
-                            <span class="address-mini-item__text">подъезд</span>
-                            <p class="errors" th:if="${errors.containsKey('driveway')}" style="color: red" th:text="${errors.get('driveway')}"></p>
-                        </div>
-                    </div>
-                </div>
-                <a th:href="@{/cart/}" class="backPage backPage-order">назад</a>
+    <section class="cart-section">
+        <div class="container cart-container">
+            <div class="foods-top order-top">
+                <p class="foods-title order-title">Оформление заказа</p>
+                <a th:href="@{/login}" class="profile-image"><img th:src="@{/img/profile.svg}" alt="Profile"></a>
+                <a th:href="@{/cart/}" class="cart">
+                    <img th:src="@{/img/cart.svg}" alt="cart" class="cart__img">
+                    <div class="count-of-orders" th:text="${count}">3</div>
+                </a>
             </div>
-            <div class="order-right">
-                <div class="cart-list">
-                    <div class="columns columns-order">
-                        <span class="col col-order col-order-1">блюдо</span>
-                        <span class="col col-order col-order-2">кол-во</span>
-                        <span class="col col-order col-order-3">цена</span>
+            <div class="order-inner">
+                <div class="order-left">
+                    <div class="button-block">
+                        <button class="order-type type-one order-type-active" type="button" data-index="1" style="font-size: 20px">самовывоз</button>
+                        <button class="order-type type-two" type="button" data-index="2">бесконтактная доставка</button>
                     </div>
-                    <div class="cart-item cart-item-updated" th:each="cart : ${carts}">
-                        <div class="cart-item-col-1 cart-item-col-1-updated">
-                            <img class="cart-item__img cart-item__img-u" th:src="@{/img/__${cart.food.img}__.png}" alt="Food">
+                    <div class="address-block">
+                        <div class="address-item address-item-other address-item-none">
+                            <span class="address-item__text">Город</span>
+                            <input th:value="${user.getCity()}" class="address-item__field" type="text" name="city" placeholder="Введите город"/>
+                            <p class="errors" th:if="${errors.containsKey('city')}" style="color: red" th:text="${errors.get('city')}"></p>
                         </div>
-                        <div class="cart-item-col-2 cart-item-col-2-updated">
-                            <p class="cart-item__title cart-item__title-u" th:text="${cart.food.name}">шин рамЁн</p>
-                            <p class="cart-item__subtitle cart-item__subtitle-u" th:text="${cart.food.information}">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
+                        <div class="address-item address-item-other address-item-none">
+                            <span class="address-item__text">Имя Фамилия</span>
+                            <input th:value="${user.getContact()}" class="address-item__field" type="text" name="contact" placeholder="Пожалуйста введите свои данные "/>
+                            <p class="errors" th:if="${errors.containsKey('contact')}" style="color: red" th:text="${errors.get('contact')}"></p>
                         </div>
-                        <div class="cart-item-col-3 cart-item-col-3-u">
-                            <span class="quantity quantity-u"><span th:text="${cart.count}" class="number">2</span> шт</span>
-                            <div class="cart-item-col-4 cart-item-col-4-u"> <span th:text="${cart.food.price}" class="price-text-number">900</span>&nbsp;тг</div>
+                        <div class="address-item address-item-other address-item-none">
+                            <span class="address-item__text ">Номер тел.</span>
+                            <input th:value="${user.getPhone()}" class="address-item__field" type="tel" name="phone" placeholder="Пожалуйста введите свои данные "/>
+                            <p class="errors" th:if="${errors.containsKey('phone')}" style="color: red" th:text="${errors.get('phone')}"></p>
+                        </div>
+                        <div class="address-item">
+                            <span class="address-item__text">Адрес</span>
+                            <input  class="address-item__field" type="text" name="address" placeholder="Пожалуйста введите свой адрес"/>
+                            <p class="errors" th:if="${errors.containsKey('address')}" style="color: red" th:text="${errors.get('address')}"></p>
+                        </div>
+                        <div class="address-mini-block">
+                            <div class="address-mini-item">
+                                <input type="text" name="home" class="address-mini-item__field" />
+                                <span class="address-mini-item__text">Дом</span>
+                                <p class="errors" th:if="${errors.containsKey('home')}" style="color: red" th:text="${errors.get('home')}"></p>
+                            </div>
+                            <div class="address-mini-item">
+                                <input type="number" name="apartments" class="address-mini-item__field" />
+                                <span class="address-mini-item__text">Квартира</span>
+                                <p class="errors" th:if="${errors.containsKey('apartments')}" style="color: red" th:text="${errors.get('apartments')}"></p>
+                            </div>
+                            <div class="address-mini-item">
+                                <input type="number" name="driveway" class="address-mini-item__field" />
+                                <span class="address-mini-item__text">подъезд</span>
+                                <p class="errors" th:if="${errors.containsKey('driveway')}" style="color: red" th:text="${errors.get('driveway')}"></p>
+                            </div>
                         </div>
                     </div>
-                    <div class="cart-bot cart-bot-u">
-                        <p class="total total-u">итог :&nbsp;<span id="totalAmount">0</span>&nbsp;тг</p>
-                        <button class="orderBtn cartBtn" type="submit" >подтвердить</button>
-                        <p class="empty-message" style="display: none;">Корзина пуста</p>
+                    <a th:href="@{/cart/}" class="backPage backPage-order">назад</a>
+                </div>
+                <div class="order-right">
+                    <div class="cart-list">
+                        <div class="columns columns-order">
+                            <span class="col col-order col-order-1">блюдо</span>
+                            <span class="col col-order col-order-2">кол-во</span>
+                            <span class="col col-order col-order-3">цена</span>
+                        </div>
+                        <div class="cart-item cart-item-updated" th:each="cart : ${carts}">
+                            <div class="cart-item-col-1 cart-item-col-1-updated">
+                                <img class="cart-item__img cart-item__img-u" th:src="@{/img/__${cart.food.img}__.png}" alt="Food">
+                            </div>
+                            <div class="cart-item-col-2 cart-item-col-2-updated">
+                                <p class="cart-item__title cart-item__title-u" th:text="${cart.food.name}">шин рамЁн</p>
+                                <p class="cart-item__subtitle cart-item__subtitle-u" th:text="${cart.food.information}">Лапша рамён, острый бульон по южнокорейски, зелень, яйцо, морские водоросли</p>
+                            </div>
+                            <div class="cart-item-col-3 cart-item-col-3-u">
+                                <span class="quantity quantity-u"><span th:text="${cart.count}" class="number">2</span> шт</span>
+                                <div class="cart-item-col-4 cart-item-col-4-u"> <span th:text="${cart.food.price}" class="price-text-number">900</span>&nbsp;тг</div>
+                            </div>
+                        </div>
+                        <div class="cart-bot cart-bot-u">
+                            <p class="total">итог :&nbsp;<span id="totalAmount">0</span><span class="course">&nbspтг</span></p>
+                            <button class="orderBtn cartBtn orderBtn-u" type="submit" >подтвердить</button>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 </form>
 
 

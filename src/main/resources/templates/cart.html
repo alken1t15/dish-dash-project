@@ -49,7 +49,7 @@
         <p class="empty-message" style="display: none;">корзина пустая :)</p>
         <p class="cart__title">КОРЗИНА</p>
         <div class="cart-list">
-            <div class="columns">н
+            <div class="columns">
                 <span class="col">кол-во</span>
                 <span class="col">цена</span>
             </div>
@@ -73,10 +73,11 @@
 
         </div>
         <div class="cart-bot">
-            <a th:href="@{/food/(name_category=Рекомендации)}" class="backPage bb">назад</a>
-            <a th:href="@{/order/}" class="orderBtn cartBtn">оформить</a>
-            <p class="total">итог :&nbsp;<span id="totalAmount">0</span>&nbspтг</p>
+            <a th:href="@{/food/(name_category=Рекомендации)}" class="backPage bb">вернуться к кухне</a>
 
+            <p class="total">итог :&nbsp;<span id="totalAmount">0</span><span class="course">&nbspтг</span></p>
+
+            <a th:href="@{/order/}" class="orderBtn cartBtn">оформить</a>
         </div>
     </div>
 </section>

@@ -34,9 +34,10 @@
             <a sec:authorize="isAnonymous()" th:href="@{/registration}" class="sign-up-btn">регистрация</a>
             <a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="sign-up-btn">выйти</a>
             <a sec:authorize="isAuthenticated()" th:href="@{/profile/}" class="profile"><img th:src="@{/img/profile.svg}" alt="profile image" ></a>
-            <a sec:authorize="isAuthenticated()" th:href="@{/cart/}" class="cart">
-                <img th:src="@{/img/cart.svg}" alt="cart image">
-                <div class="count-of-orders" th:text="${count}">3</div></a>
+            <a th:href="@{/cart/}" class="cart">
+                <img th:src="@{/img/cart.svg}" alt="cart" class="cart__img">
+                <div class="count-of-orders" th:text="${count}">3</div>
+            </a>
         </div>
     </div>
 </section>
@@ -48,46 +49,46 @@
         <div class="foods-top foods-top-u foods-top-u-foods">
             <p class="foods-title foods-title-uu" th:name="${kitchen.nameRu}" >корейская кухня</p>
             <div class="menu-list menu-list-u menu-list-u-u">
-<!--                <form th:method="GET" th:action="@{/food/}">-->
-<!--                    <div class="up-item up-item-u up-item__text-updated-rec">-->
-<!--                        <input th:if="${nameKitchen!=null && !nameKitchen.isEmpty()}" type="hidden" name="name_kitchen" th:value="${nameKitchen}">-->
-<!--                        <input type="hidden" name="name_category" value="Рекомендации">-->
-<!--                        <button th:if="${!nameCategory.equals('Рекомендации')}" class="up-item__text up-item__text-updated ">рекомендации</button>-->
-<!--                        <button th:if="${nameCategory.equals('Рекомендации')}" class="up-item__text primary-yellow ">рекомендации</button>-->
-<!--                    </div>-->
-<!--                </form>-->
-<!--                <form th:method="GET" th:action="@{/food/}">-->
-<!--                    <div class="up-item up-item-u up-item-u-u up-item-u-u-one">-->
-<!--                        <input th:if="${nameKitchen!=null && !nameKitchen.isEmpty()}" type="hidden" name="name_kitchen" th:value="${nameKitchen}">-->
-<!--                        <input type="hidden" name="name_category" value="Блюда">-->
-<!--                        <button th:if="${nameCategory.equals('Блюда')}" class="up-item__text up-item__recommended primary-yellow">блюда</button>-->
-<!--                        <button th:if="${!nameCategory.equals('Блюда')}" class="up-item__text up-item__recommended up-item__recommended-updated">блюда</button>-->
-<!--                    </div>-->
-<!--                </form>-->
-<!--                <form th:method="GET" th:action="@{/food/}">-->
-<!--                    <div class="up-item up-item-u up-item-u-u">-->
-<!--                        <input th:if="${nameKitchen!=null && !nameKitchen.isEmpty()}" type="hidden" name="name_kitchen" th:value="${nameKitchen}">-->
-<!--                        <input type="hidden" name="name_category" value="Салаты">-->
-<!--                        <button th:if="${nameCategory.equals('Салаты')}" class="up-item__text up-item__text-updated primary-yellow">салаты</button>-->
-<!--                        <button th:if="${!nameCategory.equals('Салаты')}" class="up-item__text up-item__text-updated up-item__recommended-updated">салаты</button>-->
-<!--                    </div>-->
-<!--                </form>-->
-<!--                <form th:method="GET" th:action="@{/food/}">-->
-<!--                    <div class="up-item up-item-u up-item-u-u">-->
-<!--                        <input th:if="${nameKitchen!=null && !nameKitchen.isEmpty()}" type="hidden" name="name_kitchen" th:value="${nameKitchen}">-->
-<!--                        <input type="hidden" name="name_category" value="Десерты">-->
-<!--                        <button th:if="${nameCategory.equals('Десерты')}" class="up-item__text primary-yellow">десерты</button>-->
-<!--                        <button th:if="${!nameCategory.equals('Десерты')}" class="up-item__text up-item__text-updated">десерты</button>-->
-<!--                    </div>-->
-<!--                </form>-->
-<!--                <form th:method="GET" th:action="@{/food/}">-->
-<!--                    <div class="up-item up-item-u up-item-u-u">-->
-<!--                        <input th:if="${nameKitchen!=null && !nameKitchen.isEmpty()}" type="hidden" name="name_kitchen" th:value="${nameKitchen}">-->
-<!--                        <input type="hidden" name="name_category" value="Напитки">-->
-<!--                        <button th:if="${nameCategory.equals('Напитки')}" class="up-item__text primary-yellow">напитки</button>-->
-<!--                        <button th:if="${!nameCategory.equals('Напитки')}" class="up-item__text up-item__text-updated">напитки</button>-->
-<!--                    </div>-->
-<!--                </form>-->
+                <!--                <form th:method="GET" th:action="@{/food/}">-->
+                <!--                    <div class="up-item up-item-u up-item__text-updated-rec">-->
+                <!--                        <input th:if="${nameKitchen!=null && !nameKitchen.isEmpty()}" type="hidden" name="name_kitchen" th:value="${nameKitchen}">-->
+                <!--                        <input type="hidden" name="name_category" value="Рекомендации">-->
+                <!--                        <button th:if="${!nameCategory.equals('Рекомендации')}" class="up-item__text up-item__text-updated ">рекомендации</button>-->
+                <!--                        <button th:if="${nameCategory.equals('Рекомендации')}" class="up-item__text primary-yellow ">рекомендации</button>-->
+                <!--                    </div>-->
+                <!--                </form>-->
+                <!--                <form th:method="GET" th:action="@{/food/}">-->
+                <!--                    <div class="up-item up-item-u up-item-u-u up-item-u-u-one">-->
+                <!--                        <input th:if="${nameKitchen!=null && !nameKitchen.isEmpty()}" type="hidden" name="name_kitchen" th:value="${nameKitchen}">-->
+                <!--                        <input type="hidden" name="name_category" value="Блюда">-->
+                <!--                        <button th:if="${nameCategory.equals('Блюда')}" class="up-item__text up-item__recommended primary-yellow">блюда</button>-->
+                <!--                        <button th:if="${!nameCategory.equals('Блюда')}" class="up-item__text up-item__recommended up-item__recommended-updated">блюда</button>-->
+                <!--                    </div>-->
+                <!--                </form>-->
+                <!--                <form th:method="GET" th:action="@{/food/}">-->
+                <!--                    <div class="up-item up-item-u up-item-u-u">-->
+                <!--                        <input th:if="${nameKitchen!=null && !nameKitchen.isEmpty()}" type="hidden" name="name_kitchen" th:value="${nameKitchen}">-->
+                <!--                        <input type="hidden" name="name_category" value="Салаты">-->
+                <!--                        <button th:if="${nameCategory.equals('Салаты')}" class="up-item__text up-item__text-updated primary-yellow">салаты</button>-->
+                <!--                        <button th:if="${!nameCategory.equals('Салаты')}" class="up-item__text up-item__text-updated up-item__recommended-updated">салаты</button>-->
+                <!--                    </div>-->
+                <!--                </form>-->
+                <!--                <form th:method="GET" th:action="@{/food/}">-->
+                <!--                    <div class="up-item up-item-u up-item-u-u">-->
+                <!--                        <input th:if="${nameKitchen!=null && !nameKitchen.isEmpty()}" type="hidden" name="name_kitchen" th:value="${nameKitchen}">-->
+                <!--                        <input type="hidden" name="name_category" value="Десерты">-->
+                <!--                        <button th:if="${nameCategory.equals('Десерты')}" class="up-item__text primary-yellow">десерты</button>-->
+                <!--                        <button th:if="${!nameCategory.equals('Десерты')}" class="up-item__text up-item__text-updated">десерты</button>-->
+                <!--                    </div>-->
+                <!--                </form>-->
+                <!--                <form th:method="GET" th:action="@{/food/}">-->
+                <!--                    <div class="up-item up-item-u up-item-u-u">-->
+                <!--                        <input th:if="${nameKitchen!=null && !nameKitchen.isEmpty()}" type="hidden" name="name_kitchen" th:value="${nameKitchen}">-->
+                <!--                        <input type="hidden" name="name_category" value="Напитки">-->
+                <!--                        <button th:if="${nameCategory.equals('Напитки')}" class="up-item__text primary-yellow">напитки</button>-->
+                <!--                        <button th:if="${!nameCategory.equals('Напитки')}" class="up-item__text up-item__text-updated">напитки</button>-->
+                <!--                    </div>-->
+                <!--                </form>-->
             </div>
 
         </div>
@@ -96,7 +97,7 @@
                 <p class="category-text" th:text="${category.name}" >горячие блюда</p>
                 <div class="category-block">
                     <div class="food-item food-item-u food-item-u-u-u-u">
-                        <div class="mainCard" th:each="food : ${category.getFoods()}">
+                        <div class="mainCard mainCard-u" th:each="food : ${category.getFoods()}">
                             <div class="food-item-inner food-item-inner-u">
                                 <img th:src="@{/img/__${food.img}__.png}" alt="Food" class="food-item__img">
                                 <p class="food-item__name" th:text="${food.name}">Шин рамен</p>
@@ -114,7 +115,10 @@
                 </div>
             </div>
         </div>
-        <a th:href="@{/cart/}" class="btnToCart">Перейти в корзину</a>
+        <div class="btnBlockFood">
+            <a th:href="@{/kitchen/}" class="backPage bb">вернуться к кухне</a>
+            <a th:href="@{/cart/}" class="backPage bb">перейти в корзину</a>
+        </div>
     </div>
 </section>
 
