@@ -90,6 +90,7 @@ public class TelegramBot extends TelegramLongPollingBot {
 //                    register(chatId);
 //                    break;
                 case "/status" -> {
+                    registerUser(update.getMessage());
                     sendMessage(chatId, "Введите номер телефона ");
                     user.setStatus(true);
                     serviceUsersTelegram.save(user);

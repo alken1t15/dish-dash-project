@@ -124,13 +124,13 @@ public class CreateOrderPage {
                 serviceUsers.save(user);
                 for (Cart cart : carts) {
                     Query historyQuery = entityManager.createQuery("select h from History h where h.user.id = ?1 and h.food.id = ?2");
-                    historyQuery.setParameter("1",user.getId());
-                    historyQuery.setParameter("2",cart.getFood().getId());
-                    History history = (History) historyQuery.getSingleResult();
-                    if (history == null){
+                    historyQuery.setParameter(1,user.getId());
+                    historyQuery.setParameter(2,cart.getFood().getId());
+                    if (historyQuery.getResultList().isEmpty()){
                         serviceHistory.save(new History(user,cart.getFood(),cart.getCount()));
                     }
                     else {
+                        History history = (History) historyQuery.getSingleResult();
                         history.setCount(history.getCount()+cart.getCount());
                         serviceHistory.save(history);
                     }
